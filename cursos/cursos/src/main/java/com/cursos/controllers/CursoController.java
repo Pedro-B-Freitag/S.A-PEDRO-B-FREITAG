@@ -71,4 +71,16 @@ public class CursoController {
             return ResponseEntity.notFound().build();
         }
     }
+    //deletar curso
+    @DeleteMapping("/{curso_id}")
+    public ResponseEntity deletarCurso(@PathVariable Integer curso_id){
+        repository.deleteById(curso_id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity SelecionarCursosPresenciais(){
+        var CursosPresenciais = repository.findAllByCurso_presencial1();
+        return ResponseEntity.ok(CursosPresenciais);
+    }
 }
