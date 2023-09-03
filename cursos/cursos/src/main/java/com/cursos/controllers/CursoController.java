@@ -4,6 +4,7 @@ package com.cursos.controllers;
 import com.cursos.domain.curso.Curso;
 import com.cursos.domain.curso.CursoRepositorio;
 import com.cursos.domain.curso.RequestCurso;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -69,13 +70,14 @@ public class CursoController {
 
             return ResponseEntity.ok(curso);
         } else {
-            return ResponseEntity.notFound().build();
+            //busca a classe de dado nao encontrado
+            throw new EntityNotFoundException();
         }
     }
     //deletar curso
     @DeleteMapping("/{cursoId}")
-    public ResponseEntity deletarCurso(@PathVariable Integer curso_id){
-        repository.deleteById(curso_id);
+    public ResponseEntity deletarCurso(@PathVariable Integer cursoId){
+        repository.deleteById(cursoId);
         return ResponseEntity.noContent().build();
     }
 
