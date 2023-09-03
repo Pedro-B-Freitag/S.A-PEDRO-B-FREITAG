@@ -16,18 +16,18 @@ import java.sql.Time;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@RestController()
 @RequestMapping("/curso")
 public class CursoController {
     @Autowired
     //cria uma instancia da dependencia
     private CursoRepositorio repository;
-    //@GetMapping
+    @GetMapping
     //mostra todos os cursos
-    //public ResponseEntity SelecionaTodosOsCursos(){
-        //var Cursos = repository.findAll();
-        //return ResponseEntity.ok(Cursos);
-    //}
+    public ResponseEntity SelecionaTodosOsCursos(){
+        var Cursos = repository.findAll();
+        return ResponseEntity.ok(Cursos);
+    }
 
     //adicionar curso
     @PostMapping
@@ -81,10 +81,10 @@ public class CursoController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping
-    public ResponseEntity SelecionaCursosPresenciais(){
-        var Cursos = repository.findAllByCursoPresencialTrue();
-        return ResponseEntity.ok(Cursos);
-    }
+    //@GetMapping
+    //public ResponseEntity SelecionaCursosPresenciais(){
+        //var Cursos = repository.findAllByCursoPresencialTrue();
+        //return ResponseEntity.ok(Cursos);
+    //}
 
 }

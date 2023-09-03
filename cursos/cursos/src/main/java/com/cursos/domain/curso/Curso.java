@@ -16,7 +16,7 @@ import java.sql.Time;
 //Contrutor que n ao recebe parametro e nao retorna nada
 @NoArgsConstructor
 //Primary key
-@EqualsAndHashCode(of = "curso_id")
+@EqualsAndHashCode(of = "cursoId")
 
 public class Curso {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
