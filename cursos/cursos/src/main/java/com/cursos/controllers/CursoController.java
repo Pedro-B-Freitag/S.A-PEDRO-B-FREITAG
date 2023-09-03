@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Blob;
 import java.sql.Time;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -20,12 +21,12 @@ public class CursoController {
     @Autowired
     //cria uma instancia da dependencia
     private CursoRepositorio repository;
-    @GetMapping
+    //@GetMapping
     //mostra todos os cursos
-    public ResponseEntity SelecionaTodosOsCursos(){
-        var Cursos = repository.findAll();
-        return ResponseEntity.ok(Cursos);
-    }
+    //public ResponseEntity SelecionaTodosOsCursos(){
+        //var Cursos = repository.findAll();
+        //return ResponseEntity.ok(Cursos);
+    //}
 
     //adicionar curso
     @PostMapping
@@ -52,16 +53,16 @@ public class CursoController {
             Curso curso = cursoOptional.get();
 
             // Atualizar os campos do curso com os valores fornecidos
-            curso.setCurso_descricao(data.curso_descricao());
-            curso.setCurso_categoria(data.curso_categoria());
-            curso.setCurso_fornecedor(data.curso_fornecedor());
-            curso.setCurso_nome(data.curso_nome());
-            curso.setCurso_url(data.curso_url());
-            curso.setCurso_presencial(data.curso_presencial());
-            curso.setCurso_img(data.curso_img());
-            curso.setCurso_visualizacao(data.curso_visualizacao());
-            curso.setCurso_gostei(data.curso_gostei());
-            curso.setCurso_qtd_hrs(data.curso_qtd_hrs());
+            curso.setCursoDescricao(data.curso_descricao());
+            curso.setCursoCategoria(data.curso_categoria());
+            curso.setCursoFornecedor(data.curso_fornecedor());
+            curso.setCursoNome(data.curso_nome());
+            curso.setCursoUrl(data.curso_url());
+            curso.setCursoPresencial(data.curso_presencial());
+            curso.setCursoImg(data.curso_img());
+            curso.setCursoVisualizacao(data.curso_visualizacao());
+            curso.setCursoGostei(data.curso_gostei());
+            curso.setCursoQtdHrs(data.curso_qtd_hrs());
 
             // Salvar o curso atualizado no banco de dados
             repository.save(curso);
@@ -72,15 +73,16 @@ public class CursoController {
         }
     }
     //deletar curso
-    @DeleteMapping("/{curso_id}")
+    @DeleteMapping("/{cursoId}")
     public ResponseEntity deletarCurso(@PathVariable Integer curso_id){
         repository.deleteById(curso_id);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping
-    public ResponseEntity SelecionarCursosPresenciais(){
-        var CursosPresenciais = repository.findAllByCurso_presencial1();
-        return ResponseEntity.ok(CursosPresenciais);
+    public ResponseEntity SelecionaCursosPresenciais(){
+        var Cursos = repository.findAllByCursoPresencialTrue();
+        return ResponseEntity.ok(Cursos);
     }
+
 }

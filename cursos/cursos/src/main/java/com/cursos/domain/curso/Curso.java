@@ -20,29 +20,29 @@ import java.sql.Time;
 
 public class Curso {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private     Integer     curso_id;
-    private     String    curso_descricao;
-    private     String    curso_categoria;
-    private     String    curso_fornecedor;
-    private     String    curso_nome;
-    private     String    curso_url;
-    private     Character curso_presencial;
-    private     Blob      curso_img;
-    private     Integer   curso_visualizacao;
-    private     Integer   curso_gostei;
-    private     Time      curso_qtd_hrs;
+    private     Integer   cursoId;
+    private     String    cursoDescricao;
+    private     String    cursoCategoria;
+    private     String    cursoFornecedor;
+    private     String    cursoNome;
+    private     String    cursoUrl;
+    private     Boolean  cursoPresencial;
+    private     Blob      cursoImg;
+    private     Integer   cursoVisualizacao;
+    private     Integer   cursoGostei;
+    private     Time      cursoQtdHrs;
 
     public Curso(RequestCurso requestCurso){
-        this.curso_descricao = requestCurso.curso_descricao();
-        this.curso_categoria = requestCurso.curso_categoria();
-        this.curso_fornecedor = requestCurso.curso_fornecedor();
-        this.curso_nome = requestCurso.curso_nome();
-        this.curso_url = requestCurso.curso_url();
-        this.curso_presencial = requestCurso.curso_presencial();
-        this.curso_img = requestCurso.curso_img();
-        this.curso_visualizacao = requestCurso.curso_visualizacao();
-        this.curso_gostei = requestCurso.curso_gostei();
-        this.curso_qtd_hrs = requestCurso.curso_qtd_hrs();
+        this.cursoDescricao = requestCurso.curso_descricao();
+        this.cursoCategoria = requestCurso.curso_categoria();
+        this.cursoFornecedor = requestCurso.curso_fornecedor();
+        this.cursoNome = requestCurso.curso_nome();
+        this.cursoUrl = requestCurso.curso_url();
+        this.cursoPresencial = requestCurso.curso_presencial();
+        this.cursoImg = requestCurso.curso_img();
+        this.cursoVisualizacao = requestCurso.curso_visualizacao();
+        this.cursoGostei = requestCurso.curso_gostei();
+        this.cursoQtdHrs = requestCurso.curso_qtd_hrs();
     }
 
 
