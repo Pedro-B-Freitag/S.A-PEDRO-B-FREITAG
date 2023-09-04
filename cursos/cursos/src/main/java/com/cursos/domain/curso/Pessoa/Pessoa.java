@@ -38,6 +38,29 @@ public class Pessoa implements UserDetails {
     private     String  pessoaSenha;
     private     PessoaRole  pessoaRole;
 
+
+    public Pessoa(String  pessoa_cpf, String  pessoa_nome, Integer pessoa_contato, String  pessoa_email,
+                  String  pessoa_genero, Date    pessoa_data_nascimento, String  pessoa_cep, String  pessoa_rua,
+                  String  pessoa_bairro, String  pessoa_cidade, String  pessoa_estado, Integer pessoa_nr_residencia,
+                  String  pessoa_usuario, String  pessoa_senha, PessoaRole  pessoa_role){
+
+        this.pessoaCpf = pessoa_cpf;
+        this.pessoaNome = pessoa_nome;
+        this.pessoaContato = pessoa_contato;
+        this.pessoaEmail = pessoa_email;
+        this.pessoaGenero = pessoa_genero;
+        this.pessoaDataNascimento = pessoa_data_nascimento;
+        this.pessoaCep = pessoa_cep;
+        this.pessoaRua = pessoa_rua;
+        this.pessoaBairro = pessoa_bairro;
+        this.pessoaCidade = pessoa_cidade;
+        this.pessoaEstado = pessoa_estado;
+        this.pessoaNrResidencia = pessoa_nr_residencia;
+        this.pessoaUsuario = pessoa_usuario;
+        this.pessoaSenha = pessoa_senha;
+        this.pessoaRole = pessoa_role;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         //quando um usuario for admin ele tera as permissoes do sdmin e de uma pessoa normal
