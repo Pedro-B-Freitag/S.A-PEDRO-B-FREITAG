@@ -18,10 +18,19 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping("/curso")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
 public class CursoController {
     @Autowired
     //cria uma instancia da dependencia
     private CursoRepositorio repository;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
     @GetMapping
     //mostra todos os cursos
     public ResponseEntity SelecionaTodosOsCursos(){
@@ -85,6 +94,10 @@ public class CursoController {
     //public ResponseEntity SelecionaCursosPresenciais(){
         //var Cursos = repository.findAllByCursoPresencialTrue();
         //return ResponseEntity.ok(Cursos);
+<<<<<<< HEAD
     //}
+=======
+   // }
+>>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
 
 }

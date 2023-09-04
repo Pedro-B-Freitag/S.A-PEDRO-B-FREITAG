@@ -21,15 +21,23 @@ public class SecurityConfigurations {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
+<<<<<<< HEAD
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+=======
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+>>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/curso").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+<<<<<<< HEAD
         .build();
+=======
+                .build();
+>>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
