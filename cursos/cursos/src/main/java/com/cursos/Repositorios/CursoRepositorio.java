@@ -1,5 +1,6 @@
-package com.cursos.domain.curso;
+package com.cursos.Repositorios;
 
+import com.cursos.domain.curso.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

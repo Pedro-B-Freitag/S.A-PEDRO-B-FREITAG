@@ -2,7 +2,7 @@ package com.cursos.controllers;
 
 
 import com.cursos.domain.curso.Curso;
-import com.cursos.domain.curso.CursoRepositorio;
+import com.cursos.Repositorios.CursoRepositorio;
 import com.cursos.domain.curso.RequestCurso;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -11,26 +11,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Blob;
-import java.sql.Time;
-import java.util.List;
 import java.util.Optional;
 
 @RestController()
 @RequestMapping("/curso")
-<<<<<<< HEAD
-=======
 
->>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
 public class CursoController {
     @Autowired
     //cria uma instancia da dependencia
     private CursoRepositorio repository;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
     @GetMapping
     //mostra todos os cursos
     public ResponseEntity SelecionaTodosOsCursos(){
@@ -94,10 +85,8 @@ public class CursoController {
     //public ResponseEntity SelecionaCursosPresenciais(){
         //var Cursos = repository.findAllByCursoPresencialTrue();
         //return ResponseEntity.ok(Cursos);
-<<<<<<< HEAD
     //}
-=======
+
    // }
->>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
 
 }

@@ -4,9 +4,10 @@ package com.cursos.controllers;
 
 import com.cursos.Repositorios.PessoaRepositorio;
 import com.cursos.domain.curso.Pessoa.AuthenticationDTO;
+import com.cursos.domain.curso.Pessoa.LoginResponseDTO;
 import com.cursos.domain.curso.Pessoa.Pessoa;
 import com.cursos.domain.curso.Pessoa.RegisterDTO;
-import org.apache.catalina.User;
+import com.cursos.infra.Security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,39 +26,34 @@ public class AuthenticationController {
     private PessoaRepositorio repository;
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Validated AuthenticationDTO data){
-        var usernamePassword = new UsernamePasswordAuthenticationToken(data.PessoaCpf(), data.PessoaSenha());
-<<<<<<< HEAD
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.pessoaCpf(), data.pessoaSenha());
         //recebe o parametro: usuario e senha juntos como um so
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
-=======
-        //recebe o parametro: cpf e senha juntos como um so
-        var auth = this.authenticationManager.authenticate(usernamePassword);
+        var token = tokenService.generateToken((Pessoa) auth.getPrincipal());
+        //quando a pessoa logar ele recebera um token e quando usar este token tera acesso aos endpoints de post e get cursos
+        return ResponseEntity.ok(new LoginResponseDTO(token));
 
-        return ResponseEntity.ok("funcionou");
->>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
     }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Validated RegisterDTO data){
-<<<<<<< HEAD
-            if(this.repository.findByPessoaCpf(data.pessoaCpf()) != null) return ResponseEntity.badRequest().build();
 
-            String senhaCriptografada = new BCryptPasswordEncoder().encode(data.pessoaSenha());
-            Pessoa novaPessoa = new Pessoa(data.pessoaCpf(), data.pessoaNome(), data.pessoaContato(),data.pessoaEmail(),data.pessoaGenero(),
-            data.pessoaDataNascimento(), data.pessoaCep(), data.pessoaRua(), data.pessoaBairro(), data.pessoaCidade(), data.pessoaEstado(),data.pessoaNrResidencia(),
-            data.pessoaUsuario() , senhaCriptografada, data.pessoaRole());
-=======
+
             if(this.repository.findByPessoaCpf(data.pessoa_cpf()) != null) return ResponseEntity.badRequest().build();
 
             String senhaCriptografada = new BCryptPasswordEncoder().encode(data.pessoa_senha());
+
             Pessoa novaPessoa = new Pessoa(data.pessoa_cpf(), data.pessoa_nome(), data.pessoa_contato(),data.pessoa_email(),data.pessoa_genero(),
             data.pessoa_data_nascimento(), data.pessoa_cep(), data.pessoa_rua(), data.pessoa_bairro(), data.pessoa_cidade(), data.pessoa_estado(),data.pessoa_nr_residencia(),
             data.pessoa_usuario() , senhaCriptografada, data.pessoa_role());
->>>>>>> 3d62b60d48dc8f90ef22393621118ee24dfdc214
+
 
             this.repository.save(novaPessoa);
             return ResponseEntity.ok().build();
