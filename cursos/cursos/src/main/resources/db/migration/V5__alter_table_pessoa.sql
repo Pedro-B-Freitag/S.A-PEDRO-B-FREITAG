@@ -1,2 +1,0 @@
-ALTER TABLE pessoa
-MODIFY COLUMN pessoa_senha VARCHAR(255);

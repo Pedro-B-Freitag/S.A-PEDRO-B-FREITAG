@@ -30,17 +30,7 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody @Validated AuthenticationDTO data){
-        var usernamePassword = new UsernamePasswordAuthenticationToken(data.pessoaCpf(), data.pessoaSenha());
-        //recebe o parametro: usuario e senha juntos como um so
-        var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        var token = tokenService.generateToken((Pessoa) auth.getPrincipal());
-        //quando a pessoa logar ele recebera um token e quando usar este token tera acesso aos endpoints de post e get cursos
-        return ResponseEntity.ok(new LoginResponseDTO(token));
-
-    }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Validated RegisterDTO data){
@@ -48,14 +38,26 @@ public class AuthenticationController {
 
             if(this.repository.findByPessoaCpf(data.pessoa_cpf()) != null) return ResponseEntity.badRequest().build();
 
-            String senhaCriptografada = new BCryptPasswordEncoder().encode(data.pessoa_senha());
+            //String senhaCriptografada = new BCryptPasswordEncoder().encode(data.pessoa_senha());
 
             Pessoa novaPessoa = new Pessoa(data.pessoa_cpf(), data.pessoa_nome(), data.pessoa_contato(),data.pessoa_email(),data.pessoa_genero(),
             data.pessoa_data_nascimento(), data.pessoa_cep(), data.pessoa_rua(), data.pessoa_bairro(), data.pessoa_cidade(), data.pessoa_estado(),data.pessoa_nr_residencia(),
-            data.pessoa_usuario() , senhaCriptografada, data.pessoa_role());
+            data.pessoa_usuario() , data.pessoa_senha(), data.pessoa_role());
 
 
             this.repository.save(novaPessoa);
             return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody @Validated AuthenticationDTO data){
+        var usernamePassword = new UsernamePasswordAuthenticationToken(data.pessoa_cpf(), data.pessoa_senha());
+        //recebe o parametro: usuario e senha juntos como um so
+        var auth = this.authenticationManager.authenticate(usernamePassword);
+        var token = tokenService.generateToken((Pessoa) auth.getPrincipal());
+        //quando a pessoa logar ele recebera um token e quando usar este token tera acesso aos endpoints de post e get cursos
+        return ResponseEntity.ok(new LoginResponseDTO(token));
+
+
     }
 }

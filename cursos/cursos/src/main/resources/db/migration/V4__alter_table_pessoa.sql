@@ -1,2 +1,2 @@
 ALTER TABLE pessoa
-MODIFY COLUMN pessoa_contato VARCHAR(45);
+MODIFY pessoa_senha VARCHAR(255);

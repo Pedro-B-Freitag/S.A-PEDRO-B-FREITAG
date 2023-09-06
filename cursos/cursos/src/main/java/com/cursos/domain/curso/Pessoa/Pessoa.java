@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.Date;
 import java.util.Collection;
@@ -43,7 +44,6 @@ public class Pessoa implements UserDetails {
                   String  pessoa_genero, Date    pessoa_data_nascimento, String  pessoa_cep, String  pessoa_rua,
                   String  pessoa_bairro, String  pessoa_cidade, String  pessoa_estado, Integer pessoa_nr_residencia,
                   String  pessoa_usuario, String  pessoa_senha, PessoaRole  pessoa_role){
-
         this.pessoaCpf = pessoa_cpf;
         this.pessoaNome = pessoa_nome;
         this.pessoaContato = pessoa_contato;
@@ -57,7 +57,7 @@ public class Pessoa implements UserDetails {
         this.pessoaEstado = pessoa_estado;
         this.pessoaNrResidencia = pessoa_nr_residencia;
         this.pessoaUsuario = pessoa_usuario;
-        this.pessoaSenha = pessoa_senha;
+        this.pessoaSenha= pessoa_senha;
         this.pessoaRole = pessoa_role;
     }
 
