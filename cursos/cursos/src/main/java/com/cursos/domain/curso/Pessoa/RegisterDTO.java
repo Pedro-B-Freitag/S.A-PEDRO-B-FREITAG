@@ -8,5 +8,5 @@ public record RegisterDTO(String  pessoa_cpf, String  pessoa_nome, String pessoa
 
                           String  pessoa_genero, Date    pessoa_data_nascimento, String  pessoa_cep, String  pessoa_rua,
                           String  pessoa_bairro, String  pessoa_cidade, String  pessoa_estado, Integer pessoa_nr_residencia,
-                          String  pessoa_usuario, String  pessoa_senha, PessoaRole  pessoa_role) {
+                          String  pessoa_usuario, String  pessoa_senha) {
 }

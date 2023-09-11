@@ -4,15 +4,12 @@ package com.cursos.controllers;
 
 import com.cursos.Repositorios.PessoaRepositorio;
 import com.cursos.domain.curso.Pessoa.AuthenticationDTO;
-import com.cursos.domain.curso.Pessoa.LoginResponseDTO;
 import com.cursos.domain.curso.Pessoa.Pessoa;
 import com.cursos.domain.curso.Pessoa.RegisterDTO;
-import com.cursos.infra.Security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +24,6 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private TokenService tokenService;
 
 
 
@@ -42,7 +37,7 @@ public class AuthenticationController {
 
             Pessoa novaPessoa = new Pessoa(data.pessoa_cpf(), data.pessoa_nome(), data.pessoa_contato(),data.pessoa_email(),data.pessoa_genero(),
             data.pessoa_data_nascimento(), data.pessoa_cep(), data.pessoa_rua(), data.pessoa_bairro(), data.pessoa_cidade(), data.pessoa_estado(),data.pessoa_nr_residencia(),
-            data.pessoa_usuario() , data.pessoa_senha(), data.pessoa_role());
+            data.pessoa_usuario() , data.pessoa_senha());
 
 
             this.repository.save(novaPessoa);
@@ -53,10 +48,11 @@ public class AuthenticationController {
     public ResponseEntity login(@RequestBody @Validated AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.pessoa_cpf(), data.pessoa_senha());
         //recebe o parametro: usuario e senha juntos como um so
+
+
         var auth = this.authenticationManager.authenticate(usernamePassword);
-        var token = tokenService.generateToken((Pessoa) auth.getPrincipal());
         //quando a pessoa logar ele recebera um token e quando usar este token tera acesso aos endpoints de post e get cursos
-        return ResponseEntity.ok(new LoginResponseDTO(token));
+        return ResponseEntity.ok().build();
 
 
     }
