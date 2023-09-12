@@ -1,0 +1,35 @@
+package com.cursos.Pessoa;
+
+import com.cursos.Pessoa.dto.CreatePessoaRoleDTO;
+import com.cursos.Pessoa.entidade.Pessoa;
+import com.cursos.Pessoa.services.CreatePessoaService;
+import com.cursos.Pessoa.services.CreateRoleUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/pessoas")
+public class PessoaController {
+
+    @Autowired
+    CreatePessoaService createPessoaService;
+
+    @Autowired
+    CreateRoleUserService createRoleUserService;
+
+    @PostMapping("/create")
+    public Pessoa create(@RequestBody Pessoa pessoa){
+
+        return createPessoaService.execute(pessoa);
+    }
+
+    @PostMapping("/role")
+    public Pessoa role(@RequestBody CreatePessoaRoleDTO createPessoaRoleDTO){
+        return createRoleUserService.execute(createPessoaRoleDTO);
+    }
+
+
+}
