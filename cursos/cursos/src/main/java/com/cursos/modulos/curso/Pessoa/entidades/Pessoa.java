@@ -1,37 +1,35 @@
-package com.cursos.Pessoa.entidade;
+package com.cursos.modulos.curso.Pessoa.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.UUID;
 
-@Table(name = "Pessoa")
-@Entity (name = "Pessoa")
+@Table(name = "pessoa")
+@Entity (name = "pessoa")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "pessoaId")
+@EqualsAndHashCode(of = "id")
+
 public class Pessoa {
 
     @Id
-    @GeneratedValue
-    private     UUID    id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private     Integer id;
     private     String  cpf;
     private     String  nome;
     private     String  contato;
     private     String  email;
     private     String  genero;
-    @Column(name = "dataNascimento")
     private     Date    dataNascimento;
     private     String  cep;
     private     String  rua;
     private     String  bairro;
     private     String  cidade;
     private     String  estado;
-    @Column(name = "nrResidencia")
     private     Integer nrResidencia;
     private     String  usuario;
     private     String  senha;

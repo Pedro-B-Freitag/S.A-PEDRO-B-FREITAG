@@ -1,9 +1,7 @@
-package com.cursos.Curso.curso;
+package com.cursos.modulos.curso.Curso;
 
-import com.cursos.Curso.curso.entidades.Curso;
+import com.cursos.modulos.curso.Curso.entidade.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 //Repositorio usado para criar consultas no database
 public interface CursoRepositorio extends JpaRepository<Curso, Integer> {

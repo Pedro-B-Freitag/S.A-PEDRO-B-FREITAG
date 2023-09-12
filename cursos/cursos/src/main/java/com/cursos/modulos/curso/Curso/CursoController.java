@@ -1,17 +1,12 @@
-package com.cursos.Curso.curso;
+package com.cursos.modulos.curso.Curso;
 
 
-import com.cursos.Curso.curso.entidades.Curso;
-import com.cursos.Curso.curso.services.ListarCursosService;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
+import com.cursos.modulos.curso.Curso.entidade.Curso;
+import com.cursos.modulos.curso.Curso.services.ListarCursosService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController()
 @RequestMapping("/curso")

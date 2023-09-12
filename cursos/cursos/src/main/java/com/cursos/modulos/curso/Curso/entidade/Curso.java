@@ -1,4 +1,4 @@
-package com.cursos.Curso.curso.entidades;
+package com.cursos.modulos.curso.Curso.entidade;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,7 @@ import java.sql.Time;
 @Data
 
 public class Curso {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private     Integer   id;
     private     String    descricao;
     private     String    categoria;

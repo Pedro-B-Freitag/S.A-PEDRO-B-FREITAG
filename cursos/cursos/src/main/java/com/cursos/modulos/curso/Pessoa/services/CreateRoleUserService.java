@@ -1,9 +1,9 @@
-package com.cursos.Pessoa.services;
+package com.cursos.modulos.curso.Pessoa.services;
 
-import com.cursos.Pessoa.dto.CreatePessoaRoleDTO;
-import com.cursos.Pessoa.entidade.Pessoa;
-import com.cursos.Pessoa.entidade.Role;
-import com.cursos.Pessoa.PessoaRepositorio;
+import com.cursos.modulos.curso.Pessoa.dto.CreatePessoaRoleDTO;
+import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
+import com.cursos.modulos.curso.Pessoa.entidades.Role;
+import com.cursos.modulos.curso.Pessoa.PessoaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class CreateRoleUserService {
     PessoaRepositorio pessoaRepositorio;
 
     public Pessoa execute(CreatePessoaRoleDTO createPessoaRoleDTO){
-        Optional<Pessoa> pessoaExiste = Optional.ofNullable(pessoaRepositorio.findById(createPessoaRoleDTO.getPessoaId()));
+        Optional<Pessoa> pessoaExiste = (pessoaRepositorio.findById(createPessoaRoleDTO.getId()));
 
         List<Role> roles = new ArrayList<>();
 

@@ -1,11 +1,8 @@
-package com.cursos.Pessoa;
+package com.cursos.modulos.curso.Pessoa;
 
-import com.cursos.Pessoa.entidade.Pessoa;
+import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
-import java.util.UUID;
-
 public interface PessoaRepositorio extends JpaRepository<Pessoa, Integer> {
-    Pessoa findById(UUID pessoaId);
+    Pessoa findByCpf(String cpf);
 }

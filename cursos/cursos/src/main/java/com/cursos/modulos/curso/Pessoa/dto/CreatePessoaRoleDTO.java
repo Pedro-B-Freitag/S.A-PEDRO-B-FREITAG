@@ -1,4 +1,4 @@
-package com.cursos.Pessoa.dto;
+package com.cursos.modulos.curso.Pessoa.dto;
 
 import lombok.Data;
 
@@ -8,8 +8,8 @@ import java.util.UUID;
 @Data
 public class CreatePessoaRoleDTO {
 
-    private UUID pessoaId;
+    private Integer id;
 
-    private List<UUID> idsRoles;
+    private List<Integer> idsRoles;
 
 }

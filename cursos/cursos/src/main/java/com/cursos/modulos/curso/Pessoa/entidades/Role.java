@@ -1,4 +1,4 @@
-package com.cursos.Pessoa.entidade;
+package com.cursos.modulos.curso.Pessoa.entidades;
 
 
 import jakarta.persistence.Entity;
@@ -8,8 +8,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Entity
 @Table(name = "roles")
@@ -22,10 +20,10 @@ public class Role {
     @Id
     @GeneratedValue
 
-    private UUID id;
-    private String nome;
+    private Integer id;
+    private String  nome;
 
-    public Role (UUID id){
+    public Role (Integer id){
         this.id = id;
     }
 }

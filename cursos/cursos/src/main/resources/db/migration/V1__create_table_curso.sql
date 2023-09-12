@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS curso (
   presencial BOOLEAN NOT NULL,
   visualizacao INT NULL,
   gostei INT NULL,
-  qtdHrs TIME NULL
+  qtd_hrs TIME NULL
 )

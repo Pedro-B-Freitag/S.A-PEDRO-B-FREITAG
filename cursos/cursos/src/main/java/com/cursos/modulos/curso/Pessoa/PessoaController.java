@@ -1,9 +1,9 @@
-package com.cursos.Pessoa;
+package com.cursos.modulos.curso.Pessoa;
 
-import com.cursos.Pessoa.dto.CreatePessoaRoleDTO;
-import com.cursos.Pessoa.entidade.Pessoa;
-import com.cursos.Pessoa.services.CreatePessoaService;
-import com.cursos.Pessoa.services.CreateRoleUserService;
+import com.cursos.modulos.curso.Pessoa.dto.CreatePessoaRoleDTO;
+import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
+import com.cursos.modulos.curso.Pessoa.services.CreatePessoaService;
+import com.cursos.modulos.curso.Pessoa.services.CreateRoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

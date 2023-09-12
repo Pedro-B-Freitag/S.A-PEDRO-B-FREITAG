@@ -5,14 +5,14 @@ CREATE TABLE IF NOT EXISTS pessoa (
   contato VARCHAR(11) NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   genero VARCHAR(45) NOT NULL,
-  dataNascimento VARCHAR(15) NOT NULL,
+  data_nascimento VARCHAR(15) NOT NULL,
   cep VARCHAR(8) NULL,
   rua VARCHAR(255) NULL,
   bairro VARCHAR(45) NULL,
   cidade VARCHAR(45) NULL,
   estado VARCHAR(2) NULL,
-  nrResidencia VARCHAR(45) NULL,
+  nr_residencia VARCHAR(45) NULL,
   usuario VARCHAR(45) NULL,
-  senha VARCHAR(255) NOT NULL,
-  role VARCHAR(45) NOT NULL
+  senha VARCHAR(255) NOT NULL
+
 );
