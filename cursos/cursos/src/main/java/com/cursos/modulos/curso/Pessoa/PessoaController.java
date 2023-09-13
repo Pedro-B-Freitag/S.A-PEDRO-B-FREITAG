@@ -19,7 +19,6 @@ public class PessoaController {
 
     @Autowired
     CreateRoleUserService createRoleUserService;
-
     @PostMapping("/create")
     public Pessoa create(@RequestBody Pessoa pessoa){
 

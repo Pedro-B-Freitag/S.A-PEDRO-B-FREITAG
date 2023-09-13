@@ -18,17 +18,15 @@ public class CreateRoleUserService {
     PessoaRepositorio pessoaRepositorio;
 
     public Pessoa execute(CreatePessoaRoleDTO createPessoaRoleDTO){
-        Optional<Pessoa> pessoaExiste = (pessoaRepositorio.findById(createPessoaRoleDTO.getId()));
 
+        Optional<Pessoa> pessoaExiste = (pessoaRepositorio.findById(createPessoaRoleDTO.getIdPessoa()));
         List<Role> roles = new ArrayList<>();
 
         if(pessoaExiste.isEmpty()){
             throw new Error("Pessoa nao existe!!");
         }
 
-        roles = createPessoaRoleDTO.getIdsRoles().stream().map(role ->{
-            return new Role(role);
-        }).collect(Collectors.toList());
+        roles = createPessoaRoleDTO.getIdRole().stream().map(role-> new Role(role)).collect(Collectors.toList());
 
         Pessoa pessoa = pessoaExiste.get();
 
