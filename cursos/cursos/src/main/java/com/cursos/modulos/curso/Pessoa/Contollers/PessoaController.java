@@ -1,4 +1,4 @@
-package com.cursos.modulos.curso.Pessoa;
+package com.cursos.modulos.curso.Pessoa.Contollers;
 
 import com.cursos.modulos.curso.Pessoa.dto.CreatePessoaRoleDTO;
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;

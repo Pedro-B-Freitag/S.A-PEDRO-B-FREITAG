@@ -20,6 +20,7 @@ public class CursoController {
     @GetMapping
     //mostra todos os cursos
     public List<Curso> list(){
+
         return listarCursosService.listAll();
     }
 

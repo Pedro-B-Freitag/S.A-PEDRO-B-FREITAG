@@ -23,7 +23,7 @@ public class CreatePessoaService {
 
     public Pessoa execute(Pessoa pessoa) {
 
-        Pessoa pessoaExiste = pessoaRepositorio.findByCpf(pessoa.getCpf());
+        Pessoa pessoaExiste = pessoaRepositorio.findByUsuario(pessoa.getUsuario());
 
         if (pessoaExiste != null) {
             throw new Error("Usuario ja existe!!");

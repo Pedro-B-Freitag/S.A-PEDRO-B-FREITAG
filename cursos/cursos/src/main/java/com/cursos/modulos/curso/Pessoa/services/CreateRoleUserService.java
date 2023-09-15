@@ -20,7 +20,7 @@ public class CreateRoleUserService {
     public Pessoa execute(CreatePessoaRoleDTO createPessoaRoleDTO){
 
         Optional<Pessoa> pessoaExiste = (pessoaRepositorio.findById(createPessoaRoleDTO.getIdPessoa()));
-        List<Role> roles = new ArrayList<>();
+        List<Role> roles;
 
         if(pessoaExiste.isEmpty()){
             throw new Error("Pessoa nao existe!!");
