@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/*
 @Entity
 @Table(name = "roles")
 @AllArgsConstructor
@@ -27,3 +27,4 @@ public class Role {
         this.id = id;
     }
 }
+*/

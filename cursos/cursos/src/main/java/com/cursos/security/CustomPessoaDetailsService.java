@@ -1,5 +1,5 @@
 package com.cursos.security;
-
+/*
 import com.cursos.modulos.curso.Pessoa.PessoaRepositorio;
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import com.cursos.security.UserPrincipal;
@@ -26,3 +26,5 @@ public class CustomPessoaDetailsService implements UserDetailsService {
         return UserPrincipal.create(pessoa);
     }
 }
+
+*/

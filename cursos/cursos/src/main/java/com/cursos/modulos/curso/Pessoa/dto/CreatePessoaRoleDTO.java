@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.util.List;
 
-
+/*
 @Data
 public class CreatePessoaRoleDTO {
 
@@ -12,4 +12,4 @@ public class CreatePessoaRoleDTO {
 
     private List<Integer> idRole;
 
-}
+}*/

@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
-
+/*
 @Table(name = "pessoa")
 @Entity (name = "pessoa")
 @Getter
@@ -77,3 +77,4 @@ public class Pessoa implements UserDetails {
         return true;
     }
 }
+*/

@@ -1,5 +1,5 @@
 package com.cursos.modulos.curso.Pessoa.Contollers;
-
+/*
 import com.cursos.modulos.curso.Pessoa.dto.CreatePessoaRoleDTO;
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import com.cursos.modulos.curso.Pessoa.services.CreatePessoaService;
@@ -32,3 +32,4 @@ public class PessoaController {
 
 
 }
+*/

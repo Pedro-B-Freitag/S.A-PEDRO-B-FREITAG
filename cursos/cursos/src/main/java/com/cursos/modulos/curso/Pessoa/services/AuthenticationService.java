@@ -1,6 +1,6 @@
 package com.cursos.modulos.curso.Pessoa.services;
 
-
+/*
 import com.cursos.modulos.curso.Pessoa.PessoaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,3 +21,4 @@ public class AuthenticationService implements UserDetailsService {
         return pessoaRepositorio.findByUsuario(username);
     }
 }
+*/

@@ -1,5 +1,5 @@
 package com.cursos.modulos.curso.Pessoa;
-
+/*
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,3 +13,5 @@ public interface PessoaRepositorio extends JpaRepository<Pessoa, Integer> {
     Pessoa findByUsuario(String usuario);
 
 }
+
+*/

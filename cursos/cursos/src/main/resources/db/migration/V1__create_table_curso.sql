@@ -9,4 +9,4 @@ CREATE TABLE IF NOT EXISTS curso (
   visualizacao INT NULL,
   gostei INT NULL,
   qtd_hrs TIME NULL
-)
+);

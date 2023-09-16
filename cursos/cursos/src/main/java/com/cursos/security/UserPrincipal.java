@@ -1,5 +1,5 @@
 package com.cursos.security;
-
+/*
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -95,3 +95,4 @@ public class UserPrincipal implements UserDetails {
         return true;
     }
 }
+*/

@@ -6,30 +6,51 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.sql.DataSource;
+
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig {
+
+    @Bean
+    public UserDetailsManager userDetailsManager(DataSource dataSource){
+
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select usuario,senha, ativado from pessoa where usuario = ?");
+
+        jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+                "select usuario, role from roles where usuario = ?");
+
+
+        return jdbcUserDetailsManager;
+    }
 
     //Filtros
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(
-                        authorizeConfig ->{
-                            authorizeConfig.requestMatchers("/pessoas/create").permitAll();
-                            authorizeConfig.requestMatchers("/pessoas/role").permitAll();
-                            //qualquer requisicao tem que ser feita por alguem auteticado
-                            authorizeConfig.anyRequest().authenticated();
-                        })
-                .build();
+                http.authorizeHttpRequests(configurer ->
+                configurer
+                        .requestMatchers("/systems/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                        )
+                        .formLogin(form ->
+                                form
+                                        .loginPage("/showMyLoginPage")
+                                        .loginProcessingUrl("/authenticateTheUser")
+                                        .permitAll()
+                        ).logout(logout -> logout.permitAll()
+                        );
+        return http.build();
     }
 
-
+/*
 
     @Autowired
     CustomPessoaDetailsService pessoaDetailsService;
@@ -41,4 +62,6 @@ public class SecurityConfig {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(pessoaDetailsService).passwordEncoder(passwordEncoder());
     }
+    */
+
 }

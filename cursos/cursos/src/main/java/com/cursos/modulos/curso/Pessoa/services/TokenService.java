@@ -1,5 +1,5 @@
 package com.cursos.modulos.curso.Pessoa.services;
-
+/*
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
@@ -21,3 +21,4 @@ public class TokenService {
                 ).sign(Algorithm.HMAC256("secreta"));
     }
 }
+*/
