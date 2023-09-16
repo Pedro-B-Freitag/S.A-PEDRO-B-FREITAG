@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS vaga (
+	pessoa_usuario VARCHAR(45) NOT NULL,
+	empresa_cnpj VARCHAR(45) NOT NULL,
+	empresa_nome VARCHAR(500) NOT NULL,
+	descricao VARCHAR(500) NOT NULL,
+	cargo VARCHAR(45) NOT NULL,
+	data_vaga VARCHAR(45)  NULL DEFAULT NULL,
+	data_prazo VARCHAR(45)  NULL DEFAULT NULL,
+	categoria VARCHAR(45) NOT NULL ,
+	quantidade VARCHAR(10) NOT NULL ,
+	id INT UNIQUE NOT NULL AUTO_INCREMENT,
+	CONSTRAINT fk_vaga_pessoa FOREIGN KEY (pessoa_usuario) REFERENCES pessoa (usuario) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_vaga_empresa FOREIGN KEY (empresa_cnpj) REFERENCES empresa (cnpj) ON UPDATE CASCADE ON DELETE CASCADE
+);
