@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
-import java.util.List;
 
 @Table(name = "pessoa")
 @Entity
@@ -17,6 +16,7 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "usuario")
     private String usuario;
     @Column(name = "id")
     private Integer id;
@@ -46,11 +46,17 @@ public class Pessoa {
     private Integer nrResidencia;
     @Column(name = "senha")
     private String senha;
+    @Column(name = "ativado")
+    private Integer ativado;
+
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "roles_id")
+    private Roles roles;
 
     public Pessoa(){}
 
-    public Pessoa(String usuario,  String cpf, String nome, String contato, String email, String genero, Date dataNascimento, String cep, String rua,
-                  String bairro, String cidade, String estado, Integer nrResidencia, String senha) {
+    public Pessoa(String usuario, String cpf, String nome, String contato, String email, String genero, String dataNascimento, String cep, String rua,
+                  String bairro, String cidade, String estado, String nrResidencia, String senha, Integer ativado) {
 
         this.usuario = usuario;
         this.cpf     = cpf;
@@ -58,34 +64,36 @@ public class Pessoa {
         this.contato = contato;
         this.email = email;
         this.genero = genero;
-        this.dataNascimento = dataNascimento;
+        this.dataNascimento = Date.valueOf(dataNascimento);
         this.cep = cep;
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-        this.nrResidencia = nrResidencia;
+        this.nrResidencia = Integer.valueOf(nrResidencia);
         this.senha = senha;
+        this.ativado = ativado;
     }
 
     @Override
     public String toString() {
-        return "Pessoa{"            +
-                "usuario='"         + usuario        + '\'' +
-                ", id="             + id             +
-                ", cpf='"           + cpf            + '\'' +
-                ", nome='"          + nome           + '\'' +
-                ", contato='"       + contato        + '\'' +
-                ", email='"         + email          + '\'' +
-                ", genero='"        + genero         + '\'' +
+        return "Pessoa{" +
+                "usuario='" + usuario + '\'' +
+                ", id=" + id +
+                ", cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
+                ", contato='" + contato + '\'' +
+                ", email='" + email + '\'' +
+                ", genero='" + genero + '\'' +
                 ", dataNascimento=" + dataNascimento +
-                ", cep='"           + cep            + '\'' +
-                ", rua='"           + rua            + '\'' +
-                ", bairro='"        + bairro         + '\'' +
-                ", cidade='"        + cidade         + '\'' +
-                ", estado='"        + estado         + '\'' +
-                ", nrResidencia="   + nrResidencia   +
-                ", senha='"         + senha          + '\'' +
+                ", cep='" + cep + '\'' +
+                ", rua='" + rua + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", nrResidencia=" + nrResidencia +
+                ", senha='" + senha + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }
