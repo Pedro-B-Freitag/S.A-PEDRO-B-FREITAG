@@ -7,8 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class CursosApplication {
@@ -27,18 +25,21 @@ public class CursosApplication {
 
 	private void cadastrarPessoa(AppDAO appDAO) {
 		Pessoa tempPessoa =
-				new Pessoa("Marilu", "78945612332", "Marilu Campos", "47655243977", "marilu@gmail.com",
-				"F", "1964-03-05","67028430","Flores", "Limoeiro", "Rio de Janeiro", "RJ","84",
+				new Pessoa("Carlos", "23047588810", "Carlos Pilotto", "21899672511", "carlos@gmail.com",
+				"M", "1976-08-12","37842015","Brasil", "Santa Tereza", "São Paulo", "SP","73",
 				"{bcrypt}$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1);
 
 		Roles tempRoles =
-				new Roles("ROLE_ADMIN");
+				new Roles();
 
+		// Set the existing Roles entity on the Pessoa entity
 		tempPessoa.setRoles(tempRoles);
-		System.out.println("Salvando pesssoa" + tempPessoa);
+
+		// Save the Pessoa entity
+		System.out.println("Salvando pessoa: " + tempPessoa);
 		appDAO.save(tempPessoa);
 
-		System.out.println("feito!");
+		System.out.println("Feito!");
 	}
 
 }

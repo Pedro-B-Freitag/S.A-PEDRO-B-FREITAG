@@ -21,7 +21,7 @@ public class Roles {
     private String  role;
 
 
-    private Roles(){}
+    public Roles(){}
 
     public Roles(String role) {
         this.role = role;
