@@ -1,9 +1,8 @@
 package com.cursos.modulos.curso.Pessoa.services;
-/*
+
 import com.cursos.modulos.curso.Pessoa.PessoaRepositorio;
 import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,4 +35,3 @@ public class CreatePessoaService {
         return pessoaCriada;
     }
 }
-*/

@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS roles(
     usuario VARCHAR(45) NOT NULL,
     role VARCHAR (50) NOT NULL,
-    UNIQUE KEY roles_idx_1 (usuario,role),
-    CONSTRAINT roles_ibfk_1
+    KEY FK_usuario (usuario),
+    CONSTRAINT FK_usuario
     FOREIGN KEY (usuario) REFERENCES pessoa (usuario)
 );
 

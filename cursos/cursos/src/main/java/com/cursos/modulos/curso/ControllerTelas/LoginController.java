@@ -1,4 +1,4 @@
-package com.cursos.modulos.curso.Controller;
+package com.cursos.modulos.curso.ControllerTelas;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

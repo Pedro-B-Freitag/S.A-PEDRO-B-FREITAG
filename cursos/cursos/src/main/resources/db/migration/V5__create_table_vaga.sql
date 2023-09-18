@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS vaga (
 	categoria VARCHAR(45) NOT NULL ,
 	quantidade VARCHAR(10) NOT NULL ,
 	id INT UNIQUE NOT NULL AUTO_INCREMENT,
-	CONSTRAINT fk_vaga_pessoa FOREIGN KEY (pessoa_usuario) REFERENCES pessoa (usuario) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_vaga_empresa FOREIGN KEY (empresa_cnpj) REFERENCES empresa (cnpj) ON UPDATE CASCADE ON DELETE CASCADE
+	CONSTRAINT fk_vaga_pessoa FOREIGN KEY (pessoa_usuario) REFERENCES pessoa (usuario),
+    CONSTRAINT fk_vaga_empresa FOREIGN KEY (empresa_cnpj) REFERENCES empresa (cnpj)
 );
