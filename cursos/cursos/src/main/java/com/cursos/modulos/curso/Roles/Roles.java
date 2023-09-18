@@ -1,6 +1,6 @@
-package com.cursos.modulos.curso.Roles.Entidade;
+package com.cursos.modulos.curso.Roles;
 
-import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
+import com.cursos.modulos.curso.Pessoa.Pessoa;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,14 +19,12 @@ public class Roles {
     private Integer id;
     @Column(name = "role")
     private String  role;
-    @ManyToOne
-    @JoinColumn(name = "usuario")
-    private Pessoa pessoa;
 
     private Roles(){}
 
     public Roles(String role) {
         this.role = role;
+
     }
 
     @Override

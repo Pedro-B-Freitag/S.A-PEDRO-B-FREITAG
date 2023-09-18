@@ -1,4 +1,4 @@
-package com.cursos.modulos.curso.Curso.entidade;
+package com.cursos.modulos.curso.Curso;
 
 import jakarta.persistence.*;
 import lombok.*;

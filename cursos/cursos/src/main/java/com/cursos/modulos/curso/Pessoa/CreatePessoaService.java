@@ -1,7 +1,7 @@
-package com.cursos.modulos.curso.Pessoa.services;
+package com.cursos.modulos.curso.Pessoa;
 
 import com.cursos.modulos.curso.Pessoa.PessoaRepositorio;
-import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
+import com.cursos.modulos.curso.Pessoa.Pessoa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

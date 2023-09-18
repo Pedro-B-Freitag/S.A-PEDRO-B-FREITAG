@@ -1,7 +1,7 @@
-package com.cursos.modulos.curso.Curso.services;
+package com.cursos.modulos.curso.Curso;
 
 import com.cursos.modulos.curso.Curso.CursoRepositorio;
-import com.cursos.modulos.curso.Curso.entidade.Curso;
+import com.cursos.modulos.curso.Curso.Curso;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
 package com.cursos.modulos.curso.Curso;
 
-import com.cursos.modulos.curso.Curso.entidade.Curso;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //Repositorio usado para criar consultas no database

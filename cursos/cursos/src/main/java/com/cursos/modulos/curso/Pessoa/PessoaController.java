@@ -1,7 +1,5 @@
-package com.cursos.modulos.curso.Pessoa.Contollers;
+package com.cursos.modulos.curso.Pessoa;
 
-import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
-import com.cursos.modulos.curso.Pessoa.services.CreatePessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

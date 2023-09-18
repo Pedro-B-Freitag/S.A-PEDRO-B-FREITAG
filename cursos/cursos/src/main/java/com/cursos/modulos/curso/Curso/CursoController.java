@@ -1,8 +1,6 @@
 package com.cursos.modulos.curso.Curso;
 
 
-import com.cursos.modulos.curso.Curso.entidade.Curso;
-import com.cursos.modulos.curso.Curso.services.ListarCursosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

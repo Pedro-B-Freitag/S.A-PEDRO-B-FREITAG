@@ -1,14 +1,10 @@
-package com.cursos.modulos.curso.Pessoa.entidades;
+package com.cursos.modulos.curso.Pessoa;
 
-import com.cursos.modulos.curso.Roles.Entidade.Roles;
+import com.cursos.modulos.curso.Roles.Roles;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
-import java.util.Collection;
 import java.util.List;
 
 @Table(name = "pessoa")
@@ -51,8 +47,6 @@ public class Pessoa {
     @Column(name = "senha")
     private String senha;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<Roles> roles;
     public Pessoa(){}
 
     public Pessoa(String usuario,  String cpf, String nome, String contato, String email, String genero, Date dataNascimento, String cep, String rua,
