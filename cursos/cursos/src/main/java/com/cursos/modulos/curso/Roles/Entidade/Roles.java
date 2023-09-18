@@ -1,0 +1,39 @@
+package com.cursos.modulos.curso.Roles.Entidade;
+
+import com.cursos.modulos.curso.Pessoa.entidades.Pessoa;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "roles")
+@Getter
+@Setter
+
+
+public class Roles {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+    @Column(name = "role")
+    private String  role;
+    @ManyToOne
+    @JoinColumn(name = "usuario")
+    private Pessoa pessoa;
+
+    private Roles(){}
+
+    public Roles(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Roles{"    +
+                "id="      + id    +
+                ", role='" + role  +  '\'' +
+                '}';
+    }
+}
