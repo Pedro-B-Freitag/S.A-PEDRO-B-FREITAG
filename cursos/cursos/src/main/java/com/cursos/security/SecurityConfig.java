@@ -3,6 +3,7 @@ package com.cursos.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,7 +27,7 @@ public class SecurityConfig {
                 "select usuario,senha, ativado from pessoa where usuario = ?");
 
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
-                "select usuario, role from roles where usuario = ?");
+                "SELECT p.usuario, r.role FROM pessoa p JOIN roles r ON p.roles_id = r.id WHERE p.usuario = ?");
 
 
         return jdbcUserDetailsManager;
@@ -38,15 +39,20 @@ public class SecurityConfig {
                 http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/systems/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/curso/**").permitAll()
                         .anyRequest().authenticated()
                         )
+
                         .formLogin(form ->
                                 form
                                         .loginPage("/showMyLoginPage")
                                         .loginProcessingUrl("/authenticateTheUser")
                                         .permitAll()
                         ).logout(logout -> logout.permitAll()
+
+
                         );
+
         return http.build();
     }
 

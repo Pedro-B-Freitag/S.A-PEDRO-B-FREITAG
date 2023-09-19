@@ -4,9 +4,10 @@ CREATE TABLE IF NOT EXISTS curso (
   categoria VARCHAR(45) NULL,
   fornecedor VARCHAR(45) NOT NULL,
   nome VARCHAR(45) NOT NULL,
-  url VARCHAR(45) NOT NULL,
+  url VARCHAR(255) NOT NULL,
   presencial BOOLEAN NOT NULL,
   visualizacao INT NULL,
   gostei INT NULL,
-  qtd_hrs TIME NULL
+  qtd_hrs VARCHAR(50) NULL,
+  imagem VARCHAR(255)
 );

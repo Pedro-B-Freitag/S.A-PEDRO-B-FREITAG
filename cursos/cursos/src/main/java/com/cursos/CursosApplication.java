@@ -14,7 +14,8 @@ public class CursosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CursosApplication.class, args);
 	}
-
+}
+	/*
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 
@@ -43,6 +44,8 @@ public class CursosApplication {
 	}
 
 }
+*/
+
 
 //@RestController
 //class HttpController{
