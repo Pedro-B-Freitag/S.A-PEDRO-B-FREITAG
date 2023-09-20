@@ -1,8 +1,7 @@
 package com.cursos;
 
-import com.cursos.modulos.curso.DAO.AppDAO;
+import com.cursos.modulos.curso.App.ControllerTelas.DAO.AppDAO;
 import com.cursos.modulos.curso.Pessoa.Pessoa;
-import com.cursos.modulos.curso.Roles.Roles;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

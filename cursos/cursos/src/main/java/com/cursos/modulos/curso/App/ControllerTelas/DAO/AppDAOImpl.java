@@ -1,4 +1,4 @@
-package com.cursos.modulos.curso.DAO;
+package com.cursos.modulos.curso.App.ControllerTelas.DAO;
 
 import com.cursos.modulos.curso.Pessoa.Pessoa;
 import jakarta.persistence.EntityManager;

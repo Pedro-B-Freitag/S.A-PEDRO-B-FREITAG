@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Cadastrar Empresa</title>
+</head>
+
+<body>
+
+<div class ="container">
+    <h3>Empresa Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4"> Cadastrar Empresa</p>
+
+    <form action="#"  th:action="@{/empresas/save}"
+          th:object="${empresa}" method="POST">
+
+
+        <input type="hidden" th:field="*{id}">
+
+
+
+
+        <input type="text" th:field="*{nome}"
+               class="form-control mb-4 w-25" placeholder="Nome da Empresa">
+
+        <input type="text" th:field="*{cnpj}"
+               class="form-control mb-4 w-25" placeholder="CNPJ da Empresa">
+
+        <input type="text" th:field="*{cep}"
+               class="form-control mb-4 w-25" placeholder="CEP da Empresa">
+
+        <input type="text" th:field="*{uf}"
+               class="form-control mb-4 w-25" placeholder="UF da Empresa">
+
+        <input type="text" th:field="*{cidade}"
+               class="form-control mb-4 w-25" placeholder="Cidade da Empresa">
+
+        <input type="text" th:field="*{endereco}"
+               class="form-control mb-4 w-25" placeholder="Endereco da Empresa">
+
+        <input type="text" th:field="*{email}"
+               class="form-control mb-4 w-25" placeholder="Email da Empresa">
+
+        <input type="text" th:field="*{contato}"
+               class="form-control mb-4 w-25" placeholder="Contato da Empresa">
+
+        <button type="submit" class="btn btn-info col-2">SALVAR</button>
+    </form>
+
+    <hr>
+
+</div>
+
+</body>
+
+</html>
