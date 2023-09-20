@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Pessoa</title>
+    <style>
+        .error {color:red}
+    </style>
+</head>
+<body>
+
+<form th:action = "@{/processForm}" th:object = "${pessoa}" method ="POST">
+    Nome: <input type = "text" th:field="*{nome}"/>
+    <br><br>
+    CPF: <input type = "text" th:field="*{cpf}"/>
+    <br><br>
+    Telefone: <input type = "text" th:field="*{contato}"/>
+    <br><br>
+    E-mail: <input type = "text" th:field="*{email}"/>
+    <br><br>
+    Genero: <input type = "text" th:field="*{genero}"/>
+    <br><br>
+    Data de Nascimento: <input type = "text" th:field="*{dataNascimento}"/>
+    <br><br>
+    CEP: <input type = "text" th:field="*{cep}"/>
+    <br><br>
+    Rua: <input type = "text" th:field="*{rua}"/>
+    <br><br>
+    Bairro: <input type = "text" th:field="*{bairro}"/>
+    <br><br>
+    Cidade: <input type = "text" th:field="*{cidade}"/>
+    <br><br>
+    Estado (UF): <input type = "text" th:field="*{estado}"/>
+    <br><br>
+    Numero de Residencia: <input type = "text" th:field="*{nrResidencia}"/>
+    <br><br>
+    Usuario: <input type = "text" th:field="*{usuario}"/>
+    <br><br>
+    Senha: <input type = "text" th:field="*{senha}"/>
+    <br><br>
+
+
+    <span th:if="${#fields.hasErrors('nome')}"
+          th:errors="*{nome}"
+          class = "error"></span>
+
+    <br><br>
+
+    <input type = "submit" value = "Cadastrar" />
+
+</form>
+
+
+</body>
+</html>

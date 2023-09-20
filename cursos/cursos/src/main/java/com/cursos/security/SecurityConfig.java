@@ -39,7 +39,6 @@ public class SecurityConfig {
                 http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/systems/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/curso/**").permitAll()
                         .anyRequest().authenticated()
                         )
 

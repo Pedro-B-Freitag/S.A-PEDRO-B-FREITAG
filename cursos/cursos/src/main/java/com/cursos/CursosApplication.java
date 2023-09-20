@@ -14,17 +14,41 @@ public class CursosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CursosApplication.class, args);
 	}
-}
-	/*
+
+
 	@Bean
 	public CommandLineRunner commandLineRunner(AppDAO appDAO){
 
 		return runner ->{
-			cadastrarPessoa(appDAO);
+			//cadastrarPessoa(appDAO);
+			//findPessoa(appDAO);
+			//deletePessoa(appDAO);
 		};
 	}
 
+	private void deletePessoa(AppDAO appDAO) {
+		int oId = 2;
+
+		appDAO.deletePessoaById(oId);
+
+		System.out.println("Feito!");
+	}
+
+	private void findPessoa(AppDAO appDAO) {
+
+		int oId = 2;
+		System.out.println("Procurando pessoa id: " + oId);
+
+		Pessoa tempPessoa = appDAO.findPessoaById(oId);
+
+		System.out.println("Pessoa: " + tempPessoa);
+		System.out.println("ROLE: " + tempPessoa.getRoles());
+
+	}
+
+	/*
 	private void cadastrarPessoa(AppDAO appDAO) {
+
 		Pessoa tempPessoa =
 				new Pessoa("Carlos", "23047588810", "Carlos Pilotto", "21899672511", "carlos@gmail.com",
 				"M", "1976-08-12","37842015","Brasil", "Santa Tereza", "São Paulo", "SP","73",
@@ -54,3 +78,4 @@ public class CursosApplication {
 		//return "<h1>REGISTRO DE PESSOA</h1>";
 	//}
 //}
+}
