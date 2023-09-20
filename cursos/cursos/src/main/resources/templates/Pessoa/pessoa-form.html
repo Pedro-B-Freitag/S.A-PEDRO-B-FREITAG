@@ -1,55 +1,80 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Pessoa</title>
-    <style>
-        .error {color:red}
-    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Cadastrar Pessoa</title>
 </head>
+
 <body>
 
-<form th:action = "@{/processForm}" th:object = "${pessoa}" method ="POST">
-    Nome: <input type = "text" th:field="*{nome}"/>
-    <br><br>
-    CPF: <input type = "text" th:field="*{cpf}"/>
-    <br><br>
-    Telefone: <input type = "text" th:field="*{contato}"/>
-    <br><br>
-    E-mail: <input type = "text" th:field="*{email}"/>
-    <br><br>
-    Genero: <input type = "text" th:field="*{genero}"/>
-    <br><br>
-    Data de Nascimento: <input type = "text" th:field="*{dataNascimento}"/>
-    <br><br>
-    CEP: <input type = "text" th:field="*{cep}"/>
-    <br><br>
-    Rua: <input type = "text" th:field="*{rua}"/>
-    <br><br>
-    Bairro: <input type = "text" th:field="*{bairro}"/>
-    <br><br>
-    Cidade: <input type = "text" th:field="*{cidade}"/>
-    <br><br>
-    Estado (UF): <input type = "text" th:field="*{estado}"/>
-    <br><br>
-    Numero de Residencia: <input type = "text" th:field="*{nrResidencia}"/>
-    <br><br>
-    Usuario: <input type = "text" th:field="*{usuario}"/>
-    <br><br>
-    Senha: <input type = "text" th:field="*{senha}"/>
-    <br><br>
+<div class ="container">
+    <h3>Pessoa Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4"> Cadastrar Pessoa</p>
+
+    <form action="#"  th:action="@{/pessoas/save}"
+          th:object="${pessoa}" method="POST">
 
 
-    <span th:if="${#fields.hasErrors('nome')}"
-          th:errors="*{nome}"
-          class = "error"></span>
+        <input type="hidden" th:field="*{id}">
 
-    <br><br>
 
-    <input type = "submit" value = "Cadastrar" />
 
-</form>
 
+        <input type="text" th:field="*{nome}"
+               class="form-control mb-4 w-25" placeholder="Nome">
+
+        <input type="text" th:field="*{cpf}"
+               class="form-control mb-4 w-25" placeholder="CPF">
+
+        <input type="text" th:field="*{email}"
+               class="form-control mb-4 w-25" placeholder="E-mail">
+
+        <input type="text" th:field="*{cep}"
+               class="form-control mb-4 w-25" placeholder="CEP">
+
+        <input type="text" th:field="*{estado}"
+               class="form-control mb-4 w-25" placeholder="UF">
+
+        <input type="text" th:field="*{cidade}"
+               class="form-control mb-4 w-25" placeholder="Cidade">
+
+        <input type="text" th:field="*{bairro}"
+               class="form-control mb-4 w-25" placeholder="Bairro">
+
+        <input type="text" th:field="*{rua}"
+               class="form-control mb-4 w-25" placeholder="Rua">
+
+        <input type="text" th:field="*{nrResidencia}"
+               class="form-control mb-4 w-25" placeholder="Número da Residência">
+
+        <input type="text" th:field="*{dataNascimento}"
+               class="form-control mb-4 w-25" placeholder="Data de Nascimento">
+
+        <input type="text" th:field="*{genero}"
+               class="form-control mb-4 w-25" placeholder="Genero">
+
+        <input type="text" th:field="*{usuario}"
+               class="form-control mb-4 w-25" placeholder="Usuario">
+
+        <input type="text" th:field="*{senha}"
+               class="form-control mb-4 w-25" placeholder="Senha">
+
+        <button type="submit" class="btn btn-info col-2">SALVAR</button>
+    </form>
+
+    <hr>
+
+</div>
 
 </body>
+
 </html>

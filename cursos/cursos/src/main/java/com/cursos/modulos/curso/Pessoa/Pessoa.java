@@ -50,7 +50,7 @@ public class Pessoa {
     @Column(name = "ativado")
     private Integer ativado;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "roles_id")
     private Roles roles;
 

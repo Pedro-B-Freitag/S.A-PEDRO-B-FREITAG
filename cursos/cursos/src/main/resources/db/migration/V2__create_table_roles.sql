@@ -3,18 +3,6 @@ CREATE TABLE IF NOT EXISTS roles (
     role VARCHAR(50) DEFAULT 'ROLE_USER'
 );
 
-DELIMITER //
-CREATE TRIGGER before_roles_insert
-BEFORE INSERT ON roles
-FOR EACH ROW
-BEGIN
-  IF NEW.role IS NULL OR NEW.role = '' THEN
-    SET NEW.role = 'ROLE_USER';
-  END IF;
-END;
-//
-DELIMITER ;
-
 
 INSERT INTO roles (role)
 VALUES("ROLE_USER");
