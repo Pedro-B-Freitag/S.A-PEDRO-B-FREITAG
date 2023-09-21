@@ -43,12 +43,11 @@
     <title>HOME</title>
 
 
-
-    <div class="topnav">
-        <a href="#home">Home</a>
+    <div class="topnav" >
+        <a href="home">Home</a>
         <a href="#Cursos">Cursos</a>
         <a href="#Vagas de Emprego">Vagas de Emprego</a>
-        <a href="#Login" class="split">Login</a>
+        <a href="fancy-login" class="split">Login</a>
     </div>
 
 
@@ -57,7 +56,7 @@
 
     <hr>
 
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
+    <div sec:authorize="hasRole('ADMIN')">
         <p>
             <a th:href = "@{/systems}"> VOCE E UM ADMIN </a>
         </p>

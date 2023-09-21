@@ -30,28 +30,63 @@
 
 
         <input type="text" th:field="*{nome}"
-               class="form-control mb-4 w-25" placeholder="Nome da Empresa">
+               class="form-control mb-4 w-25" placeholder="Nome da Empresa" required>
 
         <input type="text" th:field="*{cnpj}"
-               class="form-control mb-4 w-25" placeholder="CNPJ da Empresa">
+               class="form-control mb-4 w-25" placeholder="CNPJ da Empresa" required>
 
         <input type="text" th:field="*{cep}"
-               class="form-control mb-4 w-25" placeholder="CEP da Empresa">
+               class="form-control mb-4 w-25" placeholder="CEP da Empresa" required>
 
-        <input type="text" th:field="*{uf}"
-               class="form-control mb-4 w-25" placeholder="UF da Empresa">
+        <div  class="custom-select" style="width:200px;">
+
+
+            <select th:field="*{uf}">
+                <option value="0">Selecione o Estado:</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+
+
+
+            </select>
+        </div>
 
         <input type="text" th:field="*{cidade}"
-               class="form-control mb-4 w-25" placeholder="Cidade da Empresa">
+               class="form-control mb-4 w-25" placeholder="Cidade da Empresa" required>
 
         <input type="text" th:field="*{endereco}"
-               class="form-control mb-4 w-25" placeholder="Endereco da Empresa">
+               class="form-control mb-4 w-25" placeholder="Endereco da Empresa" required>
 
         <input type="text" th:field="*{email}"
-               class="form-control mb-4 w-25" placeholder="Email da Empresa">
+               class="form-control mb-4 w-25" placeholder="Email da Empresa" required>
 
         <input type="text" th:field="*{contato}"
-               class="form-control mb-4 w-25" placeholder="Contato da Empresa">
+               class="form-control mb-4 w-25" placeholder="Contato da Empresa" required>
 
         <button type="submit" class="btn btn-info col-2">SALVAR</button>
     </form>
