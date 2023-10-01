@@ -68,6 +68,35 @@
 
 </head>
 <body>
+    
+    <h1>Cursos Catalog</h1>
+    <div id="curso-container"></div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('http://localhost:3306/cursos') // Substitua com o URL real do seu endpoint
+                .then(response => response.json())
+                .then(cursos => {
+                    const cursoContainer = document.getElementById('curso-container');
+
+                    cursos.forEach(curso => {
+                        const card = document.createElement('div');
+                        card.className = 'curso-card';
+
+                        const nome = document.createElement('h2');
+                        name.textContent = curso.nome;
+
+                        const descricao = document.createElement('p');
+                        descricao.textContent = curso.descricao;
+
+                        card.appendChild(nome);
+                        card.appendChild(descricao);
+                        productContainer.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Erro na requisição:', error));
+        });
+    </script>
 </body>
 </html>
+    
