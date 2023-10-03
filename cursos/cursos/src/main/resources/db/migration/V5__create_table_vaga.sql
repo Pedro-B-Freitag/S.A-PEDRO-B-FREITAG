@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS vaga (
-	empresa_nome VARCHAR(500) NOT NULL,
+	empresa_nome VARCHAR(255) NOT NULL,
 	descricao VARCHAR(500) NOT NULL,
 	cargo VARCHAR(45) NOT NULL,
 	data_vaga  VARCHAR(45),

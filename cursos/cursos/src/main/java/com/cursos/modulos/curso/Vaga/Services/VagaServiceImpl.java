@@ -1,5 +1,7 @@
 package com.cursos.modulos.curso.Vaga.Services;
 
+import com.cursos.modulos.curso.Empresa.DAOs.EmpresaDAO;
+import com.cursos.modulos.curso.Empresa.Empresa;
 import com.cursos.modulos.curso.Vaga.Vaga;
 import com.cursos.modulos.curso.Vaga.DAOs.VagaDAO;
 import jakarta.transaction.Transactional;
@@ -12,6 +14,8 @@ import java.util.List;
 public class VagaServiceImpl implements VagaService {
 
     private VagaDAO vagaDAO;
+    @Autowired
+    private EmpresaDAO empresaDAO;
 
     @Autowired
     public VagaServiceImpl(VagaDAO aVagaDAO){
@@ -31,6 +35,8 @@ public class VagaServiceImpl implements VagaService {
     @Transactional
     @Override
     public Vaga save(Vaga aVaga) {
+        Empresa empresa = empresaDAO.findById(aVaga.getEmpresa().getId());
+        aVaga.setEmpresa(empresa);
         return vagaDAO.save(aVaga);
     }
 

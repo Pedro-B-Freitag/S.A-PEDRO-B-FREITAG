@@ -74,9 +74,14 @@
 	<div class = "card" th:each="tempCurso : ${curso}">
 
 
+
 			<h1 th:text="${tempCurso.nome}"> </h1>
-			<h1 th:text="${tempCurso.categoria}"> </h1>
-			<h1 th:text="${tempCurso.fornecedor}"> </h1>
+			<p th:text="${tempCurso.categoria}"> </p>
+			<p th:text="${tempCurso.fornecedor}"> </p>
+
+		<a class="btn" th:href="${tempCurso.url}">
+			<button>Ir ao curso</button>
+		</a>
 
 
 	</div>

@@ -86,8 +86,8 @@
 
 
       <h2> Imagem do curso </h2>
-      <input type="image" th:field="*{imagem}"
-             class="form-control mb-4 w-25" placeholder="Imagem do curso">
+      <input type="file" class= "form-control " th:field="*{imagem}"
+             id = "imagem" name = "fileCurso">
 
       <button type="submit" class="btn btn-info col-2">SALVAR</button>
     </form>

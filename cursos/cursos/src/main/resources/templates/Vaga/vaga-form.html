@@ -34,7 +34,11 @@
 
 
         <h2> Nome da Empresa </h2>
-        <select class="form-control" id="dropDownList" th:field="*{empresa.id}">
+
+
+
+
+        <select class="form-control" id="dropDownList" th:field="*{empresa}">
 
 
             <option value="0">select option</option>
@@ -44,6 +48,9 @@
                     th:value="${empresa.id}"
                     th:text="${empresa.nome}"></option>
         </select>
+
+
+
 
         <h2> Data da Vaga </h2>
         <input type="date" id="date" th:field="*{dataVaga}"
