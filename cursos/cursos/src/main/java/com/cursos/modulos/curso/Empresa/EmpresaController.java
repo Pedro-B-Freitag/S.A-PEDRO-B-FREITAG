@@ -29,9 +29,13 @@ public class EmpresaController {
     @GetMapping("/list")
     public String listEmpresas(Model theModel){
         List<Empresa> asEmpresas = empresaService.findAll();
-        theModel.addAttribute("empresa", asEmpresas);
+        theModel.addAttribute("listempresa", asEmpresas);
+
+        theModel.addAttribute("empresa", new Empresa());
+
         return "empresa/list-empresas";
     }
+
 
     @GetMapping("/mostrarFormCadastrarEmpresa")
     public String mostrarFormCadastrarEmpresa(Model theModel){

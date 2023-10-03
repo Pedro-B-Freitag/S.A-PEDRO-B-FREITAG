@@ -1,6 +1,9 @@
 package com.cursos.modulos.curso.Vaga;
 
 
+import com.cursos.modulos.curso.Empresa.DAOs.EmpresaDAO;
+import com.cursos.modulos.curso.Empresa.Empresa;
+import com.cursos.modulos.curso.Empresa.Service.EmpresaService;
 import com.cursos.modulos.curso.Vaga.Services.VagaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,62 +15,62 @@ import java.util.List;
 @Controller
 @RequestMapping("/vagas")
 public class VagaController {
-    private VagaService cursoService;
+    @Autowired
+    private VagaService vagaService;
+    @Autowired
+    private EmpresaDAO empresaDAO;
 
     @Autowired
-    public VagaController(VagaService oCursoService){
-        cursoService = oCursoService;
+    public VagaController(VagaService aVagaService){
+        vagaService = aVagaService;
     }
 
 
 
     @GetMapping("/list")
-    public String listCursos(Model theModel){
-        List<Vaga> osCursos = cursoService.findAll();
-        theModel.addAttribute("curso", osCursos);
-        return "curso/list-cursos";
+    public String listVagas(Model theModel){
+        List<Vaga> asVagas = vagaService.findAll();
+        theModel.addAttribute("vaga", asVagas);
+        return "Vaga/list-vaga";
     }
 
-    @GetMapping("/listarTodos")
-    public List<Vaga> getAllProducts() {
-        return cursoService.findAll();
-    }
 
     @GetMapping("/mostrarFormCadastrarVaga")
-    public String mostrarFormCadastrarCurso(Model theModel){
-        Vaga oCurso = new Vaga();
+    public String mostrarFormCadastrarVaga(Model theModel){
+        Vaga aVaga = new Vaga();
 
-        theModel.addAttribute("curso", oCurso);
+        theModel.addAttribute("vaga", aVaga);
 
-        return "Curso/curso-form";
+        List<Empresa> listempresa = empresaDAO.findAll();
+        theModel.addAttribute("listempresa", listempresa);
+
+        return "Vaga/vaga-form";
     }
 
     @PostMapping("/save")
-    public String saveCurso(@ModelAttribute("curso") Vaga oCurso){
-        cursoService.save(oCurso);
+    public String saveVaga(@ModelAttribute("vaga") Vaga aVaga){
+        vagaService.save(aVaga);
 
-        return "redirect:/cursos/list";
+        return "redirect:/vagas/list";
     }
 
     @GetMapping("/mostrarFormAtualizarVaga")
-    public String mostrarFormAtualizarCurso(@RequestParam("cursoid") int oId, Model theModel){
+    public String mostrarFormAtualizarVaga(@RequestParam("vagaid") int oId, Model theModel){
 
-        Vaga oCurso = cursoService.findById(oId);
+        Vaga aVaga = vagaService.findById(oId);
+        theModel.addAttribute("vaga", aVaga);
 
-        theModel.addAttribute("curso", oCurso);
 
-
-        return "curso/curso-form";
+        return "vaga/vaga-form";
 
     }
 
     @GetMapping("/deletar")
-    public String deletar(@RequestParam("cursoid") int oId){
-        cursoService.deleteById(oId);
+    public String deletar(@RequestParam("vagaid") int oId){
+        vagaService.deleteById(oId);
 
-        return "redirect:/cursos/list";
+        return "redirect:/vagas/list";
     }
-
 
 
 

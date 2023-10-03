@@ -1,5 +1,6 @@
 package com.cursos.modulos.curso.Vaga;
 
+import com.cursos.modulos.curso.Empresa.Empresa;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Vaga {
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -17,35 +21,35 @@ public class Vaga {
     private String descricao;
     @Column(name = "categoria")
     private String categoria;
-    @Column(name = "empresa_nome")
-    private String empresaNome;
+    @ManyToOne
+    @JoinColumn(name = "empresa_nome")
+    private Empresa empresa;
     @Column(name = "cargo")
     private String cargo;
     @Column(name = "data_vaga")
     private String dataVaga;
     @Column(name = "data_prazo")
-    private Boolean dataPrazo;
+    private String dataPrazo;
     @Column(name = "quantidade")
-    private Integer quantidade;
-    @JoinColumn(name = "pessoa_usuario")
-    private Integer pessoaUsuario;
-    @JoinColumn(name = "empresa_cnpj")
-    private String empresaCnpj;
+    private String quantidade;
 
+    @Column(name = "url")
+    private String url;
 
 
     public Vaga(){
 
     }
 
-    public Vaga(String descricao, String categoria, String empresaNome, String cargo, String dataVaga, Boolean dataPrazo, Integer quantidade) {
+    public Vaga(String descricao, String categoria, Empresa empresa, String cargo, String dataVaga, String dataPrazo, String quantidade, String url) {
         this.descricao = descricao;
         this.categoria = categoria;
-        this.empresaNome = empresaNome;
+        this.empresa = empresa;
         this.cargo = cargo;
         this.dataVaga = dataVaga;
         this.dataPrazo = dataPrazo;
         this.quantidade = quantidade;
+        this.url = url;
     }
 
     @Override
@@ -54,13 +58,12 @@ public class Vaga {
                 "id=" + id +
                 ", descricao='" + descricao + '\'' +
                 ", categoria='" + categoria + '\'' +
-                ", empresaNome='" + empresaNome + '\'' +
+                ", empresa='" + empresa + '\'' +
                 ", cargo='" + cargo + '\'' +
                 ", dataVaga='" + dataVaga + '\'' +
                 ", dataPrazo=" + dataPrazo +
                 ", quantidade=" + quantidade +
-                ", pessoaUsuario=" + pessoaUsuario +
-                ", empresaCnpj='" + empresaCnpj + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }
