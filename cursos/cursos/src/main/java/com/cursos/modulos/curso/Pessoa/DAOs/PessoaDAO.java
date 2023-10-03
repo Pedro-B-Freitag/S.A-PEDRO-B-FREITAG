@@ -1,6 +1,7 @@
 package com.cursos.modulos.curso.Pessoa.DAOs;
 
 import com.cursos.modulos.curso.Pessoa.Pessoa;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 

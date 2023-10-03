@@ -1,9 +1,9 @@
 package com.cursos.modulos.curso.Empresa;
 
 
-import com.cursos.modulos.curso.Curso.Curso;
-import com.cursos.modulos.curso.Curso.Services.CursoService;
 import com.cursos.modulos.curso.Empresa.Service.EmpresaService;
+import com.cursos.modulos.curso.Pessoa.Pessoa;
+import com.cursos.modulos.curso.Pessoa.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +16,8 @@ import java.util.List;
 public class EmpresaController {
 
     private EmpresaService empresaService;
+
+    private PessoaRepository pessoaDAO;
 
 
     @Autowired
@@ -66,6 +68,12 @@ public class EmpresaController {
         empresaService.deleteById(oId);
 
         return "redirect:/empresas/list";
+    }
+
+    public String customSelectBox(Model model) {
+        List<Pessoa> pessoas = pessoaDAO.findAll();
+        model.addAttribute("pessoas", pessoas);
+        return "empresa/empresa-form";
     }
 
 

@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Product Catalog</title>
 
     <style>
         body {
@@ -39,13 +44,21 @@
           background-color: #0077B6;
           color: white;
         }
-</style>
+
+
+    </style>
+
+</head>
+<body>
+
+
+
     <title>HOME</title>
 
 
     <div class="topnav" >
         <a href="home">Home</a>
-        <a href="#Cursos">Cursos</a>
+        <a href="/cursos/list">Cursos</a>
         <a href="#Vagas de Emprego">Vagas de Emprego</a>
         <a href="fancy-login" class="split">Login</a>
     </div>
@@ -66,37 +79,11 @@
         <input type="submit" value = "logout"/>
     </form>
 
-</head>
-<body>
     
     <h1>Cursos Catalog</h1>
     <div id="curso-container"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch('http://localhost:3306/cursos') // Substitua com o URL real do seu endpoint
-                .then(response => response.json())
-                .then(cursos => {
-                    const cursoContainer = document.getElementById('curso-container');
-
-                    cursos.forEach(curso => {
-                        const card = document.createElement('div');
-                        card.className = 'curso-card';
-
-                        const nome = document.createElement('h2');
-                        name.textContent = curso.nome;
-
-                        const descricao = document.createElement('p');
-                        descricao.textContent = curso.descricao;
-
-                        card.appendChild(nome);
-                        card.appendChild(descricao);
-                        productContainer.appendChild(card);
-                    });
-                })
-                .catch(error => console.error('Erro na requisição:', error));
-        });
-    </script>
+        <script src="script.js" >        </script>
 </body>
 </html>
     
