@@ -57,11 +57,14 @@ public class VagaController {
     @GetMapping("/mostrarFormAtualizarVaga")
     public String mostrarFormAtualizarVaga(@RequestParam("vagaid") int oId, Model theModel){
 
+        List<Empresa> listempresa = empresaDAO.findAll();
+        theModel.addAttribute("listempresa", listempresa);
+
         Vaga aVaga = vagaService.findById(oId);
         theModel.addAttribute("vaga", aVaga);
 
 
-        return "vaga/vaga-form";
+        return "Vaga/vaga-form";
 
     }
 

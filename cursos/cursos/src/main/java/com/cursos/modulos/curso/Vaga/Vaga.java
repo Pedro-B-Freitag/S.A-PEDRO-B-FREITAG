@@ -22,7 +22,7 @@ public class Vaga {
     @Column(name = "categoria")
     private String categoria;
     @ManyToOne
-    @JoinColumn(name = "empresa_nome")
+    @JoinColumn(name = "empresa_nome", referencedColumnName = "nome")
     private Empresa empresa;
     @Column(name = "cargo")
     private String cargo;

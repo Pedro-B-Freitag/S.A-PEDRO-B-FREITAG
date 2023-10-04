@@ -41,12 +41,16 @@
         <select class="form-control" id="dropDownList" th:field="*{empresa}">
 
 
-            <option value="0">select option</option>
+            <option value="0">Selecione uma Opção</option>
 
 
-            <option th:each="empresa : ${listempresa}"
+            <option
+
+                    th:each="empresa : ${listempresa}"
                     th:value="${empresa.id}"
-                    th:text="${empresa.nome}"></option>
+                    th:text="${empresa.nome}">
+
+            </option>
         </select>
 
 
