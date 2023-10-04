@@ -35,9 +35,20 @@ public class VagaServiceImpl implements VagaService {
     @Transactional
     @Override
     public Vaga save(Vaga aVaga) {
-        Empresa empresa = empresaDAO.findById(aVaga.getEmpresa().getId());
-        aVaga.setEmpresa(empresa);
-        return vagaDAO.save(aVaga);
+        try {
+            Empresa empresa = empresaDAO.findById(aVaga.getEmpresa().getId());
+            // Log the empresa details
+            System.out.println("Empresa details: " + empresa);
+
+            aVaga.setEmpresa(empresa);
+            Vaga savedVaga = vagaDAO.save(aVaga);
+            System.out.println("Vaga saved successfully: " + savedVaga);
+
+            return savedVaga;
+        } catch (Exception e) {
+            System.err.println("Error saving Vaga: " + e.getMessage());
+            throw e;
+        }
     }
 
     @Transactional
