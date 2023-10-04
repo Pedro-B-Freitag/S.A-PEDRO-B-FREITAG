@@ -76,8 +76,14 @@
 
 
       <h2> Curso presencial? </h2>
-      <input type="text" th:field="*{presencial}"
-             class="form-control mb-4 w-25" placeholder="Curso e presencial?">
+        <select th:field="*{presencial}">
+
+            <option value="0">Selecione:</option>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+
+        </select>
+
 
 
       <h2> Descrição do curso </h2>

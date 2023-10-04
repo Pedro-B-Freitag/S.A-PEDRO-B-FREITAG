@@ -10,10 +10,132 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
 
-	<title>Curso Directory</title>
-</head>
 
-<body>
+
+	<style>
+
+body {
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .topnav {
+          overflow: hidden;
+          background-color: white;
+          box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .topnav a {
+          float: left;
+          color: #000000;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+
+        .topnav a.active {
+          background-color: #0077B6;
+          color: white;
+        }
+
+        .topnav a.split {
+          float: right;
+          background-color: #0077B6;
+          color: white;
+        }
+
+		.curso-card {
+		  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+		  width: 250px;
+		  margin: auto;
+		  height: 400px;
+		  text-align: center;
+		  font-family: arial;
+		  margin-bottom: 20px;
+		  top: 5px;
+		}
+
+		.btn-curso{
+		  border: none;
+		  outline: 0;
+		  padding: 12px;
+		  color: #FFFFFF;
+		  background-color: #030455;
+		  text-align: center;
+		  cursor: pointer;
+		  width: 100%;
+		  font-size: 18px;
+		  position : relative;
+		  top: 348px;
+
+		}
+
+		.btn-categoria{
+		  border: none;
+		  outline: 0;
+		  padding: 12px;
+		  color: #FFFFFF;
+		  background-color: #030455;
+		  text-align: center;
+		  cursor: pointer;
+		  width: 155px;
+		  height: 155px;
+		  font-size: 16px;
+		  margin: 10px;
+		  margin-bottom: 10px;
+		}
+
+		.row{
+			display:flex;
+			align-items: center;
+			justify-content : center;
+		}
+
+		.line-text{
+			color : #030455;
+			font-family: nexa;
+			text-align: center;
+			font-size: 80px;
+		}
+		.espacamento {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+		.container {
+		  overflow: hidden;
+		}
+
+		.filterDiv {
+		  display: none;
+		}
+
+		.show {
+		  display: inline;
+		}
+
+		.btn:hover {
+		  background-color: #ddd;
+		}
+
+		.btn-categoria.active {
+		  background-color: #90E0EF;
+		  color: black;
+		}
+		.negrito{
+			font-weight: bold
+		}
+
+	</style>
+</head>
 
 <div class="topnav" >
 	<a href="/home">Home</a>
@@ -22,6 +144,15 @@
 	<a href="/vagas/list">Vagas de Emprego</a>
 	<a href="/fancy-login" class="split">Login</a>
 </div>
+
+<p>
+
+
+</p>
+
+<body>
+
+
 
 <div class="container">
 
@@ -71,21 +202,93 @@
 		</tbody>		
 	</table>
 
-	<div class = "card" th:each="tempCurso : ${curso}">
 
 
 
-			<h1 th:text="${tempCurso.nome}"> </h1>
-			<p th:text="${tempCurso.categoria}"> </p>
-			<p th:text="${tempCurso.fornecedor}"> </p>
 
-		<a class="btn" th:href="${tempCurso.url}">
-			<button>Ir ao curso</button>
-		</a>
+	<!-- =============================================================================
+	 =================================================================================
+	 =================================================================================
+	 -->
 
 
+
+	<div class='line-text' > Cursos </div>
+
+
+
+<!-- CARDS DOS CURSOS -->
+
+		<div class="container "  >
+
+			<div  class = "row">
+				<div class="curso-card filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
+
+					<a class="espacamento" th:href="${tempCurso.url}">
+						<button  class="btn-curso">Ir ao curso</button>
+					</a>
+
+					<h4 style="width:100%" th:text="${tempCurso.nome}"> </h4>
+					<p>
+					</p>
+					<h6 class="negrito">Categoria:</h6>
+					<p th:text="${tempCurso.categoria}"> </p>
+					<p></p>
+					<h6 class="negrito">Fornecedor:</h6>
+					<p th:text="${tempCurso.fornecedor}"> </p>
+
+					</div>
+			</div>
+		</div>
+
+
+
+<!-- BOTOES DAS CATEGORIAS -->
+	<div class='line-text' > Categorias </div>
+	<div id="myBtnContainer">
+		<div class="row ">
+			<p></p>
+			<button class="btn-categoria " onclick="filterSelection('todos')"> Mostrar Todos </button>
+			<button class="btn-categoria " onclick="filterSelection('Programação')"> Programação</button>
+			<button class="btn-categoria" onclick="filterSelection('Marketing Digital')"> Marketing Digital</button>
+			<button class="btn-categoria" onclick="filterSelection('Informática')"> Informática</button>
+			<button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web')"> Desenvolvimento Web</button>
+			<button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)')"> Inglês como Segunda Língua (ESL)</button>
+			<button class="btn-categoria" onclick="filterSelection('Design Gráfico')"> Design Gráfico</button>
+			<button class="btn-categoria" onclick="filterSelection('Machine Learning')"> Machine Learning</button>
+			<button class="btn-categoria" onclick="filterSelection('Fotografia')"> Fotografia</button>
+			<button class="btn-categoria" onclick="filterSelection('Finanças Pessoais')"> Finanças Pessoais</button>
+			<button class="btn-categoria" onclick="filterSelection('Gerenciamento de Projetos')"> Gerenciamento de Projetos</button>
+			<button class="btn-categoria" onclick="filterSelection('Ciência de Dados')"> Ciência de Dados</button>
+			<button class="btn-categoria" onclick="filterSelection('Redes de Computadores')"> Redes de Computadores</button>
+			<button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais')"> Marketing de Mídias Sociais</button>
+			<button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)')"> Introdução à Inteligência Artificial (IA)</button>
+			<button class="btn-categoria" onclick="filterSelection('Psicologia')"> Psicologia</button>
+
+
+		</div>
 	</div>
 
+
+	<script th:inline="javascript">
+        function filterSelection(categoria) {
+            var elements = document.getElementsByClassName('filterDiv');
+            if (categoria === 'todos') {
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.display = 'block';
+                }
+            } else {
+                for (var i = 0; i < elements.length; i++) {
+                    var dataCategory = elements[i].getAttribute('data-categoria');
+                    if (categoria === 'todos' || dataCategory === categoria) {
+						elements[i].style.display = 'block';
+					} else {
+						elements[i].style.display = 'none';
+					}
+                }
+            }
+        }
+    </script>
 
 </div>
 
