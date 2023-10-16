@@ -55,7 +55,7 @@
           grid-template-columns: 80px auto 100px;
           grid-template-rows: 35px 10px 35px;
           width: 700px;
-          position: relative;
+          position: center;
           border-top: 1px solid #e3e3e3;
           border-bottom: 1px solid #e3e3e3;
           border-left: 1px solid #e3e3e3;
@@ -72,10 +72,8 @@
 
         .company-logo-img {
           grid-area: 1 / 1 / 2 / 2;
-          background-color: #fff;
-          border: 1px solid #e3e3e3;
-          height: 80px;
-          width: 80px;
+          height: 40px;
+          width: 40px;
           box-sizing: border-box;
           position: relative;
           padding: 5px;
@@ -164,7 +162,8 @@
     <a href="/fancy-login" class="split">Login</a>
 </div>
 <p>
-
+    User: <span sec:authentication = "pessoa.nome"></span>
+    ROLE: <span sec:authentication = "pessoa.role"></span>
 
 </p>
 
@@ -182,7 +181,7 @@
     </a>
 
 
-
+<div sec:authorize="hasRole('2')">
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
@@ -217,7 +216,7 @@
             </tr>
         </tbody>
     </table>
-
+</div>
 
 
     <!--
