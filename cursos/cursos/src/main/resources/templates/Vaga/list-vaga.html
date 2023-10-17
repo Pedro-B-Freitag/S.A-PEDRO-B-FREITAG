@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Required meta tags -->
@@ -162,8 +163,6 @@
     <a href="/fancy-login" class="split">Login</a>
 </div>
 <p>
-    User: <span sec:authentication = "pessoa.nome"></span>
-    ROLE: <span sec:authentication = "pessoa.role"></span>
 
 </p>
 
@@ -181,40 +180,40 @@
     </a>
 
 
-<div sec:authorize="hasRole('2')">
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-        <tr>
-            <th>Nome da Empresa</th>
-            <th>Categoria</th>
-            <th>Fornecedor </th>
-            <th>ACOES</th>
-        </tr>
-        </thead>
 
-        <tbody>
-            <tr th:each="tempVaga : ${vaga}">
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nome da Empresa</th>
+                    <th>Categoria</th>
+                    <th>Fornecedor </th>
+                    <th>ACOES</th>
+                </tr>
+            </thead>
 
-                <td th:text="${tempVaga.empresa.nome}" />
-                <td th:text="${tempVaga.categoria}" />
-                <td th:text="${tempVaga.descricao}" />
+            <tbody>
+                <tr th:each="tempVaga : ${vaga}">
 
-                <td>
-                    <a th:href="@{/vagas/mostrarFormAtualizarVaga(vagaid=${tempVaga.Id})}"
-                       class="btn btn-info btn-sm">
+                    <td th:text="${tempVaga.empresa.nome}" />
+                    <td th:text="${tempVaga.categoria}" />
+                    <td th:text="${tempVaga.descricao}" />
 
-                        Update
-                    </a>
+                    <td>
+                        <a th:href="@{/vagas/mostrarFormAtualizarVaga(vagaid=${tempVaga.Id})}"
+                           class="btn btn-info btn-sm">
 
-                    <a th:href="@{/vagas/deletar(vagaid=${tempVaga.Id})}"
-                       class="btn btn-danger btn-sm"
-                       onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
-                        Deletar
-                    </a>
-                </td>
+                            Update
+                        </a>
 
-            </tr>
-        </tbody>
+                        <a th:href="@{/vagas/deletar(vagaid=${tempVaga.Id})}"
+                           class="btn btn-danger btn-sm"
+                           onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
+                            Deletar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
     </table>
 </div>
 
@@ -227,18 +226,6 @@
                                             CARTÕES DAS VAGAS
    -->
 
-<!--
-    <div class = "card" th:each="tempVaga : ${vaga}">
-
-
-        <h1 th:text="${tempVaga.empresa.nome}" />
-        <h1 th:text="${tempVaga.categoria}" />
-        <h1 th:text="${tempVaga.descricao}" />
-
-
-
-    </div>
--->
 
     <article class="job-card" th:each="tempVaga : ${vaga}">
 

@@ -248,6 +248,7 @@ body {
 	<div id="myBtnContainer">
 		<div class="row ">
 			<p></p>
+
 			<button class="btn-categoria " onclick="filterSelection('todos')"> Mostrar Todos </button>
 			<button class="btn-categoria " onclick="filterSelection('Programação')"> Programação</button>
 			<button class="btn-categoria" onclick="filterSelection('Marketing Digital')"> Marketing Digital</button>
@@ -271,6 +272,7 @@ body {
 
 
 	<script th:inline="javascript">
+
         function filterSelection(categoria) {
             var elements = document.getElementsByClassName('filterDiv');
             categoria == 'todos';
