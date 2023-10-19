@@ -36,6 +36,9 @@ public class SecurityConfig {
                 http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/home").permitAll()
+                        .requestMatchers("/cursos/list").permitAll()
+                        .requestMatchers("/vagas/list").permitAll()
+                        .requestMatchers("/empresas/list").permitAll()
                         .anyRequest().authenticated()
                         )
 

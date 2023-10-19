@@ -2,142 +2,249 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+		  rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+		  crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
 
-
-
 	<style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            background-color: #CAF0F8;
+            min-height: 100vh; /* Para ocupar pelo menos a altura total da viewport */
+        }
 
-body {
-          margin: 0;
-          font-family: Arial, Helvetica, sans-serif;
+        .sidenav {
+            z-index: 1;
+            height: 100%;
+            width: 200px;
+            background-color: #555; /* Cor de fundo cinza */
+            overflow-x: hidden;
+            padding-top: 80px;
+            position: fixed;
+            transition: 0.5s;
+        }
 
+        .sidenav a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sidenav a:hover, .dropdown-btn:hover {
+            color: #f1f1f1;
+        }
+
+        .active {
+            background-color: green;
+            color: white;
+        }
+
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        .fa-caret-down {
+            float: right;
+            padding-right: 8px;
         }
 
         .topnav {
-          overflow: hidden;
-          background-color: white;
-          box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            overflow: hidden;
+            background-color: #CAF0F8;
+            box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+            z-index: 2; /* Set a higher value for z-index */
+        }
+
+        .main {
+            flex: 1; /* Isso faz com que o conteúdo principal ocupe o restante do espaço disponível */
+            margin-top: 60px;
+            font-size: 20px;
+            padding: 20px 10px;
+            width: 100%;
+            margin-left: 200px;
         }
 
         .topnav a {
-          float: left;
-          color: #000000;
-          text-align: center;
-          padding: 14px 16px;
-          text-decoration: none;
-          font-size: 17px;
+            float: left;
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
         }
 
         .topnav a:hover {
-          background-color: #CAF0F8;
-          color: black;
+            background-color: #90E0EF;
+            color: black;
         }
 
         .topnav a.active {
-          background-color: #0077B6;
-          color: white;
+            background-color: #0077B6;
+            color: white;
         }
 
         .topnav a.split {
-          float: right;
-          background-color: #0077B6;
-          color: white;
+            float: right;
+            background-color: #0077B6;
+            color: white;
         }
 
-		.curso-card {
-		  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
-		  width: 250px;
-		  margin: auto;
-		  height: 400px;
-		  text-align: center;
-		  font-family: arial;
-		  margin-bottom: 20px;
-		  top: 5px;
-		}
+        .curso-card {
+            box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            margin: 20px;
+            text-align: center;
+            background-color: #90E0EF;
+            height: 400px;
+            position: relative;
+        }
 
-		.btn-curso{
-		  border: none;
-		  outline: 0;
-		  padding: 12px;
-		  color: #FFFFFF;
-		  background-color: #030455;
-		  text-align: center;
-		  cursor: pointer;
-		  width: 100%;
-		  font-size: 18px;
-		  position : relative;
-		  top: 348px;
+        .cardo {
+            border: none;
+        }
 
-		}
+        .course-link {
+            text-decoration: none;
+            color: #000;
+        }
 
-		.btn-categoria{
-		  border: none;
-		  outline: 0;
-		  padding: 12px;
-		  color: #FFFFFF;
-		  background-color: #030455;
-		  text-align: center;
-		  cursor: pointer;
-		  width: 155px;
-		  height: 155px;
-		  font-size: 16px;
-		  margin: 10px;
-		  margin-bottom: 10px;
-		}
+        .card-body {
+            padding: 20px;
+        }
 
-		.row{
-			display:flex;
-			align-items: center;
-			justify-content : center;
-		}
+        .card-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
 
-		.line-text{
-			color : #030455;
-			font-family: nexa;
+        .card-text {
+            margin-bottom: 8px;
+        }
+
+        .btn-curso {
+            position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			border: none;
+			outline: 0;
+			padding: 12px;
+			color: #FFFFFF;
+			background-color: #030455;
 			text-align: center;
-			font-size: 80px;
-		}
-		.espacamento {
+			cursor: pointer;
+			font-size: 18px;
+			text-decoration: none;
+        }
+
+        .btn-categoria {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: #FFFFFF;
+            background-color: #030455;
+            text-align: center;
+            cursor: pointer;
+            width: 155px;
+            height: 155px;
+            font-size: 16px;
+            margin: 10px;
+            margin-bottom: 10px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .line-text {
+            color: #030455;
+            font-family: nexa;
+            text-align: center;
+            font-size: 80px;
+        }
+
+        .espacamento {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-		.container {
-		  overflow: hidden;
-		}
+        .container {
+            overflow: hidden;
+        }
 
-		.filterDiv {
-		  display: none;
-		}
+        .filterDiv {
+            display: none;
+        }
 
-		.show {
-		  display: inline;
-		}
+        .show {
+            display: inline;
+        }
 
-		.btn:hover {
-		  background-color: #ddd;
-		}
+        .btn:hover {
+            background-color: #ddd;
+        }
 
-		.btn-categoria.active {
-		  background-color: #90E0EF;
-		  color: black;
-		}
-		.negrito{
-			font-weight: bold
-		}
+        .btn-categoria.active {
+            background-color: #90E0EF;
+            color: black;
+        }
 
-	</style>
+        .negrito {
+            font-weight: bold
+        }
+    </style>
 </head>
 
-<div class="topnav" >
+<body>
+
+
+
+<div class="sidenav">
+	<a href="#Mostrar Todos" onclick="filterSelection('todos')">Mostrar Todos</a>
+	<a href="#Programação" onclick="filterSelection('Programação')">Programação</a>
+	<a href="#Marketing Digital" onclick="filterSelection('Marketing Digital')">Marketing Digital</a>
+	<a href="#Informática" onclick="filterSelection('Informática')">Informática</a>
+	<a href="#Desenvolvimento Web" onclick="filterSelection('Desenvolvimento Web')">Desenvolvimento Web</a>
+	<a href="#Inglês como Segunda Língua (ESL)" onclick="filterSelection('Inglês como Segunda Língua (ESL)')">Inglês como Segunda Língua (ESL)</a>
+	<a href="#Design Gráfico" onclick="filterSelection('Design Gráfico')">Design Gráfico</a>
+	<a href="#Machine Learning" onclick="filterSelection('Machine Learning')">Machine Learning</a>
+	<a href="#Fotografia" onclick="filterSelection('Fotografia')">Fotografia</a>
+	<a href="#Finanças Pessoais" onclick="filterSelection('Finanças Pessoais')">Finanças Pessoais</a>
+	<a href="#Gerenciamento de Projetos" onclick="filterSelection('Gerenciamento de Projetos')">Gerenciamento de Projetos</a>
+	<a href="#Ciência de Dados" onclick="filterSelection('Ciência de Dados')">Ciência de Dados</a>
+	<a href="#Redes de Computadores" onclick="filterSelection('Redes de Computadores')">Redes de Computadores</a>
+	<a href="#Marketing de Mídias Sociais" onclick="filterSelection('Marketing de Mídias Sociais')">Marketing de Mídias Sociais</a>
+	<a href="#Introdução à Inteligência Artificial (IA)" onclick="filterSelection('Introdução à Inteligência Artificial (IA)')">Introdução à Inteligência Artificial (IA)</a>
+	<a href="#Psicologia" onclick="filterSelection('Psicologia')">Psicologia</a>
+</div>
+
+
+
+
+<div class="topnav">
 	<a href="/home">Home</a>
 	<a href="/cursos/list">Cursos</a>
 	<div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -147,160 +254,119 @@ body {
 	<a href="/fancy-login" class="split">Login</a>
 </div>
 
-<p>
-
-
-</p>
-
-<body>
-
-
-
-<div class="container">
-
-	<h3>Curso Directory</h3>
-	<hr>
-
-		<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<a th:href="@{/cursos/mostrarFormCadastrarCurso}"
-			class="btn bnt-primary btn-sm mb-3">
-				Adicionar Curso
-			</a>
-		</div>
-
+<div class="main">
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<a th:href="@{/cursos/mostrarFormCadastrarCurso}" class="btn bnt-primary btn-sm mb-3">
+			Adicionar Curso
+		</a>
+	</div>
 
 	<div sec:authorize="hasRole('ROLE_ADMIN')">
 		<table class="table table-bordered table-striped">
 			<thead class="table-dark">
-				<tr>
-					<th>Nome do Curso</th>
-					<th>Categoria</th>
-					<th>Fornecedor </th>
-					<th>ACOES</th>
-				</tr>
+			<tr>
+				<th>Nome do Curso</th>
+				<th>Categoria</th>
+				<th>Fornecedor </th>
+				<th>ACOES</th>
+			</tr>
 			</thead>
-
 			<tbody>
-				<tr th:each="tempCurso : ${curso}">
-
-					<td th:text="${tempCurso.nome}" />
-					<td th:text="${tempCurso.categoria}" />
-					<td th:text="${tempCurso.fornecedor}" />
-
-					<td>
-						<a th:href="@{/cursos/mostrarFormAtualizarCurso(cursoid=${tempCurso.Id})}"
-						class="btn btn-info btn-sm">
-
-							Update
-						</a>
-
-						<a th:href="@{/cursos/deletar(cursoid=${tempCurso.Id})}"
-						   class="btn btn-danger btn-sm"
-						   onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
-						   Deletar
-						</a>
-					</td>
-
-				</tr>
+			<tr th:each="tempCurso : ${curso}">
+				<td th:text="${tempCurso.nome}" />
+				<td th:text="${tempCurso.categoria}" />
+				<td th:text="${tempCurso.fornecedor}" />
+				<td>
+					<a th:href="@{/cursos/mostrarFormAtualizarCurso(cursoid=${tempCurso.Id})}" class="btn btn-info btn-sm">
+						Update
+					</a>
+					<a th:href="@{/cursos/deletar(cursoid=${tempCurso.Id})}" class="btn btn-danger btn-sm"
+					   onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
+						Deletar
+					</a>
+				</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
 
+	<div class='line-text'> Cursos </div>
 
-
-
-	<!-- =============================================================================
-	 =================================================================================
-	 =================================================================================
-	 -->
-
-
-
-	<div class='line-text' > Cursos </div>
-
-
-
-<!-- CARDS DOS CURSOS -->
-
-		<div class="container "  >
-
-			<div  class = "row">
-				<div class="curso-card filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
-
-					<a class="espacamento" th:href="${tempCurso.url}">
-						<button  class="btn-curso">Ir ao curso</button>
-					</a>
-
-					<h4 style="width:100%" th:text="${tempCurso.nome}"> </h4>
-					<p>
-					</p>
-					<h6 class="negrito">Categoria:</h6>
-					<p th:text="${tempCurso.categoria}"> </p>
-					<p></p>
-					<h6 class="negrito">Fornecedor:</h6>
-					<p th:text="${tempCurso.fornecedor}"> </p>
-
-					</div>
+	<!-- CARDS DOS CURSOS -->
+	<div class="row">
+			<!-- Loop through each course -->
+		<div class="curso-card filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
+			<div class="cardo">
+				<div class="card-body">
+					<h5 class="card-title" th:text="${tempCurso.nome}"></h5>
+					<p class="card-text"><span class="negrito">Categoria:</span> <span th:text="${tempCurso.categoria}"></span></p>
+					<p class="card-text"><span class="negrito">Fornecedor:</span> <span th:text="${tempCurso.fornecedor}"></span></p>
+				</div>
+				<a th:href="${tempCurso.url}" class="btn-curso">Ir ao curso</a>
 			</div>
-		</div>
-
-
-
-<!-- BOTOES DAS CATEGORIAS -->
-	<div class='line-text' > Categorias </div>
-	<div id="myBtnContainer">
-		<div class="row ">
-			<p></p>
-
-			<button class="btn-categoria " onclick="filterSelection('todos')"> Mostrar Todos </button>
-			<button class="btn-categoria " onclick="filterSelection('Programação')"> Programação</button>
-			<button class="btn-categoria" onclick="filterSelection('Marketing Digital')"> Marketing Digital</button>
-			<button class="btn-categoria" onclick="filterSelection('Informática')"> Informática</button>
-			<button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web')"> Desenvolvimento Web</button>
-			<button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)')"> Inglês como Segunda Língua (ESL)</button>
-			<button class="btn-categoria" onclick="filterSelection('Design Gráfico')"> Design Gráfico</button>
-			<button class="btn-categoria" onclick="filterSelection('Machine Learning')"> Machine Learning</button>
-			<button class="btn-categoria" onclick="filterSelection('Fotografia')"> Fotografia</button>
-			<button class="btn-categoria" onclick="filterSelection('Finanças Pessoais')"> Finanças Pessoais</button>
-			<button class="btn-categoria" onclick="filterSelection('Gerenciamento de Projetos')"> Gerenciamento de Projetos</button>
-			<button class="btn-categoria" onclick="filterSelection('Ciência de Dados')"> Ciência de Dados</button>
-			<button class="btn-categoria" onclick="filterSelection('Redes de Computadores')"> Redes de Computadores</button>
-			<button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais')"> Marketing de Mídias Sociais</button>
-			<button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)')"> Introdução à Inteligência Artificial (IA)</button>
-			<button class="btn-categoria" onclick="filterSelection('Psicologia')"> Psicologia</button>
-
-
 		</div>
 	</div>
 
 
 	<script th:inline="javascript">
+		document.addEventListener('DOMContentLoaded', function () {
+			// Add the code below to mark "Mostrar Todos" as active by default
+			var mostrarTodosBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'todos\')"]');
+			mostrarTodosBtn.classList.add('active');
 
-        function filterSelection(categoria) {
-            var elements = document.getElementsByClassName('filterDiv');
-            categoria == 'todos';
-            if (categoria === 'todos') {
-                for (var i = 0; i < elements.length; i++) {
-                    elements[i].style.display = 'block';
-                }
-            } else {
-                for (var i = 0; i < elements.length; i++) {
-                    var dataCategory = elements[i].getAttribute('data-categoria');
-                    if (categoria === 'todos' || dataCategory === categoria) {
+			// Call the filterSelection('todos') function to show all items when the page loads
+			filterSelection('todos');
+
+			// Simulate a click on the "Mostrar Todos" button
+			mostrarTodosBtn.click();
+		});
+
+		function filterSelection(categoria) {
+			var elements = document.getElementsByClassName('filterDiv');
+
+			if (categoria === 'todos') {
+				for (var i = 0; i < elements.length; i++) {
+					elements[i].style.display = 'block';
+				}
+			} else {
+				for (var i = 0; i < elements.length; i++) {
+					var dataCategory = elements[i].getAttribute('data-categoria');
+					if (categoria === 'todos' || dataCategory === categoria) {
 						elements[i].style.display = 'block';
 					} else {
 						elements[i].style.display = 'none';
 					}
-                }
-            }
-        }
-    </script>
+				}
+			}
+
+			// Remove the 'active' class from all buttons and add it to the current category
+			var btns = document.getElementsByClassName('btn-categoria');
+			for (var i = 0; i < btns.length; i++) {
+				btns[i].classList.remove('active');
+			}
+
+			var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\')"]');
+			currentBtn.classList.add('active');
+		}
+
+		var dropdown = document.getElementsByClassName("dropdown-btn");
+		var i;
+
+		for (i = 0; i < dropdown.length; i++) {
+			dropdown[i].addEventListener("click", function () {
+				this.classList.toggle("active");
+				var dropdownContent = this.nextElementSibling;
+				if (dropdownContent.style.display === "block") {
+					dropdownContent.style.display = "none";
+				} else {
+					dropdownContent.style.display = "block";
+				}
+			});
+		}
+	</script>
 
 </div>
 
-
 </body>
+
 </html>
-
-
-
