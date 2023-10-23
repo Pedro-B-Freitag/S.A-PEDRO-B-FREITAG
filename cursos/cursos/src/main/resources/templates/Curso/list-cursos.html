@@ -11,21 +11,25 @@
 		  rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
 		  crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.cdnfonts.com/css/sf-compact-display" rel="stylesheet">
 
 	<style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             display: flex;
-            background-color: #CAF0F8;
+            background: rgb(0,119,182);
+			background: linear-gradient(29deg, rgba(0,119,182,1) 0%, rgba(0,180,216,1) 60%);
             min-height: 100vh; /* Para ocupar pelo menos a altura total da viewport */
         }
+        @import url('https://fonts.cdnfonts.com/css/sf-compact-display');
 
         .sidenav {
             z-index: 1;
             height: 100%;
             width: 200px;
-            background-color: #555; /* Cor de fundo cinza */
+            background-color: #030455;
             overflow-x: hidden;
             padding-top: 80px;
             position: fixed;
@@ -36,7 +40,7 @@
             padding: 6px 8px 6px 16px;
             text-decoration: none;
             font-size: 20px;
-            color: #818181;
+            color: #90E0EF;
             display: block;
             border: none;
             background: none;
@@ -114,7 +118,8 @@
             width: 250px;
             margin: 20px;
             text-align: center;
-            background-color: #90E0EF;
+            background: rgb(0,119,182);
+			background: linear-gradient(0deg, rgba(0,119,182,1) 0%, rgba(0,180,216,1) 80%);
             height: 400px;
             position: relative;
         }
@@ -134,7 +139,10 @@
 
         .card-title {
             font-size: 2rem;
-            margin-bottom: 10px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: #CAF0F8;
         }
 
         .card-text {
@@ -180,7 +188,8 @@
 
         .line-text {
             color: #030455;
-            font-family: nexa;
+            font-family: 'SF Compact Display';
+            font-weight: bold;
             text-align: center;
             font-size: 80px;
         }
@@ -212,9 +221,17 @@
             color: black;
         }
 
-        .negrito {
-            font-weight: bold
+        .negrito{
+            font-weight: bold;
+            color: #CAF0F8;
         }
+
+        @media screen and (max-width: 500px) {
+		  .navbar a {
+			float: none;
+			display: block;
+		  }
+		}
     </style>
 </head>
 
@@ -245,7 +262,7 @@
 
 
 <div class="topnav">
-	<a href="/home">Home</a>
+	<a href="/home"> <i class="fa fa-fw fa-home"></i></a>
 	<a href="/cursos/list">Cursos</a>
 	<div sec:authorize="hasRole('ROLE_ADMIN')">
 		<a href="/empresas/list">Empresas</a>
@@ -289,6 +306,8 @@
 			</tbody>
 		</table>
 	</div>
+
+
 
 	<div class='line-text'> Cursos </div>
 
