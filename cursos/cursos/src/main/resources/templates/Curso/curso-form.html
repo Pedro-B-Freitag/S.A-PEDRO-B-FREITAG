@@ -26,11 +26,11 @@
 
       <input type="hidden" th:field="*{id}">
 
+        <input type="file" name="imagem" accept="image/*" required />
 
-
-      <h2> Nome do curso </h2>
+        <h2> Nome do curso </h2>
       <input type="text" th:field="*{nome}"
-             class="form-control mb-4 w-25" placeholder="Nome do curso">
+             class="form-control mb-4 w-25" placeholder="Nome do curso" required>
       
       <h2> Categoria do curso </h2>
             
@@ -38,7 +38,7 @@
                 <div  class="custom-select" style="width:200px;">
 
 
-            <select th:field="*{categoria}">
+            <select th:field="*{categoria}" required>
                 <option value="0">Selecione a Categoria:</option>
                 <option value="Programação">Programação</option>
                 <option value="Marketing Digital">Marketing Digital</option>
@@ -66,17 +66,17 @@
 
       <h2> Fornecedor do curso </h2>
       <input type="text" th:field="*{fornecedor}"
-             class="form-control mb-4 w-25" placeholder="Fornecedor do curso">
+             class="form-control mb-4 w-25" placeholder="Fornecedor do curso" required>
 
 
       <h2> URL do curso </h2>
       <input type="text" th:field="*{url}"
-             class="form-control mb-4 w-25" placeholder="URL do curso">
+             class="form-control mb-4 w-25" placeholder="URL do curso" required>
 
 
 
       <h2> Curso presencial? </h2>
-        <select th:field="*{presencial}">
+        <select th:field="*{presencial}" required>
 
             <option value="0">Selecione:</option>
             <option value="true">Sim</option>
@@ -88,7 +88,7 @@
 
       <h2> Descrição do curso </h2>
       <input type="text" th:field="*{descricao}"
-      class="form-control mb-4 w-25" placeholder="Descricao do curso">
+      class="form-control mb-4 w-25" placeholder="Descricao do curso" required>
 
 
       <button type="submit" class="btn btn-info col-2">SALVAR</button>

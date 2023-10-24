@@ -2,17 +2,23 @@ package com.cursos.modulos.curso.Curso;
 
 
 import com.cursos.modulos.curso.Curso.Services.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
 @RequestMapping("/cursos")
 public class CursoController {
     private CursoService cursoService;
-
     @Autowired
     public CursoController(CursoService oCursoService){
         cursoService = oCursoService;
@@ -42,7 +48,8 @@ public class CursoController {
     }
 
     @PostMapping("/save")
-    public String saveCurso(@ModelAttribute("curso") Curso oCurso)  {
+    public String saveCurso(@ModelAttribute("curso") Curso oCurso) {
+
         cursoService.save(oCurso);
 
         return "redirect:/cursos/list";
