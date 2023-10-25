@@ -1,1 +1,0 @@
-ALTER TABLE curso MODIFY imagem VARCHAR(400);

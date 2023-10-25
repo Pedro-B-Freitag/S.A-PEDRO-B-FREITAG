@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Blob;
+
 @Entity
 @Table(name = "curso")
 @Getter
@@ -31,8 +33,9 @@ public class Curso {
     private Integer gostei;
     @Column(name = "qtd_hrs")
     private String qtdHoras;
-    @Column(name = "imagem")
-    private String imagem;
+    @Column(name = "imagem", columnDefinition = "BLOB")
+    @Lob
+    private Blob imagem;
 
 
     public Curso(){
@@ -41,7 +44,7 @@ public class Curso {
 
     public Curso(String descricao, String categoria, String fornecedor, String nome,
                  String url, Boolean presencial, Integer visualizacao, Integer gostei,
-                 String qtdHoras, String imagem) {
+                 String qtdHoras, Blob imagem) {
 
         this.descricao = descricao;
         this.categoria = categoria;
@@ -72,4 +75,12 @@ public class Curso {
                 ", imagem='" + imagem + '\'' +
                 '}';
     }
+
+    public Blob getImage() {
+        return imagem;
+    }
+    public void setImage(Blob imagem) {
+        this.imagem = imagem;
+    }
+
 }

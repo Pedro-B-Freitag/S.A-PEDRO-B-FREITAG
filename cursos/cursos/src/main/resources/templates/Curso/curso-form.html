@@ -20,13 +20,19 @@
 
     <p class="h4 mb-4"> Cadastrar Curso</p>
 
+
+
+      <button type="submit" class="btn btn-info col-2">SALVAR</button>
+
     <form action="#"  th:action="@{/cursos/save}"
                       th:object="${curso}" method="POST">
 
 
+
+
+
       <input type="hidden" th:field="*{id}">
 
-        <input type="file" name="imagem" accept="image/*" required />
 
         <h2> Nome do curso </h2>
       <input type="text" th:field="*{nome}"
@@ -90,6 +96,17 @@
       <input type="text" th:field="*{descricao}"
       class="form-control mb-4 w-25" placeholder="Descricao do curso" required>
 
+        <div class="my-5">
+            <div class="mx-auto w-25 " style="max-width:100%;">
+                <h2 class="text-center mb-3">Add Image</h2>
+                <form action="add" th:action="@{/cursos/add}" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="imagem" name="imagem" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required="required">
+                        <button class="btn btn-outline-secondary" type="submit" >Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
       <button type="submit" class="btn btn-info col-2">SALVAR</button>
     </form>

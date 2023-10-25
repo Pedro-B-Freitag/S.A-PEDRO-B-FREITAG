@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS curso (
   visualizacao INT NULL,
   gostei INT NULL,
   qtd_hrs VARCHAR(50) NULL,
-  imagem VARCHAR(255)
+  imagem BLOB NOT NULL
 );

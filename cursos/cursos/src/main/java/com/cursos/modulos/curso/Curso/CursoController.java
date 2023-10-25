@@ -1,17 +1,26 @@
 package com.cursos.modulos.curso.Curso;
 
 
+import com.cursos.modulos.curso.Curso.Curso_Imagem.Imagem;
+import com.cursos.modulos.curso.Curso.Curso_Imagem.Services.ImagemService;
 import com.cursos.modulos.curso.Curso.Services.CursoService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Base64;
 import java.util.List;
 
@@ -23,8 +32,8 @@ public class CursoController {
     public CursoController(CursoService oCursoService){
         cursoService = oCursoService;
     }
-
-
+    @Autowired
+    private ImagemService imagemService;
 
     @GetMapping("/list")
     public String listCursos(Model theModel){
@@ -33,9 +42,44 @@ public class CursoController {
         return "curso/list-cursos";
     }
 
+    @GetMapping("/listar")
+    public ModelAndView home(){
+        ModelAndView mv = new ModelAndView("index");
+        List<Curso> imageList = cursoService.findAll();
+        mv.addObject("imageList", imageList);
+        return mv;
+    }
+
+    @GetMapping("/display")
+    public ResponseEntity<byte[]> displayImage(@RequestParam("id") Integer oId) throws IOException, SQLException {
+        Curso curso = cursoService.findById(oId);
+        byte [] imageBytes = null;
+        imageBytes = curso.getImage().getBytes(1,(int) curso.getImage().length());
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+    }
+
+
     @GetMapping("/listarTodos")
     public List<Curso> getAllProducts() {
         return cursoService.findAll();
+    }
+
+
+    @GetMapping("/addImage")
+    public ModelAndView addImage(){
+        return new ModelAndView("addimage");
+    }
+
+    @PostMapping("/addImage")
+    public String addImagePost(HttpServletRequest request, @RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
+    {
+        byte[] bytes = file.getBytes();
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+
+        Curso curso = new Curso();
+        curso.setImage(blob);
+        cursoService.save(curso);
+        return "redirect:/cursos/list ";
     }
 
     @GetMapping("/mostrarFormCadastrarCurso")
