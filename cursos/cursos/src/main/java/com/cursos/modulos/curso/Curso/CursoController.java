@@ -1,18 +1,14 @@
 package com.cursos.modulos.curso.Curso;
 
-
-import com.cursos.modulos.curso.Curso.Curso_Imagem.Imagem;
-import com.cursos.modulos.curso.Curso.Curso_Imagem.Services.ImagemService;
 import com.cursos.modulos.curso.Curso.Services.CursoService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,7 +17,6 @@ import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -32,8 +27,6 @@ public class CursoController {
     public CursoController(CursoService oCursoService){
         cursoService = oCursoService;
     }
-    @Autowired
-    private ImagemService imagemService;
 
     @GetMapping("/list")
     public String listCursos(Model theModel){
@@ -66,35 +59,55 @@ public class CursoController {
 
 
     @GetMapping("/addImage")
-    public ModelAndView addImage(){
+    public ModelAndView addImage(Model model){
         return new ModelAndView("addimage");
     }
 
     @PostMapping("/addImage")
-    public String addImagePost(HttpServletRequest request, @RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
+    public String addImagePost(HttpServletRequest request,RedirectAttributes redirectAttributes, @RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
     {
         byte[] bytes = file.getBytes();
+
+        // Log the length of the byte array
+        System.out.println("Length of the byte array: " + bytes.length);
+
         Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
         Curso curso = new Curso();
         curso.setImage(blob);
-        cursoService.save(curso);
-        return "redirect:/cursos/list ";
+
+        System.out.println("Setting curso object in flash attribute: " + curso);
+        redirectAttributes.addFlashAttribute("curso", curso);
+        request.getSession().setAttribute("cursoSession", curso);
+
+        return "redirect:/cursos/mostrarFormCadastrarCurso";
     }
 
     @GetMapping("/mostrarFormCadastrarCurso")
-    public String mostrarFormCadastrarCurso(Model theModel){
+    public String mostrarFormCadastrarCurso(Model model, HttpServletRequest request){
+
         Curso oCurso = new Curso();
+        model.addAttribute("curso", oCurso);
 
-        theModel.addAttribute("curso", oCurso);
+        // Log additional information for debugging
+        System.out.println("Model attributes before retrieving curso: " + model.asMap());
 
-        return "Curso/curso-form";
+        System.out.println("Setting curso object in model attribute: " + oCurso);
+
+        model.addAttribute("curso", oCurso);
+
+
+
+        return "curso/curso-form";
     }
 
     @PostMapping("/save")
-    public String saveCurso(@ModelAttribute("curso") Curso oCurso) {
+    public String saveCurso(HttpServletRequest request) {
+        Curso oCurso = (Curso) request.getSession().getAttribute("cursoSession");
 
-        cursoService.save(oCurso);
+        // Check if oCurso is not null before saving
+            cursoService.save(oCurso);
+            System.out.println("Enviando: " + oCurso);
 
         return "redirect:/cursos/list";
     }
@@ -117,17 +130,6 @@ public class CursoController {
 
         return "redirect:/cursos/list";
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
