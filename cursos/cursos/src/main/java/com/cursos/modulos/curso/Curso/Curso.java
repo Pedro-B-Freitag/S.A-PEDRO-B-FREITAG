@@ -3,16 +3,20 @@ package com.cursos.modulos.curso.Curso;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.sql.Blob;
 
 @Entity
 @Table(name = "curso")
 @Getter
 @Setter
+@ToString
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "categoria")
@@ -31,8 +35,8 @@ public class Curso {
     private Integer gostei;
     @Column(name = "qtd_hrs")
     private String qtdHoras;
-    @Column(name = "imagem")
-    private String imagem;
+    @Lob
+    private Blob imagem;
 
 
     public Curso(){
@@ -41,7 +45,7 @@ public class Curso {
 
     public Curso(String descricao, String categoria, String fornecedor, String nome,
                  String url, Boolean presencial, Integer visualizacao, Integer gostei,
-                 String qtdHoras, String imagem) {
+                 String qtdHoras, Blob imagem) {
 
         this.descricao = descricao;
         this.categoria = categoria;
@@ -56,20 +60,11 @@ public class Curso {
 
     }
 
-    @Override
-    public String toString() {
-        return "Curso{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", categoria='" + categoria + '\'' +
-                ", fornecedor='" + fornecedor + '\'' +
-                ", nome='" + nome + '\'' +
-                ", url='" + url + '\'' +
-                ", presencial=" + presencial +
-                ", visualizacao=" + visualizacao +
-                ", gostei=" + gostei +
-                ", qtdHoras='" + qtdHoras + '\'' +
-                ", imagem='" + imagem + '\'' +
-                '}';
+    public Blob getImagem() {
+        return imagem;
     }
+    public void setImagem(Blob imagem) {
+        this.imagem = imagem;
+    }
+
 }

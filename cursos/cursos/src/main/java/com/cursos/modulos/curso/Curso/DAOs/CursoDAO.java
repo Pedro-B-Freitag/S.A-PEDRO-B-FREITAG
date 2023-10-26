@@ -1,6 +1,7 @@
 package com.cursos.modulos.curso.Curso.DAOs;
 
 import com.cursos.modulos.curso.Curso.Curso;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
