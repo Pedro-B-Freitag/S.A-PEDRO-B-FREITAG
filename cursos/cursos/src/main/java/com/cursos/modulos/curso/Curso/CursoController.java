@@ -1,11 +1,8 @@
 package com.cursos.modulos.curso.Curso;
 
 import com.cursos.modulos.curso.Curso.Imagem.Imagem;
-import com.cursos.modulos.curso.Curso.Imagem.Services.ImagemService;
 import com.cursos.modulos.curso.Curso.Services.CursoService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +22,13 @@ import java.util.List;
 public class CursoController {
     private CursoService cursoService;
 
-    @Autowired
-    private ImagemService imagemService;
+
+    private CursoDTO cursoDTO;
 
     @Autowired
-    public CursoController(CursoService oCursoService){
+    public CursoController(CursoService oCursoService, CursoDTO cursoDTO){
         cursoService = oCursoService;
+        this.cursoDTO = cursoDTO;
     }
 
 
@@ -40,9 +38,6 @@ public class CursoController {
         List<Curso> osCursos = cursoService.findAll();
         theModel.addAttribute("curso", osCursos);
 
-        ModelAndView mv = new ModelAndView("list-cursos");
-        List<Imagem> imageList = imagemService.viewAll();
-        mv.addObject("imageList", imageList);
 
         return "curso/list-cursos";
     }
@@ -58,13 +53,15 @@ public class CursoController {
         Curso curso = new Curso();
         model.addAttribute("curso", curso);
 
+
         return "curso/curso-form";
     }
     @PostMapping("/save")
     public String saveCurso(
             HttpServletRequest request, RedirectAttributes redirectAttributes, @ModelAttribute("curso") Curso oCurso
-    ) throws SQLException {
+    ) throws SQLException, IOException , SerialException {
 
+        oCurso.setImagem(cursoDTO.getImagem());
         cursoService.save(oCurso);
 
         return "redirect:/cursos/list";
@@ -108,27 +105,15 @@ public class CursoController {
         byte[] bytes = file.getBytes();
         Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
+
         Imagem imagem = new Imagem();
         imagem.setImagem(blob);
-        imagemService.create(imagem);
+
+        cursoDTO.setImagem(imagem);
 
         return "redirect:/cursos/mostrarFormCadastrarCurso";
     }
-    @GetMapping("/display")
-    public ResponseEntity<byte[]> displayImage(@RequestParam("id") Integer id) throws IOException, SQLException
-    {
-        Imagem imagem = imagemService.viewById(id);
-        byte [] imageBytes = null;
-        imageBytes = imagem.getImagem().getBytes(1,(int) imagem.getImagem().length());
-        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
-    }
 
-    @GetMapping("/")
-    public ModelAndView home(){
-        ModelAndView mv = new ModelAndView("list-cursos");
-        List<Imagem> imageList = imagemService.viewAll();
-        mv.addObject("imageList", imageList);
-        return mv;
-    }
+
 
 }

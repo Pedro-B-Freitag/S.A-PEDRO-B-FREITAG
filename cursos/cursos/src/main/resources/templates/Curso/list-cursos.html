@@ -319,7 +319,7 @@
 			<div class="cardo">
 				<div class="card-body">
 					<h5 class="card-title" th:text="${tempCurso.nome}"></h5>
-					<img th:each="list : ${imageList}" height="250px" th:src="@{${'/cursos/display?id=' + list.id}}" alt="imagem">
+					<img height="250px" th:src="${tempCurso.imagem.imagem}" alt="imagem">
 					<p class="card-text"><span class="negrito">Categoria:</span> <span th:text="${tempCurso.categoria}"></span></p>
 					<p class="card-text"><span class="negrito">Fornecedor:</span> <span th:text="${tempCurso.fornecedor}"></span></p>
 				</div>
