@@ -1,5 +1,7 @@
 package com.cursos.modulos.curso.Curso;
 
+import com.cursos.modulos.curso.Curso.Imagem.Imagem;
+import com.cursos.modulos.curso.Roles.Roles;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,9 +35,10 @@ public class Curso {
     private Integer gostei;
     @Column(name = "qtd_hrs")
     private String qtdHoras;
-    @Column(name = "imagem", columnDefinition = "BLOB")
-    @Lob
-    private Blob imagem;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "imagem_id")
+    private Imagem imagem;
 
 
     public Curso(){
@@ -44,7 +47,7 @@ public class Curso {
 
     public Curso(String descricao, String categoria, String fornecedor, String nome,
                  String url, Boolean presencial, Integer visualizacao, Integer gostei,
-                 String qtdHoras, Blob imagem) {
+                 String qtdHoras) {
 
         this.descricao = descricao;
         this.categoria = categoria;
@@ -55,7 +58,7 @@ public class Curso {
         this.visualizacao = visualizacao;
         this.gostei = gostei;
         this.qtdHoras = qtdHoras;
-        this.imagem = imagem;
+
 
     }
 
@@ -76,11 +79,5 @@ public class Curso {
                 '}';
     }
 
-    public Blob getImage() {
-        return imagem;
-    }
-    public void setImage(Blob imagem) {
-        this.imagem = imagem;
-    }
 
 }

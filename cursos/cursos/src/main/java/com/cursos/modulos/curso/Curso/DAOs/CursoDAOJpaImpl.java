@@ -43,12 +43,8 @@ public class CursoDAOJpaImpl implements CursoDAO {
 
 
     @Override
-    public Curso save(Curso oCurso) {
-
-        Curso bdCurso = entityManager.merge(oCurso);
-
-        return bdCurso;
-
+    public void save(Curso oCurso) {
+        entityManager.persist(oCurso);
     }
 
 

@@ -10,7 +10,7 @@ public interface CursoService {
 
     Curso findById(Integer oId);
 
-    Curso save(Curso oCurso);
+    void save(Curso oCurso);
 
     void deleteById(Integer oId);
 }

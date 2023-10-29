@@ -25,8 +25,8 @@ public class CursoServiceImpl implements CursoService{
     }
 
     @Override
-    public Curso save(Curso oCurso) {
-        return cursoRepository.save(oCurso);
+    public void save(Curso oCurso) {
+        cursoRepository.save(oCurso);
     }
 
     @Transactional

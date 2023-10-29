@@ -9,7 +9,7 @@ public interface CursoDAO {
 
     List<Curso> findAll();
     Curso findById(int oId);
-    Curso save(Curso oCurso);
+    void save(Curso oCurso);
     void deleteById(int oId);
 
 }
