@@ -196,10 +196,10 @@
         }
 
 
-        .li{
-        	display: inline;
-            margin-right: 10px;
-        }
+        .li {
+  			display: inline;
+  			margin-right: 10px;
+		}
 
         .line-text {
             color: #030455;
@@ -330,9 +330,9 @@
 
 	<!-- CARD -->
 	<div class="container">
-		<div class="li">
+		<div class="filterDiv li">
 			<div class="col-12 col-sm-8 col-md-6 col-lg-4">
-				<div class="card filterDiv" th:each="tempCurso : ${curso}"  th:attr="data-categoria=${tempCurso.categoria}">
+				<div class="card " th:each="tempCurso : ${curso}"  th:attr="data-categoria=${tempCurso.categoria}">
 
 					<!-- Imagem -->
 
