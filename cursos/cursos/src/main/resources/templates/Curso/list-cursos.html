@@ -19,8 +19,7 @@
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             display: flex;
-            background: rgb(0,119,182);
-			background: linear-gradient(29deg, rgba(0,119,182,1) 0%, rgba(0,180,216,1) 60%);
+            background-color: #CAF0F8;
             min-height: 100vh; /* Para ocupar pelo menos a altura total da viewport */
         }
         @import url('https://fonts.cdnfonts.com/css/sf-compact-display');
@@ -34,6 +33,27 @@
             padding-top: 80px;
             position: fixed;
             transition: 0.5s;
+        }
+
+
+        .btn{
+        	background-color: #0077B6;
+        }
+
+        .skills-container {
+          align-self: center;
+          padding: 6px 12px;
+          margin: 16px 0 0;
+        }
+
+        .skill {
+          display: inline;
+          color: #00a6c2;
+          border-radius: 2px;
+          background-color: rgba(0,166,194,.05);
+          border: 1px solid rgba(0,166,194,.15);
+          padding: 5px 8px;
+          font-size: 18px;
         }
 
         .sidenav a, .dropdown-btn {
@@ -124,8 +144,17 @@
             position: relative;
         }
 
-        .cardo {
-            border: none;
+
+
+        .card{
+        	background-color: #CAF0F8;
+        	border: none;
+        	transition: transform .2s;
+        }
+
+        .card:hover{
+        	background-color: #90E0EF;
+        	transform: scale(1.1);
         }
 
         .course-link {
@@ -134,36 +163,22 @@
         }
 
         .card-body {
-            padding: 20px;
+            padding: 40px;
         }
+
 
         .card-title {
             font-size: 2rem;
             margin-bottom: 40px;
             font-weight: bold;
-            font-family: sans-serif;
-            color: #CAF0F8;
+            color: black;
         }
 
         .card-text {
             margin-bottom: 8px;
         }
 
-        .btn-curso {
-            position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			border: none;
-			outline: 0;
-			padding: 12px;
-			color: #FFFFFF;
-			background-color: #030455;
-			text-align: center;
-			cursor: pointer;
-			font-size: 18px;
-			text-decoration: none;
-        }
+
 
         .btn-categoria {
             border: none;
@@ -180,10 +195,10 @@
             margin-bottom: 10px;
         }
 
-        .row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .li{
+        	display: inline;
+            margin-right: 10px;
         }
 
         .line-text {
@@ -312,21 +327,51 @@
 
 	<div class='line-text'> Cursos </div>
 
-	<!-- CARDS DOS CURSOS -->
-	<div class="row">
-			<!-- Loop through each course -->
-		<div class="curso-card filterDiv" th:each="tempCurso : ${curso}"  th:attr="data-categoria=${tempCurso.categoria}">
-			<div class="cardo">
-				<div class="card-body">
-					<h5 class="card-title" th:text="${tempCurso.nome}"></h5>
-					<img height="250px" th:src="${tempCurso.imagem.imagem}" alt="imagem">
-					<p class="card-text"><span class="negrito">Categoria:</span> <span th:text="${tempCurso.categoria}"></span></p>
-					<p class="card-text"><span class="negrito">Fornecedor:</span> <span th:text="${tempCurso.fornecedor}"></span></p>
+
+	<!-- CARD -->
+	<div class="container">
+		<div class="li">
+			<div class="col-12 col-sm-8 col-md-6 col-lg-4">
+				<div class="card filterDiv" th:each="tempCurso : ${curso}"  th:attr="data-categoria=${tempCurso.categoria}">
+
+					<!-- Imagem -->
+
+					<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.Id}}" alt="Imagem do Curso">
+					<div class="card-body">
+
+						<!-- nome do curso -->
+						<h4 class="card-title" th:text="${tempCurso.nome}"></h4>
+
+						<!-- fornecedor -->
+						<h6 class="card-subtitle mb-2 text-muted" th:text="${tempCurso.fornecedor}"></h6>
+
+						<!-- descrição -->
+						<p class="card-text" th:text="${tempCurso.descricao}"></p>
+						<div class="buy d-flex justify-content-between align-items-center">
+							<!-- categoria -->
+							<div class="skills-container mt-4">
+								<div class="skill" th:text="${tempCurso.categoria}"> </div>
+							</div>
+							<a th:href="${tempCurso.url}" class="btn mt-3"> Ir ao Curso</a>
+						</div>
+					</div>
 				</div>
-				<a th:href="${tempCurso.url}" class="btn-curso">Ir ao curso</a>
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<script th:inline="javascript">
@@ -385,6 +430,7 @@
 			});
 		}
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 </div>
 

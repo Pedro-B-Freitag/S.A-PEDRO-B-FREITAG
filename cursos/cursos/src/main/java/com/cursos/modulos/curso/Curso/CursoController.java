@@ -3,6 +3,8 @@ package com.cursos.modulos.curso.Curso;
 import com.cursos.modulos.curso.Curso.Imagem.Imagem;
 import com.cursos.modulos.curso.Curso.Services.CursoService;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,6 +116,14 @@ public class CursoController {
         return "redirect:/cursos/mostrarFormCadastrarCurso";
     }
 
+    @GetMapping("/display")
+    public ResponseEntity<byte[]> displayImage(@RequestParam("imagemid") Integer id) throws IOException, SQLException
+    {
+        Curso curso = cursoService.findById(id);
+        byte [] imageBytes = curso.getImagem().getImagem().getBytes(1, (int) curso.getImagem().getImagem().length());
+        System.out.println(imageBytes);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
+    }
 
 
 }

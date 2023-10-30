@@ -9,8 +9,10 @@ import java.util.Date;
 public class Imagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private Integer id;
     @Lob
+    @Column(name ="imagem")
     private Blob imagem;
 
 
