@@ -49,6 +49,7 @@ public class SecurityConfig {
                                         .loginPage("/showMyLoginPage")
                                         .loginProcessingUrl("/authenticateTheUser")
                                         .permitAll()
+                                        .defaultSuccessUrl("/home", true)
                         ).logout(logout -> logout.permitAll()
 
 
@@ -56,19 +57,5 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-/*
-
-    @Autowired
-    CustomPessoaDetailsService pessoaDetailsService;
-
-    private BCryptPasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
-
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(pessoaDetailsService).passwordEncoder(passwordEncoder());
-    }
-    */
 
 }
