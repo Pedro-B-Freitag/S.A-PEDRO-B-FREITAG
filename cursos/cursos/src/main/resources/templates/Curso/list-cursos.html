@@ -327,7 +327,7 @@
 				<td th:text="${tempCurso.categoria}" />
 				<td th:text="${tempCurso.fornecedor}" />
 				<td>
-					<a th:href="@{/cursos/mostrarFormAtualizarCurso(cursoid=${tempCurso.Id})}" class="btn btn-info btn-sm">
+					<a th:href="@{/cursos/updateImage(cursoid=${tempCurso.Id})}" class="btn btn-info btn-sm">
 						Update
 					</a>
 					<a th:href="@{/cursos/deletar(cursoid=${tempCurso.Id})}" class="btn btn-danger btn-sm"
@@ -351,7 +351,7 @@
 			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 div-card" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
 
 				<!-- Imagem -->
-				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.Id}}" alt="Imagem do Curso">
+				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.id}}" alt="Imagem do Curso">
 				<div class="card-body">
 
 					<!-- nome do curso -->
@@ -382,7 +382,7 @@
 			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
 
 				<!-- Imagem -->
-				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.Id}}" alt="Imagem do Curso">
+				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.id}}" alt="Imagem do Curso">
 				<div class="card-body">
 
 					<!-- nome do curso -->

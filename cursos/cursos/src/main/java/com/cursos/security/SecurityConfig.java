@@ -36,7 +36,7 @@ public class SecurityConfig {
                 http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers("/home").permitAll()
-                        .requestMatchers("/cursos/list").permitAll()
+                        .requestMatchers("/cursos/list/**").permitAll()
                         .requestMatchers("/cursos/display/**").permitAll()
                         .requestMatchers("/vagas/list").permitAll()
                         .requestMatchers("/empresas/**").hasRole("ADMIN")

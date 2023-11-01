@@ -1,5 +1,7 @@
 package com.cursos.modulos.curso.Curso;
 
+import com.cursos.modulos.curso.Curso.DTOs.CursoDTO;
+import com.cursos.modulos.curso.Curso.DTOs.idDTO;
 import com.cursos.modulos.curso.Curso.Imagem.Imagem;
 import com.cursos.modulos.curso.Curso.Services.CursoService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,14 +25,16 @@ import java.util.List;
 @RequestMapping("/cursos")
 public class CursoController {
     private CursoService cursoService;
-
-
+    @Autowired
+    private idDTO idDTO;
     private CursoDTO cursoDTO;
+
 
     @Autowired
     public CursoController(CursoService oCursoService, CursoDTO cursoDTO){
         cursoService = oCursoService;
         this.cursoDTO = cursoDTO;
+        this.idDTO = idDTO;
     }
 
 
@@ -63,15 +67,15 @@ public class CursoController {
             HttpServletRequest request, RedirectAttributes redirectAttributes, @ModelAttribute("curso") Curso oCurso
     ) throws SQLException, IOException , SerialException {
 
-        oCurso.setImagem(cursoDTO.getImagem());
+        oCurso.getImagem().setImagem(cursoDTO.getImagem().getImagem());
         cursoService.save(oCurso);
 
         return "redirect:/cursos/list";
     }
 
     @GetMapping("/mostrarFormAtualizarCurso")
-    public String mostrarFormAtualizarCurso(@RequestParam("cursoid") int oId, Model theModel){
-        Curso oCurso = cursoService.findById(oId);
+    public String mostrarFormAtualizarCurso(Model theModel){
+        Curso oCurso = cursoService.findById(idDTO.getId());
         theModel.addAttribute("curso", oCurso);
         return "curso/curso-form";
     }
@@ -100,7 +104,6 @@ public class CursoController {
         return new ModelAndView("addimage");
     }
 
-    // add image - post
     @PostMapping("/addImage")
     public String addImagePost(HttpServletRequest request,@RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
     {
@@ -108,13 +111,34 @@ public class CursoController {
         Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
 
-        Imagem imagem = new Imagem();
-        imagem.setImagem(blob);
 
-        cursoDTO.setImagem(imagem);
+        cursoDTO.setImagem(blob);
 
         return "redirect:/cursos/mostrarFormCadastrarCurso";
     }
+
+
+
+    @GetMapping("/updateImage")
+    public ModelAndView updateImage(@RequestParam("cursoid") Integer oId, Model theModel){
+        idDTO.setId(oId);
+        return new ModelAndView("updateimage");
+    }
+
+    @PostMapping("/updateImage")
+    public String updateImage(HttpServletRequest request,@RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
+    {
+        byte[] bytes = file.getBytes();
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+
+
+        cursoDTO.setImagem(blob);
+
+        return "redirect:/cursos/mostrarFormAtualizarCurso";
+    }
+
+    // add image - post
+
 
     @GetMapping("/display")
     public ResponseEntity<byte[]> displayImage(@RequestParam("imagemid") Integer id) throws IOException, SQLException
