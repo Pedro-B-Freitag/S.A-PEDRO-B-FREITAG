@@ -56,6 +56,15 @@
           font-size: 18px;
         }
 
+        .row{
+        	margin-bottom: 50px;
+        	margin-top: 50px;
+        }
+        .div-card{
+        	margin-right: 100px;
+        }
+
+
         .sidenav a, .dropdown-btn {
             padding: 6px 8px 6px 16px;
             text-decoration: none;
@@ -133,6 +142,7 @@
             color: white;
         }
 
+
         .curso-card {
             box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
             width: 250px;
@@ -164,6 +174,7 @@
 
         .card-body {
             padding: 40px;
+            margin-top : 10px;
         }
 
 
@@ -175,7 +186,12 @@
         }
 
         .card-text {
-            margin-bottom: 8px;
+
+        }
+
+        .d-flex justify-content-between align-items-center{
+        	position: absolute;
+  			bottom: 10px;
         }
 
 
@@ -326,10 +342,41 @@
 
 
 
+
 	<div class='line-text'> Cursos </div>
 
+	<!-- CARDS MOSTRANDO TODOS -->
+	<div class="container">
+		<div class="row">
+			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 div-card" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
 
-	<!-- CARD -->
+				<!-- Imagem -->
+				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.Id}}" alt="Imagem do Curso">
+				<div class="card-body">
+
+					<!-- nome do curso -->
+					<h4 class="card-title" th:text="${tempCurso.nome}"></h4>
+
+					<!-- fornecedor -->
+					<h6 class="card-subtitle mb-2 text-muted" th:text="${tempCurso.fornecedor}"></h6>
+
+					<!-- descrição -->
+					<p class="card-text" th:text="${tempCurso.descricao}"></p>
+					<div class="d-flex justify-content-between align-items-center">
+						<!-- categoria -->
+						<div class="skills-container mt-4">
+							<div class="skill" th:text="${tempCurso.categoria}"> </div>
+						</div>
+						<a th:href="${tempCurso.url}" class="btn mt-3"> Ir ao Curso</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<p id ="categoria" class='line-text'>  </p>
+	<!-- CARDS CATEGORIAS -->
 	<div class="container">
 		<div class="row">
 			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
@@ -387,6 +434,7 @@
 
 		function filterSelection(categoria) {
 			var elements = document.getElementsByClassName('filterDiv');
+
 
 			if (categoria === 'todos') {
 				for (var i = 0; i < elements.length; i++) {

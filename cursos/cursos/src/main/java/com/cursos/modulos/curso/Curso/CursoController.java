@@ -72,7 +72,7 @@ public class CursoController {
     @GetMapping("/mostrarFormAtualizarCurso")
     public String mostrarFormAtualizarCurso(@RequestParam("cursoid") int oId, Model theModel){
         Curso oCurso = cursoService.findById(oId);
-        theModel.addAttribute("cursoDTO", oCurso);
+        theModel.addAttribute("curso", oCurso);
         return "curso/curso-form";
     }
 
