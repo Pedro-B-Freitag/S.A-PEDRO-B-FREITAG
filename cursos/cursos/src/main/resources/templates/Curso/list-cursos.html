@@ -270,7 +270,7 @@
 <body>
 
 
-
+<!--SIDE NAV-->
 <div class="sidenav">
 	<a href="#Mostrar Todos" onclick="filterSelection('todos')">Mostrar Todos</a>
 	<a href="#Programação" onclick="filterSelection('Programação')">Programação</a>
@@ -292,7 +292,7 @@
 
 
 
-
+<!--TOP NAV-->
 <div class="topnav">
 	<a href="/home"> <i class="fa fa-fw fa-home"></i></a>
 	<a href="/cursos/list">Cursos</a>
@@ -310,6 +310,10 @@
 		</a>
 	</div>
 
+
+
+
+	<!-- TABELA DOS ADMINS -->
 	<div sec:authorize="hasRole('ROLE_ADMIN')">
 		<table class="table table-bordered table-striped">
 			<thead class="table-dark">
@@ -317,6 +321,7 @@
 				<th>Nome do Curso</th>
 				<th>Categoria</th>
 				<th>Fornecedor </th>
+				<th>Imagem </th>
 				<th>ACOES</th>
 			</tr>
 			</thead>
@@ -326,10 +331,12 @@
 				<td th:text="${tempCurso.nome}" />
 				<td th:text="${tempCurso.categoria}" />
 				<td th:text="${tempCurso.fornecedor}" />
+				<td><img th:src="@{${'/cursos/display?imagemid=' + tempCurso.id}}" alt="Imagem do Curso"></td>
 				<td>
 					<a th:href="@{/cursos/updateImage(cursoid=${tempCurso.Id})}" class="btn btn-info btn-sm">
 						Update
 					</a>
+
 					<a th:href="@{/cursos/deletar(cursoid=${tempCurso.Id})}" class="btn btn-danger btn-sm"
 					   onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
 						Deletar
@@ -351,7 +358,7 @@
 			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 div-card" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
 
 				<!-- Imagem -->
-				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.id}}" alt="Imagem do Curso">
+				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.id}}" alt="Imagem do Curso">
 				<div class="card-body">
 
 					<!-- nome do curso -->
@@ -382,7 +389,7 @@
 			<div class="card col-12 col-sm-8 col-md-6 col-lg-4 filterDiv" th:each="tempCurso : ${curso}" th:attr="data-categoria=${tempCurso.categoria}">
 
 				<!-- Imagem -->
-				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.imagem.id}}" alt="Imagem do Curso">
+				<img class="card-img" th:src="@{${'/cursos/display?imagemid=' + tempCurso.id}}" alt="Imagem do Curso">
 				<div class="card-body">
 
 					<!-- nome do curso -->

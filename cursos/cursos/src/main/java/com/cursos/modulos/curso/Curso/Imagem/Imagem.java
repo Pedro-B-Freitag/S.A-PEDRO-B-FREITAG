@@ -1,28 +1,13 @@
 package com.cursos.modulos.curso.Curso.Imagem;
 
 import jakarta.persistence.*;
+import org.springframework.stereotype.Component;
+
 import java.sql.Blob;
-import java.util.Date;
-
-@Entity
-@Table(name = "imagem")
+@Component
 public class Imagem {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
-    private Integer id;
     @Lob
-    @Column(name ="imagem")
     private Blob imagem;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Blob getImagem() {
         return imagem;

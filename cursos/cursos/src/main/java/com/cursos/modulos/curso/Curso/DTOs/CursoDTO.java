@@ -13,16 +13,13 @@ public class CursoDTO {
 
     @Getter
     @Setter
-    private Curso curso;
-    private Blob imagem;
+    private Imagem imagem;
 
     public Imagem getImagem() {
-        Imagem imagemObj = new Imagem();
-        imagemObj.setImagem(imagem);
-        return imagemObj;
+        return imagem;
     }
 
-    public void setImagem(Blob imagem) {
+    public void setImagem(Imagem imagem) {
         this.imagem = imagem;
     }
 }

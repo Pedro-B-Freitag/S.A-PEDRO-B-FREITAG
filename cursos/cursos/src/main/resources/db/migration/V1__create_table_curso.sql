@@ -9,7 +9,5 @@ CREATE TABLE IF NOT EXISTS curso (
     visualizacao INT NULL,
     gostei INT NULL,
     qtd_hrs VARCHAR(50) NULL,
-    imagem_id INT UNIQUE,
-    KEY FK_imagem_idx (imagem_id),
-    CONSTRAINT FK_IMAGEM FOREIGN KEY (imagem_id) REFERENCES imagem (id)
+    imagem BLOB
 );

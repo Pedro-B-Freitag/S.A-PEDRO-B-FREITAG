@@ -2,6 +2,7 @@ package com.cursos.modulos.curso.Curso.Services;
 
 import com.cursos.modulos.curso.Curso.Curso;
 import com.cursos.modulos.curso.Curso.CursoRepository;
+import com.cursos.modulos.curso.Curso.DAOs.CursoDAO;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import java.util.List;
 public class CursoServiceImpl implements CursoService{
     @Autowired
     private CursoRepository cursoRepository;
-
+    private CursoDAO cursoDAO;
 
     @Override
     public List<Curso> findAll() {

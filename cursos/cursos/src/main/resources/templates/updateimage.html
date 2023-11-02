@@ -18,12 +18,21 @@
 <div class="my-5">
   <div class="mx-auto w-25 " style="max-width:100%;">
     <h2 class="text-center mb-3">Add Image</h2>
-    <form th:action="@{/cursos/updateImage}" method="post" enctype="multipart/form-data"
+
+
+
+    <form th:action="@{/cursos/updateImage(cursoid=${param.cursoid})}" method="post" enctype="multipart/form-data"
           onsubmit="return validateImageUpload()">
+
+      <input type="hidden" id="cursoid" name="cursoid" th:value="${param.cursoid}" />
+
       <div class="input-group">
         <input type="file" class="form-control" id="imagem" name="imagem"
                aria-describedby="inputGroupFileAddon04" aria-label="Upload" required="required">
-        <button class="btn btn-outline-secondary" type="submit">Submit</button>
+
+
+        <button class="btn btn-outline-secondary" >Submit</button>
+
       </div>
     </form>
   </div>
