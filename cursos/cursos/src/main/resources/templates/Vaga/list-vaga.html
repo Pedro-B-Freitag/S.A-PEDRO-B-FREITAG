@@ -24,7 +24,9 @@
         }
 
         .main {
-
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
             margin-top: 90px;
             font-size: 20px;
             width: 100%;
@@ -65,18 +67,30 @@
             color: white;
         }
 
+        .btn{
+        	background-color: #0077B6;
+        }
+
+        .container {
+            overflow: hidden;
+            width: 100%;
+            max-width: none;
+            align-items: center;
+			justify-content: center;
+        }
+
         article.job-card {
           display: grid;
-          grid-template-columns: 80px auto 100px;
-          grid-template-rows: 35px 10px 35px;
+          margin-right: 0px;
           width: 700px;
-          position: center;
           border-top: 1px solid #e3e3e3;
           border-bottom: 1px solid #e3e3e3;
           border-left: 1px solid #e3e3e3;
           border-right: 1px solid #e3e3e3;
           font-family: 'Helvetica';
           padding: 24px;
+          margin-bottom: 40px;
+
         }
 
         article.job-card:hover,
@@ -138,6 +152,7 @@
           align-self: center;
           padding-top: 10px;
           padding: 0 24px;
+
         }
 
         .skill {
@@ -163,7 +178,6 @@
 
 
 
-
     </style>
 </head>
 
@@ -185,16 +199,14 @@
 
     <title>Vaga Directory</title>
 
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <a th:href="@{/vagas/mostrarFormCadastrarVaga}"
+           class="btn bnt-primary btn-sm mb-3">
+            Adicionar Vaga
+        </a>
+    </div>
+
     <div class="container">
-
-
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <a th:href="@{/vagas/mostrarFormCadastrarVaga}"
-               class="btn bnt-primary btn-sm mb-3">
-                Adicionar Vaga
-            </a>
-        </div>
-
 
         <div sec:authorize="hasRole('ROLE_ADMIN')">
             <table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-striped">
@@ -231,7 +243,7 @@
                 </tbody>
         </table>
     </div>
-
+    </div>
 
         <!--
         ======================================================================================================
@@ -241,9 +253,9 @@
                                                 CARTÕES DAS VAGAS
        -->
 
+    <div class = "container">
 
         <article class="job-card" th:each="tempVaga : ${vaga}">
-
             <div class="company-logo-img">
                 <img src="https://cdn-icons-png.flaticon.com/512/903/903479.png" />
             </div>
@@ -262,6 +274,7 @@
                 src="http://code.jquery.com/jquery-3.2.1.min.js"
                 integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
                 crossorigin="anonymous"></script>
+
 
 
     </div>
