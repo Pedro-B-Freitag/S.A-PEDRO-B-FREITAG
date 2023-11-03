@@ -462,7 +462,7 @@
 		</div>
 	</div>
 
-	<p id ="categoria" class='line-text'>  </p>
+	<p id="categoryNameDisplay" class='line-text'></p>
 	<!-- CARDS CATEGORIAS -->
 	<div class="container">
 		<div id="parent-categoria">
@@ -507,61 +507,51 @@
 
 
 	<script th:inline="javascript">
-		document.addEventListener('DOMContentLoaded', function () {
-			// Add the code below to mark "Mostrar Todos" as active by default
-			var mostrarTodosBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'todos\')"]');
-			mostrarTodosBtn.classList.add('active');
+			document.addEventListener('DOMContentLoaded', function () {
+				// Add the code below to mark "Mostrar Todos" as active by default
+				var mostrarTodosBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'todos\')"]');
+				mostrarTodosBtn.classList.add('active');
 
-			// Call the filterSelection('todos') function to show all items when the page loads
-			filterSelection('todos');
+				// Call the filterSelection('todos') function to show all items when the page loads
+				filterSelection('todos');
 
-			// Simulate a click on the "Mostrar Todos" button
-			mostrarTodosBtn.click();
-		});
+				// Simulate a click on the "Mostrar Todos" button
+				mostrarTodosBtn.click();
+			});
 
-		function filterSelection(categoria) {
-			var elements = document.getElementsByClassName('filterDiv');
+			function filterSelection(categoria) {
+				var elements = document.getElementsByClassName('filterDiv');
+					var categoryNameDisplay = document.getElementById('categoryNameDisplay'); // Add an element to display the category name
 
-
-			if (categoria === 'todos') {
-				for (var i = 0; i < elements.length; i++) {
-					elements[i].style.display = 'block';
-				}
-			} else {
-				for (var i = 0; i < elements.length; i++) {
-					var dataCategory = elements[i].getAttribute('data-categoria');
-					if (categoria === 'todos' || dataCategory === categoria) {
+				if (categoria === 'todos') {
+					for (var i = 0; i < elements.length; i++) {
 						elements[i].style.display = 'block';
-					} else {
-						elements[i].style.display = 'none';
+					}
+				} else {
+					for (var i = 0; i < elements.length; i++) {
+						var dataCategory = elements[i].getAttribute('data-categoria');
+						if (categoria === 'todos' || dataCategory === categoria) {
+							elements[i].style.display = 'block';
+						} else {
+							elements[i].style.display = 'none';
+						}
 					}
 				}
-			}
 
-			// Remove the 'active' class from all buttons and add it to the current category
-			var btns = document.getElementsByClassName('btn-categoria');
-			for (var i = 0; i < btns.length; i++) {
-				btns[i].classList.remove('active');
-			}
+				// Display the category name
+				categoryNameDisplay.innerText = categoria;
 
-			var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\')"]');
-			currentBtn.classList.add('active');
-		}
-
-		var dropdown = document.getElementsByClassName("dropdown-btn");
-		var i;
-
-		for (i = 0; i < dropdown.length; i++) {
-			dropdown[i].addEventListener("click", function () {
-				this.classList.toggle("active");
-				var dropdownContent = this.nextElementSibling;
-				if (dropdownContent.style.display === "block") {
-					dropdownContent.style.display = "none";
-				} else {
-					dropdownContent.style.display = "block";
+				// Remove the 'active' class from all buttons and add it to the current category
+				var btns = document.getElementsByClassName('btn-categoria');
+				for (var i = 0; i < btns.length; i++) {
+					btns[i].classList.remove('active');
 				}
-			});
-		}
+
+				var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\')"]');
+				currentBtn.classList.add('active');
+			}
+
+			// Rest of your script...
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
