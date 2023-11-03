@@ -58,7 +58,9 @@
         .row{
         	margin-bottom: 50px;
         	margin-top: 50px;
-        	margin-left : 50px;
+        	width:100%;
+        	align-items: center;
+			justify-content : center;
         }
 
 
@@ -107,12 +109,11 @@
         }
 
         .main {
-            flex: 1; /* Isso faz com que o conteúdo principal ocupe o restante do espaço disponível */
+
             margin-top: 60px;
             font-size: 20px;
-            padding: 20px 10px;
             width: 100%;
-            margin-left: 200px;
+            margin-left: 10px;
         }
 
         .topnav a {
@@ -157,28 +158,40 @@
 
 		#parent {
 		  width: 100%;
-		  height: 900px;
+		  height: 830px;
 		  white-space: nowrap;
 		  overflow-x: auto;
+		  display: flex;
+		  align-items: flex-start;
+		  margin-bottom: 150px;
 		}
 
 		#parent-categoria {
 		  width: 100%;
-		  height: 900px;
+		  height: 830px;
+		  white-space: nowrap;
 		  overflow-x: auto;
+		  display: flex;
+		  align-items: flex-start;
 		}
 
 		.child {
 		  display: inline-block;
+		  width: 390px;
+		  height: 690px;
 		  margin-top: 50px;
 		  margin-left: 50px;
-		  box-sizing: content-box;
+
+
 		}
 
 		.child-categoria {
+		  display: inline-block;
+		  width: 390px;
+		  height: 690px;
 		  margin-top: 50px;
 		  margin-left: 50px;
-		  box-sizing: content-box;
+
 		}
 
         .card{
@@ -188,8 +201,8 @@
         }
 
         .card-img{
-       		width: 432px;
-  			height: 432px;
+       		width: 390px;
+  			height: 390px;
         }
 
         .imagem-tabela{
@@ -214,6 +227,8 @@
         .card-body {
             padding: 40px;
             margin-top : 10px;
+            height: 300px;
+            width: 390px;
         }
 
 
@@ -248,7 +263,14 @@
             font-size: 16px;
             margin: 10px;
             margin-bottom: 10px;
+            transition: transform .2s;
         }
+
+        .btn-categoria:hover {
+        	background-color: #90E0EF;
+        	transform: scale(1.1);
+        	color: black;
+		}
 
         .line-text {
             color: #030455;
@@ -256,6 +278,8 @@
             font-weight: bold;
             text-align: center;
             font-size: 80px;
+            margin-top: 60px;
+            margin-bottom: 100px;
         }
 
         .espacamento {
@@ -266,6 +290,9 @@
 
         .container {
             overflow: hidden;
+            width: 100%;
+            max-width: none;
+
         }
 
         .filterDiv {
@@ -297,33 +324,30 @@
 			float: none;
 			display: block;
 		  }
+		  /* width */
+		::-webkit-scrollbar {
+		  width: 10px;
+		}
+
+		/* Track */
+		::-webkit-scrollbar-track {
+		  background: #f1f1f1;
+		}
+
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+		  background: #888;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+		  background: #555;
+		}
 		}
     </style>
 </head>
 
 <body>
-
-
-<!--SIDE NAV-->
-<div class="sidenav">
-	<a href="#Mostrar Todos" onclick="filterSelection('todos')">Mostrar Todos</a>
-	<a href="#Programação" onclick="filterSelection('Programação')">Programação</a>
-	<a href="#Marketing Digital" onclick="filterSelection('Marketing Digital')">Marketing Digital</a>
-	<a href="#Informática" onclick="filterSelection('Informática')">Informática</a>
-	<a href="#Desenvolvimento Web" onclick="filterSelection('Desenvolvimento Web')">Desenvolvimento Web</a>
-	<a href="#Inglês como Segunda Língua (ESL)" onclick="filterSelection('Inglês como Segunda Língua (ESL)')">Inglês como Segunda Língua (ESL)</a>
-	<a href="#Design Gráfico" onclick="filterSelection('Design Gráfico')">Design Gráfico</a>
-	<a href="#Machine Learning" onclick="filterSelection('Machine Learning')">Machine Learning</a>
-	<a href="#Fotografia" onclick="filterSelection('Fotografia')">Fotografia</a>
-	<a href="#Finanças Pessoais" onclick="filterSelection('Finanças Pessoais')">Finanças Pessoais</a>
-	<a href="#Gerenciamento de Projetos" onclick="filterSelection('Gerenciamento de Projetos')">Gerenciamento de Projetos</a>
-	<a href="#Ciência de Dados" onclick="filterSelection('Ciência de Dados')">Ciência de Dados</a>
-	<a href="#Redes de Computadores" onclick="filterSelection('Redes de Computadores')">Redes de Computadores</a>
-	<a href="#Marketing de Mídias Sociais" onclick="filterSelection('Marketing de Mídias Sociais')">Marketing de Mídias Sociais</a>
-	<a href="#Introdução à Inteligência Artificial (IA)" onclick="filterSelection('Introdução à Inteligência Artificial (IA)')">Introdução à Inteligência Artificial (IA)</a>
-	<a href="#Psicologia" onclick="filterSelection('Psicologia')">Psicologia</a>
-</div>
-
 
 
 <!--TOP NAV-->
@@ -415,6 +439,26 @@
 		</div>
 	</div>
 
+	<div class='line-text' > Categorias </div>
+	<div id="myBtnContainer">
+		<div class="row ">
+			<button class="btn-categoria " onclick="filterSelection('Programação')"> Programação</button>
+			<button class="btn-categoria"  onclick="filterSelection('Marketing Digital')"> Marketing Digital</button>
+			<button class="btn-categoria" onclick="filterSelection('Informática')"> Informática</button>
+			<button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web')"> Desenvolvimento Web</button>
+			<button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)')"> Inglês como Segunda Língua (ESL)</button>
+			<button class="btn-categoria" onclick="filterSelection('Design Gráfico')"> Design Gráfico</button>
+			<button class="btn-categoria" onclick="filterSelection('Machine Learning')"> Machine Learning</button>
+			<button class="btn-categoria" onclick="filterSelection('Fotografia')"> Fotografia</button>
+			<button class="btn-categoria" onclick="filterSelection('Finanças Pessoais')"> Finanças Pessoais</button>
+			<button class="btn-categoria" onclick="filterSelection('Gerenciamento de Projetos')"> Gerenciamento de Projetos</button>
+			<button class="btn-categoria" onclick="filterSelection('Ciência de Dados')"> Ciência de Dados</button>
+			<button class="btn-categoria" onclick="filterSelection('Redes de Computadores')"> Redes de Computadores</button>
+			<button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais')"> Marketing de Mídias Sociais</button>
+			<button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)')"> Introdução à Inteligência Artificial (IA)</button>
+			<button class="btn-categoria" onclick="filterSelection('Psicologia')"> Psicologia</button>
+		</div>
+	</div>
 
 	<p id ="categoria" class='line-text'>  </p>
 	<!-- CARDS CATEGORIAS -->
