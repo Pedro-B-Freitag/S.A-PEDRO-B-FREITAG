@@ -358,7 +358,9 @@
 		<a href="/empresas/list">Empresas</a>
 	</div>
 	<a href="/vagas/list">Vagas de Emprego</a>
-	<a href="/fancy-login" class="split">Login</a>
+	<div sec:authorize="isAnonymous()">
+		<a href="/fancy-login" class="split">Login</a>
+	</div>
 </div>
 
 <div class="main">
