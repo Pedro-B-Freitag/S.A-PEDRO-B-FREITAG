@@ -79,42 +79,51 @@
 			justify-content: center;
         }
 
+        .line-text {
+            color: #030455;
+            font-family: 'SF Compact Display';
+            font-weight: bold;
+            text-align: center;
+            font-size: 80px;
+            margin-top: 60px;
+            margin-bottom: 100px;
+        }
+
         article.job-card {
+          position: relative;
           display: grid;
           margin-right: 0px;
+          border-radius: 25px;
+          border: none;
+          transition: transform .2s;
           width: 700px;
-          border-top: 1px solid #e3e3e3;
-          border-bottom: 1px solid #e3e3e3;
-          border-left: 1px solid #e3e3e3;
-          border-right: 1px solid #e3e3e3;
           font-family: 'Helvetica';
           padding: 24px;
           margin-bottom: 40px;
-
+          box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
         }
 
         article.job-card:hover,
         article.job-card:focus {
-          background-color: rgba(0,166,194,.03);
-            border-color: #b2e4ec;
+          background-color: #90E0EF;
+            border-color: #90E0EF;
+          transform: scale(1.1);
         }
 
         .company-logo-img {
-          grid-area: 1 / 1 / 2 / 2;
-          height: 40px;
-          width: 40px;
+          position: absolute;
+          top: 50%;
+          left: 120px;
+          transform: translate(-50%, -50%);
+          height: 50px;
+          width: 50px;
           box-sizing: border-box;
-          position: relative;
           padding: 5px;
         }
 
         .company-logo-img img {
-          max-height: calc(100% - 10px);
-          max-width: calc(100% - 10px);
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          max-height: 100%;
+          max-width: 100%;
         }
 
         .job-title {
@@ -165,14 +174,31 @@
           font-size: 12px;
         }
 
+        .row {
+            margin-bottom: 200px;
+            margin-top: 50px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
         .apply {
-          grid-area: 1 / 3 / 2 / 4;
+          position: relative;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
         }
 
         .apply-btn {
-          grid-area: 1 / 3 / 2 / 4;
+          margin-left: 530px;
+          margin-top: 25px;
           background-color: #030455;
           color: #fff;
+          position: absolute; /* Keep this absolute */
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          width: 100px;
         }
 
 
@@ -252,8 +278,8 @@
 
                                                 CARTÕES DAS VAGAS
        -->
-
-    <div class = "container">
+    <div class='line-text' > Vagas de Emprego </div>
+    <div class = "row">
 
         <article class="job-card" th:each="tempVaga : ${vaga}">
             <div class="company-logo-img">
@@ -264,10 +290,9 @@
             <div class="skills-container">
                 <div class="skill" th:text="${tempVaga.categoria}"> </div>
             </div>
-            <a class="apply" th:href="${tempVaga.url}">
-            <button class ="apply-btn">Aplicar</button>
-            </a>
-            <a href="#"></a>
+                <a class="apply" th:href="${tempVaga.url}">
+                    <button class ="apply-btn">Aplicar</button>
+                </a>
         </article>
 
         <script
