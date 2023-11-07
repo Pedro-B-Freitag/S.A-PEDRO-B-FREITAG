@@ -224,6 +224,9 @@
     <div sec:authorize="hasRole('ROLE_ADMIN')">
         <a href="/empresas/list">Empresas</a>
     </div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <a href="/pessoas/list">Pessoas</a>
+    </div>
     <a href="/vagas/list">Vagas de Emprego</a>
     <div sec:authorize="isAnonymous()">
         <a href="/fancy-login" class="split">Login</a>
