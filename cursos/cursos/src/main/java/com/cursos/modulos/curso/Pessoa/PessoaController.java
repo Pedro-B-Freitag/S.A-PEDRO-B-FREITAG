@@ -5,6 +5,7 @@ import com.cursos.modulos.curso.Empresa.Service.EmpresaService;
 import com.cursos.modulos.curso.Pessoa.Service.PessoaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +18,14 @@ import java.util.List;
 public class PessoaController {
 
     private PessoaService pessoaService;
-
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PessoaController(PessoaService aPessoaService){
-        pessoaService = aPessoaService;
+    public PessoaController(PessoaService pessoaService, PasswordEncoder passwordEncoder) {
+        this.pessoaService = pessoaService;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
 
 
@@ -49,6 +52,9 @@ public class PessoaController {
 
     @PostMapping("/save")
     public String savePessoa(@ModelAttribute("pessoa") Pessoa aPessoa){
+        String hashedPassword = passwordEncoder.encode(aPessoa.getSenha());
+        aPessoa.setSenha(hashedPassword);
+
         pessoaService.save(aPessoa);
 
         return "redirect:/pessoas/list";

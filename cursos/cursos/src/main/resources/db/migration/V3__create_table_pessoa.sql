@@ -52,9 +52,9 @@ INSERT INTO pessoa (cpf,nome,contato,email , genero ,data_nascimento, cep,
                     rua,bairro ,cidade,estado, nr_residencia,usuario,senha, ativado, roles_id)
 VALUES ("09004999906", "Pedro Bosini", "47988923944","pedro@gmail.com",
         "M", "2005-12-18","89037385", "Sabia","Agua Verde", "Blumenau",
-        "SC", "79","PedroBosini","{bcrypt}$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1, 2),
+        "SC", "79","PedroBosini","$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1, 2),
 
         ("45678912301","Janaina","47999999999", "jana@gmail.com","F",
          	"2000-11-12","38729548","Peixes","Agua Azul","Itapetinga",
-         	"SP","45","Janaina","{bcrypt}$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1, 1);
+         	"SP","45","Janaina","$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1, 1);
 

@@ -11,6 +11,23 @@
 
     <title>Cadastrar Empresa</title>
 </head>
+<style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            background-color: #CAF0F8;
+            min-height: 100vh; /* Para ocupar pelo menos a altura total da viewport */
+        }
+
+        .form-control{
+            background-color: #90E0EF;
+        }
+
+        .custom-select{
+            background-color: #90E0EF;
+            margin-bottom: 24px;
+        }
+</style>
 
 <body>
 
@@ -38,10 +55,9 @@
         <input type="text" th:field="*{cep}"
                class="form-control mb-4 w-25" placeholder="CEP da Empresa" required>
 
-        <div  class="custom-select" style="width:200px;">
 
 
-            <select th:field="*{uf}">
+            <select class="custom-select" th:field="*{uf}">
                 <option value="0">Selecione o Estado:</option>
                 <option value="AC">AC</option>
                 <option value="AL">AL</option>
@@ -73,7 +89,6 @@
 
 
             </select>
-        </div>
 
         <input type="text" th:field="*{cidade}"
                class="form-control mb-4 w-25" placeholder="Cidade da Empresa" required>
