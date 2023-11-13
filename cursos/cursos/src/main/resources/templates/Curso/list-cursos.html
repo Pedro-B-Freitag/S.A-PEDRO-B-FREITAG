@@ -32,18 +32,22 @@
 
         .skills-container {
           align-self: center;
+          justify-content: center;
           padding: 6px 12px;
           margin: 16px 0 0;
         }
 
         .skill {
-          display: inline;
-          color: #00a6c2;
+          display: block;
+          color: #0077B6;
           border-radius: 2px;
           background-color: rgba(0,166,194,.05);
           border: 1px solid rgba(0,166,194,.15);
           padding: 5px 8px;
           font-size: 18px;
+          align-self: center;
+          justify-content: center;
+          text-align: center
         }
 
         .row{
@@ -131,7 +135,6 @@
 		#parent {
 		  width: 100%;
 		  height: 830px;
-		  white-space: nowrap;
 		  overflow-x: auto;
 		  display: flex;
 		  align-items: flex-start;
@@ -141,7 +144,6 @@
 		#parent-categoria {
 		  width: 100%;
 		  height: 830px;
-		  white-space: nowrap;
 		  overflow-x: auto;
 		  display: flex;
 		  align-items: flex-start;
@@ -176,6 +178,22 @@
        		width: 390px;
   			height: 390px;
         }
+
+        .card:hover .overlay{
+			opacity: 0.80;
+		}
+		.overlay {
+		  position: absolute;
+		  top: 0;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  height: 390px;
+		  width: 390px;
+		  opacity: 0;
+		  transition: .5s ease;
+		  background-color: #0077B6;
+		}
 
         .imagem-tabela{
         	width: 50px;
@@ -212,7 +230,15 @@
         }
 
         .card-text {
-
+			color: white;
+			font-size: 20px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			text-align: center;
         }
 
         .d-flex justify-content-between align-items-center{
@@ -394,6 +420,11 @@
 
 				<!-- Imagem -->
 				<img class="card-img imagem" th:src="@{${'/cursos/display?imagemid=' + tempCurso.id}}" alt="Imagem do Curso">
+
+				<div class="overlay">
+					<div class="card-text" th:text="${tempCurso.descricao}"></div>
+				</div>
+
 				<div class="card-body">
 
 					<!-- nome do curso -->
@@ -403,7 +434,7 @@
 					<h6 class="card-subtitle mb-2 text-muted" th:text="${tempCurso.fornecedor}"></h6>
 
 					<!-- descrição -->
-					<p class="card-text" th:text="${tempCurso.descricao}"></p>
+
 					<div class="d-flex justify-content-between align-items-center">
 						<!-- categoria -->
 						<div class="skills-container mt-4">
@@ -423,7 +454,7 @@
 			<button class="btn-categoria"  onclick="filterSelection('Marketing Digital', 'cardContainerCategoria')"> Marketing Digital</button>
 			<button class="btn-categoria" onclick="filterSelection('Informática', 'cardContainerCategoria')"> Informática</button>
 			<button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web', 'cardContainerCategoria')"> Desenvolvimento Web</button>
-			<button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)', 'cardContainerCategoria')"> Inglês como Segunda Língua (ESL)</button>
+			<button class="btn-categoria" onclick="filterSelection('Inglês', 'cardContainerCategoria')"> Inglês</button>
 			<button class="btn-categoria" onclick="filterSelection('Design Gráfico', 'cardContainerCategoria')"> Design Gráfico</button>
 			<button class="btn-categoria" onclick="filterSelection('Machine Learning', 'cardContainerCategoria')"> Machine Learning</button>
 			<button class="btn-categoria" onclick="filterSelection('Fotografia', 'cardContainerCategoria')"> Fotografia</button>
@@ -432,7 +463,7 @@
 			<button class="btn-categoria" onclick="filterSelection('Ciência de Dados', 'cardContainerCategoria')"> Ciência de Dados</button>
 			<button class="btn-categoria" onclick="filterSelection('Redes de Computadores', 'cardContainerCategoria')"> Redes de Computadores</button>
 			<button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais', 'cardContainerCategoria')"> Marketing de Mídias Sociais</button>
-			<button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)', 'cardContainerCategoria')"> Introdução à Inteligência Artificial (IA)</button>
+			<button class="btn-categoria" onclick="filterSelection('Inteligência Artificial', 'cardContainerCategoria')"> Inteligência Artificial</button>
 			<button class="btn-categoria" onclick="filterSelection('Psicologia', 'cardContainerCategoria')"> Psicologia</button>
 		</div>
 	</div>
@@ -445,6 +476,9 @@
 
 				<!-- Imagem -->
 				<img class="card-img imagem" th:src="@{${'/cursos/display?imagemid=' + tempCurso.id}}" alt="Imagem do Curso">
+				<div class="overlay">
+					<div class="card-text" th:text="${tempCurso.descricao}"></div>
+				</div>
 				<div class="card-body">
 
 					<!-- nome do curso -->
@@ -454,7 +488,6 @@
 					<h6 class="card-subtitle mb-2 text-muted" th:text="${tempCurso.fornecedor}"></h6>
 
 					<!-- descrição -->
-					<p class="card-text" th:text="${tempCurso.descricao}"></p>
 					<div class="buy d-flex justify-content-between align-items-center">
 						<!-- categoria -->
 						<div class="skills-container mt-4">

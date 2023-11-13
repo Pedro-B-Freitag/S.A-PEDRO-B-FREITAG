@@ -80,14 +80,16 @@
             overflow: hidden;
             width: 100%;
             max-width: none;
-            align-items: center;
-			justify-content: center;
+
+			display: flex;
+
         }
 
         .filterDiv{
         	display: inline-block;
             display: none;
             margin-right: 100px;
+
         }
 
 
@@ -191,10 +193,10 @@
 
          .row {
             display: flex;
+            flex-direction: column;
             margin-bottom: 200px;
-            margin-top: 50px;
+            margin-top: 30px;
             align-items: center;
-            justify-content: center;
             width: 70%; /* Set width to 80% */
             margin-left: 0px;
             margin-right: 0px;
@@ -206,6 +208,7 @@
             justify-content: center;
             justify-content: center;
             width: 30%;
+            height: 1000px;
         }
 
         .apply {
@@ -244,8 +247,8 @@
             background-color: #030455;
             text-align: center;
             cursor: pointer;
-            width: 155px;
-            height: 155px;
+            width: 300px;
+            height: 50px;
             font-size: 16px;
             margin: 10px;
             margin-bottom: 10px;
@@ -334,8 +337,8 @@
 
                                                 CARTÕES DAS VAGAS
        -->
-    <div class="container">
     <div class='line-text' > Vagas de Emprego </div>
+    <div class="container">
     <div class = "row">
 
         <article class="job-card filterDiv" th:each="tempVaga : ${vaga}">
@@ -364,6 +367,7 @@
 
 <div class='row-categoria'>
     <div  id="myBtnContainer">
+            <button class="btn-categoria" onclick="filterSelection('todos', 'cardContainerCategoria')"> Mostrar Todas</button>
             <button class="btn-categoria" onclick="filterSelection('Programação', 'cardContainerCategoria')"> Programação</button>
             <button class="btn-categoria"  onclick="filterSelection('Marketing Digital', 'cardContainerCategoria')"> Marketing Digital</button>
             <button class="btn-categoria" onclick="filterSelection('Informática', 'cardContainerCategoria')"> Informática</button>
@@ -390,42 +394,41 @@
 		});
 
 		function filterSelection(categoria, containerId) {
-		var elements = document.getElementsByClassName('filterDiv');
-		var categoryNameDisplay = document.getElementById('categoryNameDisplay');
+            var elements = document.getElementsByClassName('filterDiv');
+            var categoryNameDisplay = document.getElementById('categoryNameDisplay');
 
-		if (categoria === 'todos') {
-			for (var i = 0; i < elements.length; i++) {
-				elements[i].style.display = 'block';
-			}
-		} else {
-			for (var i = 0; i < elements.length; i++) {
-				var dataCategory = elements[i].getAttribute('data-categoria');
-				if (categoria === 'todos' || dataCategory === categoria) {
-					elements[i].style.display = 'block';
-				} else {
-					elements[i].style.display = 'none';
-				}
-			}
-		}
+            for (var i = 0; i < elements.length; i++) {
+                var dataCategory = elements[i].getAttribute('data-categoria');
+                if (categoria === 'todos' || dataCategory === categoria) {
+                    elements[i].style.display = 'block';
+                } else {
+                    elements[i].style.display = 'none';
+                }
+            }
 
-		// Display the category name
-		categoryNameDisplay.innerText = categoria;
+            // Display the category name
+            categoryNameDisplay.innerText = categoria;
 
-		// Remove the 'active' class from all buttons and add it to the current category
-		var btns = document.getElementsByClassName('btn-categoria');
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].classList.remove('active');
-		}
+            // Remove the 'active' class from all buttons and add it to the current category
+            var btns = document.getElementsByClassName('btn-categoria');
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove('active');
+            }
 
-		var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\')"]');
-		currentBtn.classList.add('active');
-		scrollToContainer('cardContainerCategoria');
-	}
+            var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\', \'' + containerId + '\')"]');
+            if (currentBtn) {
+                currentBtn.classList.add('active');
+            }
 
-	function scrollToContainer(containerId) {
-		var container = document.getElementById(containerId);
-		container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-	}
+            scrollToContainer(containerId);
+        }
+
+        function scrollToContainer(containerId) {
+            var container = document.getElementById(containerId);
+            if (container) {
+                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
 	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
