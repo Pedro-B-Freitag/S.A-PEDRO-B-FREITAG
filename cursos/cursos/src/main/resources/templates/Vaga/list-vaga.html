@@ -24,7 +24,7 @@
         }
 
         .main {
-            display: flex;
+            display:inline;
             flex-direction: column;
 
             margin-top: 90px;
@@ -84,6 +84,11 @@
 			justify-content: center;
         }
 
+        .filterDiv{
+        	display: inline-block;
+            display: none;
+            margin-right: 100px;
+        }
 
 
         .line-text {
@@ -183,12 +188,24 @@
           font-size: 12px;
         }
 
-        .row {
+
+         .row {
+            display: flex;
             margin-bottom: 200px;
             margin-top: 50px;
-            width: 70%;
             align-items: center;
             justify-content: center;
+            width: 70%; /* Set width to 80% */
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .row-categoria {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-content: center;
+            width: 30%;
         }
 
         .apply {
@@ -210,7 +227,34 @@
           width: 100px;
         }
 
-
+        .btn-categoria.active {
+            background-color: #90E0EF;
+            color: black;
+        }
+        .btn-categoria:hover {
+        	background-color: #90E0EF;
+        	transform: scale(1.1);
+        	color: black;
+		}
+		.btn-categoria {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: #FFFFFF;
+            background-color: #030455;
+            text-align: center;
+            cursor: pointer;
+            width: 155px;
+            height: 155px;
+            font-size: 16px;
+            margin: 10px;
+            margin-bottom: 10px;
+            transition: transform .2s;
+        }
+        .active {
+            background-color: green;
+            color: white;
+        }
 
 
     </style>
@@ -290,10 +334,11 @@
 
                                                 CARTÕES DAS VAGAS
        -->
+    <div class="container">
     <div class='line-text' > Vagas de Emprego </div>
     <div class = "row">
 
-        <article class="job-card" th:each="tempVaga : ${vaga}">
+        <article class="job-card filterDiv" th:each="tempVaga : ${vaga}">
             <div class="company-logo-img">
                 <img src="https://cdn-icons-png.flaticon.com/512/903/903479.png" />
             </div>
@@ -315,7 +360,75 @@
 
 
     </div>
+
+
+<div class='row-categoria'>
+    <div  id="myBtnContainer">
+            <button class="btn-categoria" onclick="filterSelection('Programação', 'cardContainerCategoria')"> Programação</button>
+            <button class="btn-categoria"  onclick="filterSelection('Marketing Digital', 'cardContainerCategoria')"> Marketing Digital</button>
+            <button class="btn-categoria" onclick="filterSelection('Informática', 'cardContainerCategoria')"> Informática</button>
+            <button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web', 'cardContainerCategoria')"> Desenvolvimento Web</button>
+            <button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)', 'cardContainerCategoria')"> Inglês como Segunda Língua (ESL)</button>
+            <button class="btn-categoria" onclick="filterSelection('Design Gráfico', 'cardContainerCategoria')"> Design Gráfico</button>
+            <button class="btn-categoria" onclick="filterSelection('Machine Learning', 'cardContainerCategoria')"> Machine Learning</button>
+            <button class="btn-categoria" onclick="filterSelection('Fotografia', 'cardContainerCategoria')"> Fotografia</button>
+            <button class="btn-categoria" onclick="filterSelection('Finanças Pessoais', 'cardContainerCategoria')"> Finanças Pessoais</button>
+            <button class="btn-categoria" onclick="filterSelection('Gerenciamento de Projetos', 'cardContainerCategoria')"> Gerenciamento de Projetos</button>
+            <button class="btn-categoria" onclick="filterSelection('Ciência de Dados', 'cardContainerCategoria')"> Ciência de Dados</button>
+            <button class="btn-categoria" onclick="filterSelection('Redes de Computadores', 'cardContainerCategoria')"> Redes de Computadores</button>
+            <button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais', 'cardContainerCategoria')"> Marketing de Mídias Sociais</button>
+            <button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)', 'cardContainerCategoria')"> Introdução à Inteligência Artificial (IA)</button>
+            <button class="btn-categoria" onclick="filterSelection('Psicologia', 'cardContainerCategoria')"> Psicologia</button>
     </div>
+    </div>
+    </div>
+</div>
+</div>
+<script th:inline="javascript">
+		document.addEventListener('DOMContentLoaded', function () {
+
+		});
+
+		function filterSelection(categoria, containerId) {
+		var elements = document.getElementsByClassName('filterDiv');
+		var categoryNameDisplay = document.getElementById('categoryNameDisplay');
+
+		if (categoria === 'todos') {
+			for (var i = 0; i < elements.length; i++) {
+				elements[i].style.display = 'block';
+			}
+		} else {
+			for (var i = 0; i < elements.length; i++) {
+				var dataCategory = elements[i].getAttribute('data-categoria');
+				if (categoria === 'todos' || dataCategory === categoria) {
+					elements[i].style.display = 'block';
+				} else {
+					elements[i].style.display = 'none';
+				}
+			}
+		}
+
+		// Display the category name
+		categoryNameDisplay.innerText = categoria;
+
+		// Remove the 'active' class from all buttons and add it to the current category
+		var btns = document.getElementsByClassName('btn-categoria');
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].classList.remove('active');
+		}
+
+		var currentBtn = document.querySelector('.btn-categoria[onclick="filterSelection(\'' + categoria + '\')"]');
+		currentBtn.classList.add('active');
+		scrollToContainer('cardContainerCategoria');
+	}
+
+	function scrollToContainer(containerId) {
+		var container = document.getElementById(containerId);
+		container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+	</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 </html>
 
