@@ -1,20 +1,20 @@
 CREATE TABLE IF NOT EXISTS pessoa(
-  id INT UNIQUE NOT NULL AUTO_INCREMENT,
-  cpf VARCHAR(11) UNIQUE NULL,
-  nome VARCHAR(255) NOT NULL,
-  contato VARCHAR(11) NULL,
-  email VARCHAR(255) UNIQUE NOT NULL,
-  genero VARCHAR(45) NOT NULL,
-  data_nascimento VARCHAR(15) NOT NULL,
-  cep VARCHAR(8) NULL,
-  rua VARCHAR(255) NULL,
-  bairro VARCHAR(45) NULL,
-  cidade VARCHAR(45) NULL,
-  estado VARCHAR(2) NULL,
-  nr_residencia VARCHAR(45) NULL,
-  usuario VARCHAR(45) PRIMARY KEY  NOT NULL,
-  senha VARCHAR(255) NOT NULL,
-  ativado tinyint DEFAULT(1),
+  pessoa_id INT UNIQUE NOT NULL AUTO_INCREMENT,
+  pessoa_cpf VARCHAR(11) UNIQUE NULL,
+  pessoa_nome VARCHAR(255) NOT NULL,
+  pessoa_contato VARCHAR(11) NULL,
+  pessoa_email VARCHAR(255) UNIQUE NOT NULL,
+  pessoa_genero VARCHAR(45) NOT NULL,
+  pessoa_data_nascimento VARCHAR(15) NOT NULL,
+  pessoa_cep VARCHAR(8) NULL,
+  pessoa_rua VARCHAR(255) NULL,
+  pessoa_bairro VARCHAR(45) NULL,
+  pessoa_cidade VARCHAR(45) NULL,
+  pessoa_estado VARCHAR(2) NULL,
+  pessoa_nr_residencia VARCHAR(45) NULL,
+  pessoa_usuario VARCHAR(45) PRIMARY KEY  NOT NULL,
+  pessoa_senha VARCHAR(255) NOT NULL,
+  pessoa_ativado tinyint DEFAULT(1),
   roles_id int ,
     KEY FK_roles_idx (roles_id),
     CONSTRAINT FK_ROLES FOREIGN KEY (roles_id) REFERENCES roles (id)
@@ -25,8 +25,8 @@ CREATE TRIGGER before_pessoa_insert
 BEFORE INSERT ON pessoa
 FOR EACH ROW
 BEGIN
-  IF NEW.ativado IS NULL THEN
-    SET NEW.ativado = 1;
+  IF NEW.pessoa_ativado IS NULL THEN
+    SET NEW.pessoa_ativado = 1;
   END IF;
 END;
 //
@@ -48,8 +48,8 @@ END;
 
 DELIMITER ;
 
-INSERT INTO pessoa (cpf,nome,contato,email , genero ,data_nascimento, cep,
-                    rua,bairro ,cidade,estado, nr_residencia,usuario,senha, ativado, roles_id)
+INSERT INTO pessoa (pessoa_cpf,pessoa_nome,pessoa_contato,pessoa_email , pessoa_genero ,pessoa_data_nascimento, pessoa_cep,
+                    pessoa_rua,pessoa_bairro ,pessoa_cidade,pessoa_estado, pessoa_nr_residencia,pessoa_usuario,pessoa_senha, pessoa_ativado, roles_id)
 VALUES ("09004999906", "Pedro Bosini", "47988923944","pedro@gmail.com",
         "M", "2005-12-18","89037385", "Sabia","Agua Verde", "Blumenau",
         "SC", "79","PedroBosini","$2a$10$6CIrQ1mOGj3wxyDhB6zbhuJaR3jztI2nQ.ItZWmIvW5eDvUvQiXs6", 1, 2),

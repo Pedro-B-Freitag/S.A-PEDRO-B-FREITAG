@@ -33,6 +33,10 @@
             margin-left: 10px;
         }
 
+        .hr{
+            margin: 3px;
+            color: #030455;
+        }
         .topnav {
             position: fixed;
             width: 100%;
@@ -170,7 +174,12 @@
           padding: 0 24px;
         }
 
-
+        .texto-categoria{
+            font-family: Helvetica;
+            font-size: 20px;
+            color: #030455;
+            font-weight: bold;
+        }
 
         .skills-container {
           grid-area: 3 / 2 / 4 / 3;
@@ -208,8 +217,11 @@
             align-items: center;
             justify-content: center;
             justify-content: center;
-            width: 30%;
-            height: 1000px;
+            width: 26%;
+            height: 1040px;
+            border: 2px solid #030455;
+            border-radius: 5px;
+            padding: 5px;
         }
 
         .apply {
@@ -377,7 +389,10 @@
 
 
 <div class='row-categoria'>
+
     <div  id="myBtnContainer">
+            <p class="texto-categoria">Buscar Por Categoria:</p>
+            <hr>
             <button class="btn-categoria" onclick="filterSelection('todos', 'cardContainerCategoria')"> Mostrar Todas</button>
             <button class="btn-categoria" onclick="filterSelection('Tecnologia da Informação', 'cardContainerCategoria')"> Tecnologia da Informação</button>
             <button class="btn-categoria"  onclick="filterSelection('Saúde e Medicina', 'cardContainerCategoria')"> Saúde e Medicina</button>

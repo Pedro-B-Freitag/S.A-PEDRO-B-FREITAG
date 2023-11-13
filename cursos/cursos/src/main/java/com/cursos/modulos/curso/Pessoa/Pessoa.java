@@ -19,35 +19,35 @@ public class Pessoa {
     private String usuario;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "pessoa_id")
     private Integer id;
-    @Column(name = "cpf")
+    @Column(name = "pessoa_cpf")
     private String cpf;
-    @Column(name = "nome")
+    @Column(name = "pessoa_nome")
     private String nome;
-    @Column(name = "contato")
+    @Column(name = "pessoa_contato")
     private String contato;
-    @Column(name = "email")
+    @Column(name = "pessoa_email")
     private String email;
-    @Column(name = "genero")
+    @Column(name = "pessoa_genero")
     private String genero;
-    @Column(name = "data_nascimento")
+    @Column(name = "pessoa_data_nascimento")
     private Date dataNascimento;
-    @Column(name = "cep")
+    @Column(name = "pessoa_cep")
     private String cep;
-    @Column(name = "rua")
+    @Column(name = "pessoa_rua")
     private String rua;
-    @Column(name = "bairro")
+    @Column(name = "pessoa_bairro")
     private String bairro;
-    @Column(name = "cidade")
+    @Column(name = "pessoa_cidade")
     private String cidade;
-    @Column(name = "estado")
+    @Column(name = "pessoa_estado")
     private String estado;
-    @Column(name = "nr_residencia")
+    @Column(name = "pessoa_nr_residencia")
     private Integer nrResidencia;
-    @Column(name = "senha")
+    @Column(name = "pessoa_senha")
     private String senha;
-    @Column(name = "ativado")
+    @Column(name = "pessoa_ativado")
     private Integer ativado;
 
     @OneToOne

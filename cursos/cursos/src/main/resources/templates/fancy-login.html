@@ -13,19 +13,7 @@
         font-family: Arial, Helvetica, sans-serif;
         display: flex;
         min-height: 100vh;
-        background-image: linear-gradient(
-          325deg,
-          hsl(239deg 93% 17%) 10%,
-          hsl(221deg 100% 21%) 35%,
-          hsl(213deg 100% 26%) 40%,
-          hsl(206deg 100% 30%) 42%,
-          hsl(205deg 69% 39%) 42%,
-          hsl(204deg 49% 48%) 43%,
-          hsl(201deg 48% 58%) 44%,
-          hsl(198deg 52% 67%) 47%,
-          hsl(195deg 57% 77%) 55%,
-          hsl(190deg 77% 88%) 87%
-        );
+        background: linear-gradient(to top left, #030455 50%, #CAF0F8 50%);
     }
 
     .card-header {
@@ -105,18 +93,19 @@
 
                             <!-- User name -->
                             <div style="margin-bottom: 25px;" class="input-group">
-                                <input type="text" name="username" placeholder="username" class="form-control" />
+                                <input type="text" name="username" placeholder="usuario" class="form-control" />
                             </div>
 
                             <!-- Password -->
                             <div style="margin-bottom: 25px;" class="input-group">
-                                <input type="password" name="password" placeholder="password" class="form-control" />
+                                <input type="password" name="password" placeholder="senha" class="form-control" />
                             </div>
 
                             <!-- Login/Submit Button -->
                             <div class="form-group-between d-flex justify-content-between">
                                 <button id="myButton" type="submit" class="btn btn-success">Login</button>
-                                <a th:href="@{pessoas/mostrarFormCadastrarPessoa}" class="btn bnt-primary">Cadastrar-se</a>
+                                <a href="/pessoas/mostrarFormCadastrarPessoa"><button class="btn bnt-primary">Cadastrar-se</button></a>
+
                             </div>
 
                         </form>
