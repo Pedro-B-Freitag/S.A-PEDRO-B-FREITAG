@@ -342,7 +342,7 @@
     <div class="container">
     <div class = "row">
 
-        <article class="job-card filterDiv" th:each="tempVaga : ${vaga}">
+        <article class="job-card filterDiv" th:each="tempVaga : ${vaga}" th:attr="data-categoria=${tempVaga.categoria}">
             <div class="company-logo-img">
                 <img src="https://cdn-icons-png.flaticon.com/512/903/903479.png" />
             </div>
@@ -369,21 +369,22 @@
 <div class='row-categoria'>
     <div  id="myBtnContainer">
             <button class="btn-categoria" onclick="filterSelection('todos', 'cardContainerCategoria')"> Mostrar Todas</button>
-            <button class="btn-categoria" onclick="filterSelection('Programação', 'cardContainerCategoria')"> Programação</button>
-            <button class="btn-categoria"  onclick="filterSelection('Marketing Digital', 'cardContainerCategoria')"> Marketing Digital</button>
-            <button class="btn-categoria" onclick="filterSelection('Informática', 'cardContainerCategoria')"> Informática</button>
-            <button class="btn-categoria" onclick="filterSelection('Desenvolvimento Web', 'cardContainerCategoria')"> Desenvolvimento Web</button>
-            <button class="btn-categoria" onclick="filterSelection('Inglês como Segunda Língua (ESL)', 'cardContainerCategoria')"> Inglês como Segunda Língua (ESL)</button>
-            <button class="btn-categoria" onclick="filterSelection('Design Gráfico', 'cardContainerCategoria')"> Design Gráfico</button>
-            <button class="btn-categoria" onclick="filterSelection('Machine Learning', 'cardContainerCategoria')"> Machine Learning</button>
-            <button class="btn-categoria" onclick="filterSelection('Fotografia', 'cardContainerCategoria')"> Fotografia</button>
-            <button class="btn-categoria" onclick="filterSelection('Finanças Pessoais', 'cardContainerCategoria')"> Finanças Pessoais</button>
-            <button class="btn-categoria" onclick="filterSelection('Gerenciamento de Projetos', 'cardContainerCategoria')"> Gerenciamento de Projetos</button>
-            <button class="btn-categoria" onclick="filterSelection('Ciência de Dados', 'cardContainerCategoria')"> Ciência de Dados</button>
-            <button class="btn-categoria" onclick="filterSelection('Redes de Computadores', 'cardContainerCategoria')"> Redes de Computadores</button>
-            <button class="btn-categoria" onclick="filterSelection('Marketing de Mídias Sociais', 'cardContainerCategoria')"> Marketing de Mídias Sociais</button>
-            <button class="btn-categoria" onclick="filterSelection('Introdução à Inteligência Artificial (IA)', 'cardContainerCategoria')"> Introdução à Inteligência Artificial (IA)</button>
-            <button class="btn-categoria" onclick="filterSelection('Psicologia', 'cardContainerCategoria')"> Psicologia</button>
+            <button class="btn-categoria" onclick="filterSelection('Tecnologia da Informação', 'cardContainerCategoria')"> Tecnologia da Informação</button>
+            <button class="btn-categoria"  onclick="filterSelection('Saúde e Medicina', 'cardContainerCategoria')"> Saúde e Medicina</button>
+            <button class="btn-categoria"  onclick="filterSelection('Finanças e Contabilidade', 'cardContainerCategoria')"> Finanças e Contabilidade</button>
+            <button class="btn-categoria" onclick="filterSelection('Marketing e Publicidade', 'cardContainerCategoria')"> Marketing e Publicidade</button>
+            <button class="btn-categoria" onclick="filterSelection('Educação e Ensino', 'cardContainerCategoria')"> Educação e Ensino</button>
+            <button class="btn-categoria" onclick="filterSelection('Engenharia', 'cardContainerCategoria')"> Engenharia</button>
+            <button class="btn-categoria" onclick="filterSelection('Vendas e Atendimento ao Cliente', 'cardContainerCategoria')"> Vendas e Atendimento ao Cliente</button>
+            <button class="btn-categoria" onclick="filterSelection('Recursos Humanos ', 'cardContainerCategoria')"> Recursos Humanos</button>
+            <button class="btn-categoria" onclick="filterSelection('Artes e Entretenimento', 'cardContainerCategoria')"> Artes e Entretenimento</button>
+            <button class="btn-categoria" onclick="filterSelection('Gestão de Projetos', 'cardContainerCategoria')"> Gestão de Projetos</button>
+            <button class="btn-categoria" onclick="filterSelection('Consultoria', 'cardContainerCategoria')"> Consultoria</button>
+            <button class="btn-categoria" onclick="filterSelection('Setor Alimentício', 'cardContainerCategoria')">Setor Alimentício</button>
+            <button class="btn-categoria" onclick="filterSelection('Mídia e Comunicação', 'cardContainerCategoria')"> Mídia e Comunicação</button>
+            <button class="btn-categoria" onclick="filterSelection('Serviços Jurídicos', 'cardContainerCategoria')"> Serviços Jurídicos</button>
+            <button class="btn-categoria" onclick="filterSelection('Ciência e Pesquisa', 'cardContainerCategoria')"> Ciência e Pesquisa</button>
+
     </div>
     </div>
     </div>
@@ -407,8 +408,7 @@
                 }
             }
 
-            // Display the category name
-            categoryNameDisplay.innerText = categoria;
+
 
             // Remove the 'active' class from all buttons and add it to the current category
             var btns = document.getElementsByClassName('btn-categoria');
@@ -421,15 +421,8 @@
                 currentBtn.classList.add('active');
             }
 
-            scrollToContainer(containerId);
         }
 
-        function scrollToContainer(containerId) {
-            var container = document.getElementById(containerId);
-            if (container) {
-                container.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
 	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
