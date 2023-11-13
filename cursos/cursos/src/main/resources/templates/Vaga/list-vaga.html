@@ -80,13 +80,11 @@
             overflow: hidden;
             width: 100%;
             max-width: none;
-
 			display: flex;
 
         }
 
         .filterDiv{
-        	display: inline-block;
             display: none;
             margin-right: 100px;
 
@@ -168,6 +166,7 @@
           font-size: 14px;
           color: #777;
           margin-bottom: 5px;
+
           padding: 0 24px;
         }
 
@@ -195,6 +194,7 @@
          .row {
             display: flex;
             flex-direction: column;
+            flex-wrap: wrap;
             margin-bottom: 200px;
             margin-top: 30px;
             align-items: center;
@@ -217,6 +217,12 @@
           top: 50%;
           -ms-transform: translateY(-50%);
           transform: translateY(-50%);
+        }
+
+        .container-job{
+            width: 200px;
+            margin-left:231px;
+            height: 85px;
         }
 
         .apply-btn {
@@ -346,13 +352,17 @@
             <div class="company-logo-img">
                 <img src="https://cdn-icons-png.flaticon.com/512/903/903479.png" />
             </div>
-            <div class="job-title" th:text="${tempVaga.cargo}" ></div>
-            <div class="company-name" th:text="${tempVaga.empresa.nome}"></div>
-            <div class="skills-container">
-                <div class="skill" th:text="${tempVaga.categoria}"> </div>
+            <div class="container-job">
+                <div class="job-title" th:text="${tempVaga.cargo}" ></div>
+                <div class="company-name" th:text="${tempVaga.empresa.nome}"></div>
+                <div class="skills-container">
+                    <div class="skill" th:text="${tempVaga.categoria}"> </div>
+                </div>
             </div>
-                <a class="apply" th:href="${tempVaga.url}">
-                    <button class ="apply-btn">Aplicar</button>
+                <a class="apply" >
+                    <a th:href="${tempVaga.url}">
+                        <button  class ="apply-btn">Aplicar</button>
+                    </a>
                 </a>
         </article>
 
