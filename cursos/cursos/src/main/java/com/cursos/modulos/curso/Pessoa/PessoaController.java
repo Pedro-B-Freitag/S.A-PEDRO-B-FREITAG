@@ -45,7 +45,7 @@ public class PessoaController {
 
         theModel.addAttribute("pessoa", aPessoa);
 
-        return "Pessoa/pessoa-form";
+        return "pessoa/pessoa-form";
     }
 
 

@@ -46,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/home").permitAll()
                         .requestMatchers("/cursos/list/**").permitAll()
                         .requestMatchers("/cursos/display/**").permitAll()
+                        .requestMatchers("/pessoas/mostrarFormCadastrarPessoa").permitAll()
                         .requestMatchers("/vagas/list").permitAll()
                         .requestMatchers("/empresas/**").hasRole("ADMIN")
                         .requestMatchers("/cursos/mostrarFormCadastrarCurso").hasRole("ADMIN")
