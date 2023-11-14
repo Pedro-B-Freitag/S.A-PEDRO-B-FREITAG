@@ -16,28 +16,43 @@
         background: linear-gradient(to top left, #030455 50%, #CAF0F8 50%);
     }
 
+    .container{
+         align-items: center;
+         justify-content: center;
+    }
+
     .card-header {
         background-color: #030455;
         color: white;
     }
 
-    /* Set background color for buttons */
     .btn {
         background-color: #030455;
         color: white;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-left: 40%;
     }
 
+    :root {
+        --bs-info-rgb: 3, 4, 85;
+    }
 
-    /* Adjust the margin between buttons */
     .form-group-between {
         margin-top: 50px; /* Adjust this value to your preference */
         margin-bottom: 10px;
     }
 
-    /* Set max-width for the form */
     .login-form {
         max-width: 300px; /* Adjust this value to make the form narrower */
         margin: auto; /* Center the form horizontally */
+    }
+    .card-body{
+        background-color: #CAF0F8;
+    }
+
+    .card{
+        margin-top: 35%;
     }
 
 
@@ -99,13 +114,14 @@
                             </div>
 
                             <!-- Login/Submit Button -->
-                            <div class="form-group-between d-flex ">
-                                <button id="myButton" type="submit" class="btn btn-success">Login</button>
+                            <button id="myButton" type="submit" class="btn btn-success">Login</button>
 
-                            </div>
 
                         </form>
-                        <p>Não possui uma conta?  <a href="/pessoas/mostrarFormCadastrarPessoa">Cadastrar-se</a></p>
+                        <a th:href="@{/pessoas/mostrarFormCadastrarPessoa}"
+                           class="btn bnt-primary btn-sm mb-3">
+                            Adicionar Pessoa
+                        </a>
                     </div>
                 </div>
             </div>

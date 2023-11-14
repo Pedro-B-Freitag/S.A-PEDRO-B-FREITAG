@@ -9,75 +9,100 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <title>Cadastrar Pessoa</title>
+
+
+    <style>
+        /* Your existing styles remain unchanged */
+
+        .registration-form {
+            max-width: 600px; /* Adjust this value to make the form narrower */
+            margin: auto; /* Center the form horizontally */
+        }
+
+        /* Additional styles for the registration form */
+        .registration-form .card-header {
+            background-color: #030455; /* Bootstrap's primary color */
+            color: white;
+        }
+
+        .registration-form .card-body {
+            background-color: #CAF0F8; /* Bootstrap's background color */
+        }
+    </style>
 </head>
 
 <body>
 
-<div class ="container">
-    <h3>Pessoa Directory</h3>
-    <hr>
+<title>Cadastrar Pessoa</title>
 
-    <p class="h4 mb-4"> Cadastrar Pessoa</p>
+<div class="container">
+    <div id="registrationBox" style="margin-top: 50px;" class="row justify-content-center">
+        <div class="col-md-6 col-sm-12">
+            <div class="card border-info registration-form">
+                <div class="card-header bg-info">
+                    Cadastre-se
+                </div>
 
-    <form action="#"  th:action="@{/pessoas/save}"
-          th:object="${pessoa}" method="POST">
+                <div class="card-body">
+                    <!-- Registration Form -->
+                    <form action="#" th:action="@{/pessoas/save}" th:object="${pessoa}" method="POST" class="form-horizontal">
 
 
-        <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{id}">
 
 
 
+                <h2> Nome </h2>
+                <input type="text" th:field="*{nome}"
+                       class="form-control mb-4 w-25" placeholder="Nome">
+                <h2> CPF </h2>
+                <input type="text" th:field="*{cpf}"
+                       class="form-control mb-4 w-25" placeholder="CPF">
+                <h2> E-mail </h2>
+                <input type="text" th:field="*{email}"
+                       class="form-control mb-4 w-25" placeholder="E-mail">
+                <h2> Número de Telefone </h2>
+                <input type="text" th:field="*{contato}"
+                       class="form-control mb-4 w-25" placeholder="Número de Telefone">
+                <h2> CEP </h2>
+                <input type="text" th:field="*{cep}"
+                       class="form-control mb-4 w-25" placeholder="CEP">
+                <h2> Estado </h2>
+                <input type="text" th:field="*{estado}"
+                       class="form-control mb-4 w-25" placeholder="UF">
+                <h2> Cidade </h2>
+                <input type="text" th:field="*{cidade}"
+                       class="form-control mb-4 w-25" placeholder="Cidade">
+                <h2> Bairro </h2>
+                <input type="text" th:field="*{bairro}"
+                       class="form-control mb-4 w-25" placeholder="Bairro">
+                <h2> Rua </h2>
+                <input type="text" th:field="*{rua}"
+                       class="form-control mb-4 w-25" placeholder="Rua">
+                <h2> Número de Residência </h2>
+                <input type="text" th:field="*{nrResidencia}"
+                       class="form-control mb-4 w-25" placeholder="Número da Residência">
+                <h2> Data de Nascimento </h2>
+                <input type="text" th:field="*{dataNascimento}"
+                       class="form-control mb-4 w-25" placeholder="Data de Nascimento">
+                <h2> Gênero </h2>
+                <input type="text" th:field="*{genero}"
+                       class="form-control mb-4 w-25" placeholder="Genero">
+                <h2> Usuário </h2>
+                <input type="text" th:field="*{usuario}"
+                       class="form-control mb-4 w-25" placeholder="Usuario">
+                <h2> Senha </h2>
+                <input type="text" th:field="*{senha}"
+                       class="form-control mb-4 w-25" placeholder="Senha">
 
-        <input type="text" th:field="*{nome}"
-               class="form-control mb-4 w-25" placeholder="Nome">
-
-        <input type="text" th:field="*{cpf}"
-               class="form-control mb-4 w-25" placeholder="CPF">
-
-        <input type="text" th:field="*{email}"
-               class="form-control mb-4 w-25" placeholder="E-mail">
-
-        <input type="text" th:field="*{contato}"
-               class="form-control mb-4 w-25" placeholder="Número de Telefone">
-
-        <input type="text" th:field="*{cep}"
-               class="form-control mb-4 w-25" placeholder="CEP">
-
-        <input type="text" th:field="*{estado}"
-               class="form-control mb-4 w-25" placeholder="UF">
-
-        <input type="text" th:field="*{cidade}"
-               class="form-control mb-4 w-25" placeholder="Cidade">
-
-        <input type="text" th:field="*{bairro}"
-               class="form-control mb-4 w-25" placeholder="Bairro">
-
-        <input type="text" th:field="*{rua}"
-               class="form-control mb-4 w-25" placeholder="Rua">
-
-        <input type="text" th:field="*{nrResidencia}"
-               class="form-control mb-4 w-25" placeholder="Número da Residência">
-
-        <input type="text" th:field="*{dataNascimento}"
-               class="form-control mb-4 w-25" placeholder="Data de Nascimento">
-
-        <input type="text" th:field="*{genero}"
-               class="form-control mb-4 w-25" placeholder="Genero">
-
-        <input type="text" th:field="*{usuario}"
-               class="form-control mb-4 w-25" placeholder="Usuario">
-
-        <input type="text" th:field="*{senha}"
-               class="form-control mb-4 w-25" placeholder="Senha">
-
-        <button type="submit" class="btn btn-info col-2">SALVAR</button>
+                <button type="submit" class="btn btn-info col-2">CADASTRAR</button>
     </form>
 
-    <hr>
-
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 </body>
 
 </html>

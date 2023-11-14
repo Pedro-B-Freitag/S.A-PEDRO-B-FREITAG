@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Pessoa {
 
 
-    @Column(name = "usuario")
+    @Column(name = "pessoa_usuario")
     private String usuario;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
