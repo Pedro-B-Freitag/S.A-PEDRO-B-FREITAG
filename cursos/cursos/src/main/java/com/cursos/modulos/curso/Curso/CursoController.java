@@ -68,7 +68,7 @@ public class CursoController {
     //ADICIONAR IMAGEM
     @GetMapping("/addImage")
     public ModelAndView addImage(){
-        return new ModelAndView("addimage");
+        return new ModelAndView("imagem/addimage");
     }
 
     @PostMapping("/addImage")
@@ -111,7 +111,7 @@ public class CursoController {
 
     @GetMapping("/updateImage")
     public ModelAndView updateImage(@RequestParam("cursoid") Integer id, Model theModel){
-        return new ModelAndView("updateimage");
+        return new ModelAndView("imagem/updateimage");
     }
 
     @PostMapping("/updateImage")
