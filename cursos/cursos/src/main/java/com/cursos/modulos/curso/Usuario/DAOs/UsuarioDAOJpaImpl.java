@@ -24,7 +24,7 @@ public class UsuarioDAOJpaImpl implements UsuarioDAO {
 
     @Override
     public List<Usuario> findAll() {
-        TypedQuery<Usuario> theQuery = entityManager.createQuery("from Usuarios", Usuario.class);
+        TypedQuery<Usuario> theQuery = entityManager.createQuery("from Usuario", Usuario.class);
 
         List<Usuario> usuario = theQuery.getResultList();
 

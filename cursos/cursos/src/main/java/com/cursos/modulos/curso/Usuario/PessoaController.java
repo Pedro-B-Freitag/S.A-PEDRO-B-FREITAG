@@ -18,7 +18,7 @@ public class PessoaController {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public PessoaController(UsuarioService pessoaService, PasswordEncoder passwordEncoder) {
+    public PessoaController(UsuarioService usuarioService, PasswordEncoder passwordEncoder) {
         this.usuarioService = usuarioService;
         this.passwordEncoder = passwordEncoder;
     }

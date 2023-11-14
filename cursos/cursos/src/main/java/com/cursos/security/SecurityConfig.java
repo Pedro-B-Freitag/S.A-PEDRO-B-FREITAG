@@ -23,10 +23,10 @@ public class SecurityConfig {
 
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
         jdbcUserDetailsManager.setUsersByUsernameQuery(
-                "select usuario_cpf,usuario_senha, usuario_ativado from usuarios where usuario_cpf = ?");
+                "select usuario_email,usuario_senha, usuario_ativado from usuarios where usuario_email = ?");
 
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
-                "SELECT u.usuario_cpf, r.role FROM usuarios u JOIN roles r ON u.roles_id = r.id WHERE u.usuario_cpf = ?");
+                "SELECT u.usuario_email, r.role FROM usuarios u JOIN roles r ON u.roles_id = r.id WHERE u.usuario_email = ?");
 
 
         return jdbcUserDetailsManager;
