@@ -103,90 +103,17 @@
 
                 <div class="card-body">
                     <!-- Registration Form -->
-                    <form action="#" th:action="@{/pessoas/save}" th:object="${pessoa}" method="POST" class="form-horizontal">
+                    <form action="#" th:action="@{/pessoas/save}" th:object="${usuario}" method="POST" class="form-horizontal">
 
 
                 <input type="hidden" th:field="*{id}">
 
-
-
-                <h2> Nome </h2>
-                <input type="text" th:field="*{nome}"
-                       class="form-control" placeholder="Nome">
                 <h2> CPF </h2>
                 <input type="text" th:field="*{cpf}"
                        class="form-control" placeholder="CPF">
                 <h2> E-mail </h2>
                 <input type="text" th:field="*{email}"
                        class="form-control" placeholder="E-mail">
-                <h2> Número de Telefone </h2>
-                <input type="text" th:field="*{contato}"
-                       class="form-control" placeholder="Número de Telefone">
-                <h2> CEP </h2>
-                <input type="text" th:field="*{cep}"
-                       class="form-control" placeholder="CEP">
-                <h2> Estado </h2>
-
-                        <select class="custom-select" th:field="*{estado}">
-
-                            <option value="0">Selecione o Estado:</option>
-                            <option value="AC">AC</option>
-                            <option value="AL">AL</option>
-                            <option value="AP">AP</option>
-                            <option value="AM">AM</option>
-                            <option value="BA">BA</option>
-                            <option value="CE">CE</option>
-                            <option value="DF">DF</option>
-                            <option value="ES">ES</option>
-                            <option value="GO">GO</option>
-                            <option value="MA">MA</option>
-                            <option value="MT">MT</option>
-                            <option value="MS">MS</option>
-                            <option value="MG">MG</option>
-                            <option value="PA">PA</option>
-                            <option value="PB">PB</option>
-                            <option value="PR">PR</option>
-                            <option value="PE">PE</option>
-                            <option value="PI">PI</option>
-                            <option value="RJ">RJ</option>
-                            <option value="RN">RN</option>
-                            <option value="RS">RS</option>
-                            <option value="RO">RO</option>
-                            <option value="RR">RR</option>
-                            <option value="SC">SC</option>
-                            <option value="SP">SP</option>
-                            <option value="SE">SE</option>
-                            <option value="TO">TO</option>
-
-                        </select>
-
-                <h2> Cidade </h2>
-                <input type="text" th:field="*{cidade}"
-                       class="form-control" placeholder="Cidade">
-                <h2> Bairro </h2>
-                <input type="text" th:field="*{bairro}"
-                       class="form-control" placeholder="Bairro">
-                <h2> Rua </h2>
-                <input type="text" th:field="*{rua}"
-                       class="form-control" placeholder="Rua">
-                <h2> Número de Residência </h2>
-                <input type="text" th:field="*{nrResidencia}"
-                       class="form-control" placeholder="Número da Residência">
-                <h2> Data de Nascimento </h2>
-                <input type="date" id="date" th:field="*{dataNascimento}"
-                       class="form-control" placeholder="Data de Nascimento">
-                <h2> Gênero </h2>
-
-                        <select class="custom-select" th:field="*{genero}">
-                            <option value="0">Selecione o Gênero:</option>
-                            <option value="Tecnologia da Informação">Masculino</option>
-                            <option value="Saúde e Medicina">Feminino</option>
-                            <option value="Finanças e Contabilidade">Outro...</option>
-                        </select>
-
-                <h2> Usuário </h2>
-                <input type="text" th:field="*{usuario}"
-                       class="form-control" placeholder="Usuario">
                 <h2> Senha </h2>
                 <input type="text" th:field="*{senha}"
                        class="form-control" placeholder="Senha">

@@ -15,28 +15,28 @@ import java.sql.Blob;
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "curso_id")
     private int id;
-    @Column(name = "descricao")
+    @Column(name = "curso_descricao")
     private String descricao;
-    @Column(name = "categoria")
+    @Column(name = "curso_categoria")
     private String categoria;
-    @Column(name = "fornecedor")
+    @Column(name = "curso_fornecedor")
     private String fornecedor;
-    @Column(name = "nome")
+    @Column(name = "curso_nome")
     private String nome;
-    @Column(name = "url")
+    @Column(name = "curso_url")
     private String url;
-    @Column(name = "presencial")
+    @Column(name = "curso_presencial")
     private Boolean presencial;
-    @Column(name = "visualizacao")
+    @Column(name = "curso_visualizacao")
     private Integer visualizacao;
-    @Column(name = "gostei")
+    @Column(name = "curso_gostei")
     private Integer gostei;
-    @Column(name = "qtd_hrs")
+    @Column(name = "curso_qtd_hrs")
     private String qtdHoras;
     @Lob
-    @Column(name ="imagem")
+    @Column(name ="curso_imagem")
     private Blob imagem;
 
     public Curso(){

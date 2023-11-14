@@ -117,20 +117,20 @@
         </thead>
 
         <tbody>
-        <tr th:each="tempPessoa : ${pessoa}">
+        <tr th:each="tempPessoa : ${usuario}">
 
-            <td th:text="${tempPessoa.nome}" />
-            <td th:text="${tempPessoa.usuario}" />
+            <td th:text="${tempPessoa.id}" />
             <td th:text="${tempPessoa.email}" />
+            <td th:text="${tempPessoa.senha}" />
 
             <td>
-                <a th:href="@{/pessoas/mostrarFormAtualizarPessoa(pessoaid=${tempPessoa.Id})}"
+                <a th:href="@{/pessoas/mostrarFormAtualizarPessoa(usuarioid=${tempPessoa.Id})}"
                    class="btn btn-info btn-sm">
 
                     Update
                 </a>
 
-                <a th:href="@{/pessoas/deletar(pessoaid=${tempPessoa.Id})}"
+                <a th:href="@{/pessoas/deletar(usuarioid=${tempPessoa.Id})}"
                    class="btn btn-danger btn-sm"
                    onclick="if(!(confirm('tem certeza que deseja excluir?'))) return false">
                     Deletar

@@ -12,23 +12,23 @@ package com.cursos.modulos.curso.Empresa;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "empresa_id")
     private Integer id;
-    @Column(name = "cnpj")
+    @Column(name = "empresa_cnpj")
     private String cnpj;
-    @Column(name = "nome")
+    @Column(name = "empresa_nome")
     private String nome;
-    @Column(name = "cep")
+    @Column(name = "empresa_cep")
     private String cep;
-    @Column(name = "UF")
+    @Column(name = "empresa_UF")
     private String uf;
-    @Column(name = "cidade")
+    @Column(name = "empresa_cidade")
     private String cidade;
-    @Column(name = "endereco")
+    @Column(name = "empresa_endereco")
     private String endereco;
-    @Column(name = "email")
+    @Column(name = "empresa_email")
     private String email;
-    @Column(name = "contato")
+    @Column(name = "empresa_contato")
     private String contato;
 
     public Empresa(){

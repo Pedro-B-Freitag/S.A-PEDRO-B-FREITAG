@@ -3,7 +3,7 @@ package com.cursos.modulos.curso.Empresa;
 
 import com.cursos.modulos.curso.Empresa.Service.EmpresaService;
 import com.cursos.modulos.curso.Pessoa.Pessoa;
-import com.cursos.modulos.curso.Pessoa.PessoaRepository;
+import com.cursos.modulos.curso.Usuario.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

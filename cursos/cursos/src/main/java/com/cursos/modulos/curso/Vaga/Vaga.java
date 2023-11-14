@@ -15,25 +15,25 @@ public class Vaga {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "vaga_id")
     private int id;
-    @Column(name = "descricao")
+    @Column(name = "vaga_descricao")
     private String descricao;
-    @Column(name = "categoria")
+    @Column(name = "vaga_categoria")
     private String categoria;
     @ManyToOne
-    @JoinColumn(name = "empresa_nome", referencedColumnName = "nome")
+    @JoinColumn(name = "empresa_nome", referencedColumnName = "empresa_nome")
     private Empresa empresa;
-    @Column(name = "cargo")
+    @Column(name = "vaga_cargo")
     private String cargo;
-    @Column(name = "data_vaga")
+    @Column(name = "vaga_data_vaga")
     private String dataVaga;
-    @Column(name = "data_prazo")
+    @Column(name = "vaga_data_prazo")
     private String dataPrazo;
-    @Column(name = "quantidade")
+    @Column(name = "vaga_quantidade")
     private String quantidade;
 
-    @Column(name = "url")
+    @Column(name = "vaga_url")
     private String url;
 
 
