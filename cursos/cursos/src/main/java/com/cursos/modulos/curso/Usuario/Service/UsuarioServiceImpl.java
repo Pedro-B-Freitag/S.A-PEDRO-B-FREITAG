@@ -1,7 +1,6 @@
 package com.cursos.modulos.curso.Usuario.Service;
 
 import com.cursos.modulos.curso.Usuario.DAOs.UsuarioDAO;
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import com.cursos.modulos.curso.Usuario.Usuario;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

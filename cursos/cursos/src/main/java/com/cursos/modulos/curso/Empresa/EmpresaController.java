@@ -2,8 +2,8 @@ package com.cursos.modulos.curso.Empresa;
 
 
 import com.cursos.modulos.curso.Empresa.Service.EmpresaService;
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import com.cursos.modulos.curso.Usuario.PessoaRepository;
+import com.cursos.modulos.curso.Usuario.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -75,8 +75,8 @@ public class EmpresaController {
     }
 
     public String customSelectBox(Model model) {
-        List<Pessoa> pessoas = pessoaDAO.findAll();
-        model.addAttribute("pessoas", pessoas);
+        List<Usuario> usuarios = pessoaDAO.findAll();
+        model.addAttribute("usuarios", usuarios);
         return "empresa/empresa-form";
     }
 

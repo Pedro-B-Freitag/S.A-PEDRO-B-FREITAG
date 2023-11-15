@@ -1,6 +1,5 @@
 package com.cursos.modulos.curso.Roles;
 
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

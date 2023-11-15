@@ -1,7 +1,6 @@
 package com.cursos;
 
 import com.cursos.modulos.curso.App.ControllerTelas.DAO.AppDAO;
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

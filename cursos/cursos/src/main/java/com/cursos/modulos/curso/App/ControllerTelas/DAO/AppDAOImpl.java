@@ -1,6 +1,6 @@
 package com.cursos.modulos.curso.App.ControllerTelas.DAO;
 
-import com.cursos.modulos.curso.Pessoa.Pessoa;
+import com.cursos.modulos.curso.Usuario.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +17,20 @@ public class AppDAOImpl implements AppDAO{
     }
     @Override
     @Transactional
-    public void save(Pessoa aPessoa) {
-        entityManager.persist(aPessoa);
+    public void save(Usuario oUsuario) {
+        entityManager.persist(oUsuario);
     }
 
     @Override
-    public Pessoa findPessoaById(int oId) {
-        return entityManager.find(Pessoa.class, oId);
+    public Usuario findPessoaById(int oId) {
+        return entityManager.find(Usuario.class, oId);
     }
 
     @Override
     @Transactional
     public void deletePessoaById(int oId) {
-        Pessoa tempPessoa = entityManager.find(Pessoa.class, oId);
+        Usuario tempUsuario = entityManager.find(Usuario.class, oId);
 
-        entityManager.remove(tempPessoa);
+        entityManager.remove(tempUsuario);
     }
 }

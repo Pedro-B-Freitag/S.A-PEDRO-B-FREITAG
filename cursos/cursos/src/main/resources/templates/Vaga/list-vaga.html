@@ -85,6 +85,13 @@
 
         }
 
+        .container2 {
+            overflow: hidden;
+            width: 100%;
+            max-width: none;
+
+        }
+
         .filterDiv{
         	display: inline-block;
             display: none;
@@ -144,7 +151,7 @@
         }
 
         .job-title {
-          grid-area: 1 / 2 / 2 / 3;
+          margin-left: 40%;
           font-size: 16px;
           align-self: start;
           font-weight: 500;
@@ -163,7 +170,7 @@
         }
 
         .company-name {
-          grid-area: 2 / 2 / 3 / 3;
+          margin-left: 40%;
           align-self: center;
           font-size: 14px;
           color: #777;
@@ -174,7 +181,7 @@
 
 
         .skills-container {
-          grid-area: 3 / 2 / 4 / 3;
+          margin-left: 40%;
           align-self: center;
           padding-top: 10px;
           padding: 0 24px;
@@ -213,19 +220,16 @@
         }
 
         .apply {
-          position: relative;
-          top: 50%;
           -ms-transform: translateY(-50%);
           transform: translateY(-50%);
         }
 
         .apply-btn {
           margin-left: 530px;
-          margin-top: 25px;
           background-color: #030455;
+          bottom: 27%;
           color: #fff;
           position: absolute; /* Keep this absolute */
-          top: 50%;
           -ms-transform: translateY(-50%);
           transform: translateY(-50%);
           width: 100px;
@@ -292,7 +296,7 @@
         </a>
     </div>
 
-    <div class="container">
+    <div class="container2">
 
         <div sec:authorize="hasRole('ROLE_ADMIN')">
             <table sec:authorize="hasRole('ROLE_ADMIN')" class="table table-bordered table-striped">
@@ -351,7 +355,7 @@
             <div class="skills-container">
                 <div class="skill" th:text="${tempVaga.categoria}"> </div>
             </div>
-                <a class="apply" th:href="${tempVaga.url}">
+                <a th:href="${tempVaga.url}">
                     <button class ="apply-btn">Aplicar</button>
                 </a>
         </article>

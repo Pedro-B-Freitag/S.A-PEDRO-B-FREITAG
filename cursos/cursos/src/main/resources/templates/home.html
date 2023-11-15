@@ -21,6 +21,55 @@
           background-color: #CAF0F8;
         }
 
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around; /* Adjust this property based on your layout preferences */
+            align-items: center;
+            padding: 10%;
+            height: 100%;
+        }
+
+        .bem-vindo {
+            font-size: 29px;
+            color: #737373;
+            font-weight: bold;
+            margin-left: 10px; /* Adjust the left margin as needed */
+        }
+
+        .texto {
+            font-family: Arial;
+            font-size: 56px;
+            color: #030455;
+            font-weight: bold;
+            margin-left: 10px; /* Adjust the left margin as needed */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #030455;
+            color: white;
+            width: 290px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            text-decoration: none;
+            font-family: Arial;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+
+        .btn:hover{
+        	background-color: #0077B6;
+        	color: black;
+
+        }
+
+
+
         .topnav {
 
             width: 100%;
@@ -127,6 +176,7 @@
             float: right; /* Add this style to float the logout dropdown to the right */
         }
 
+
     </style>
 
 </head>
@@ -166,16 +216,29 @@
     </div>
 
 
+    <div class="container">
+        <div>
+            <div class="bem-vindo"><p>BEM VINDO!</p></div>
 
+            <div class="texto">
+                <p>Plataforma Online</p>
+                <p>de Capacitação</p>
+                <p>e Empregabilidade</p>
+            </div>
+        </div>
 
+        <div >
+            <a href="/cursos/list" class="btn"> Capacitação</a>
+            <p></p>
+            <a href="/vagas/list" class="btn"> Empregabilidade</a>
+        </div>
 
+    </div>
 
-    
-    <h1> USAR PAGINA HOME DE QUEM TEM BONITINHA </h1>
-    <div id="curso-container"></div>
 
         <script src = "curso.js">
         </script>
+
 </body>
 </html>
     

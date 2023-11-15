@@ -1,6 +1,5 @@
 package com.cursos.modulos.curso.Usuario.DAOs;
 
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import com.cursos.modulos.curso.Usuario.Usuario;
 
 

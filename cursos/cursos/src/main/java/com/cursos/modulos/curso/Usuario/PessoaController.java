@@ -1,6 +1,5 @@
 package com.cursos.modulos.curso.Usuario;
 
-import com.cursos.modulos.curso.Pessoa.Pessoa;
 import com.cursos.modulos.curso.Usuario.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -64,6 +63,7 @@ public class PessoaController {
     public String mostrarFormAtualizarPessoa(@RequestParam("usuarioid") int oId, Model theModel){
 
         Usuario oUsuario = usuarioService.findById(oId);
+        oUsuario.setSenha(null);
 
         theModel.addAttribute("usuario", oUsuario);
 
