@@ -19,6 +19,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -49,12 +50,15 @@ public class CursoController {
 
     //DISPLAY IMAGENS
     @GetMapping("/display")
-    public ResponseEntity<byte[]> displayImage(@RequestParam("imagemid") Integer id) throws IOException, SQLException
-    {
+    public ResponseEntity<byte[]> displayImage(@RequestParam("imagemid") Integer id) throws IOException, SQLException {
         Curso curso = cursoService.findById(id);
-        byte [] imageBytes = null;
-        imageBytes = curso.getImagem().getBytes(1, (int) curso.getImagem().length());
-        System.out.println(imageBytes);
+
+        // Get the Base64 encoded string from the Blob
+        String base64Image = new String(curso.getImagem().getBytes(1, (int) curso.getImagem().length()));
+
+        // Decode the Base64 string to byte array
+        byte[] imageBytes = Base64.getDecoder().decode(base64Image);
+
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imageBytes);
     }
 
@@ -75,11 +79,11 @@ public class CursoController {
     public String addImagePost(HttpServletRequest request,@RequestParam("imagem") MultipartFile file) throws IOException, SerialException, SQLException
     {
         byte[] bytes = file.getBytes();
-        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
-        //Imagem imagem = new Imagem();
+        String base64Image = Base64.getEncoder().encodeToString(bytes);
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(base64Image.getBytes());
+
         imagem.setImagem(blob);
-
         cursoDTO.setImagem(imagem);
 
         return "redirect:/cursos/mostrarFormCadastrarCurso";
@@ -120,9 +124,10 @@ public class CursoController {
         Integer cursoId = Integer.valueOf(request.getParameter("cursoid"));
 
         byte[] bytes = file.getBytes();
-        Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
 
-        //Imagem imagem = new Imagem();
+        String base64Image = Base64.getEncoder().encodeToString(bytes);
+        Blob blob = new javax.sql.rowset.serial.SerialBlob(base64Image.getBytes());
+
         imagem.setImagem(blob);
         cursoDTO.setImagem(imagem);
 
