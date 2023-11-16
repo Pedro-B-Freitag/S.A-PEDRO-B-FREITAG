@@ -13,9 +13,15 @@
 
     <style>
 
+        html{
+            height: 100%;
+        }
+
+
         body{
             background: linear-gradient(to top left, #030455 50%, #CAF0F8 50%);
-
+            margin: 0;
+            padding: 0;
         }
 
         .form-control{
@@ -68,6 +74,7 @@
         .btn{
         	background-color: #030455;
         	color: white;
+        	margin-bottom: 30px;
         }
 
         .btn-info {
@@ -92,58 +99,58 @@
 
 <body>
 
-<title>Cadastrar Pessoa</title>
+    <title>Cadastrar Pessoa</title>
 
-<div class="container">
-    <div id="registrationBox" style="margin-top: 50px;" class="row justify-content-center">
-        <div class="col-md-6 col-sm-12">
-            <div class="card border-info registration-form">
-                <div class="card-header bg-info">
-                    Cadastre-se
-                </div>
+    <div class="container">
+        <div id="registrationBox" style="margin-top: 50px;" class="row justify-content-center">
+            <div class="col-md-6 col-sm-12">
+                <div class="card border-info registration-form">
+                    <div class="card-header bg-info">
+                        Cadastre-se
+                    </div>
 
-                <div class="card-body">
-                    <!-- Registration Form -->
-                    <form action="#" th:action="@{/pessoas/save}" th:object="${usuario}" method="POST" class="form-horizontal">
+                    <div class="card-body">
+                        <!-- Registration Form -->
+                        <form action="#" th:action="@{/pessoas/save}" th:object="${usuario}" method="POST" class="form-horizontal">
 
 
-                <input type="hidden" th:field="*{id}">
+                    <input type="hidden" th:field="*{id}">
 
-                <h2> CPF </h2>
-                <input type="text" th:field="*{cpf}"
-                       class="form-control" oninput="mascara(this)" maxlength="11" placeholder="CPF">
-                <h2> E-mail </h2>
-                <input type="text" th:field="*{email}"
-                       class="form-control" placeholder="E-mail">
-                <h2> Senha </h2>
-                <input type="text" th:field="*{senha}"
-                       class="form-control" placeholder="Senha" required>
+                    <h2> CPF </h2>
+                    <input type="text" th:field="*{cpf}"
+                           class="form-control" oninput="mascara(this)" maxlength="11" placeholder="CPF">
+                    <h2> E-mail </h2>
+                    <input type="text" th:field="*{email}"
+                           class="form-control" placeholder="E-mail">
+                    <h2> Senha </h2>
+                    <input type="text" th:field="*{senha}"
+                           class="form-control" placeholder="Senha" required>
 
-                <button type="submit" class="btn btn-info">CADASTRAR</button>
-    </form>
-
+                    <button type="submit" class="btn btn-info">CADASTRAR</button>
+        </form>
+                        <p>Já possui uma conta?  <a th:href="@{/showMyLoginPage}">Login</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function mascara(i){
+    <script>
+        function mascara(i){
 
-       var v = i.value;
+           var v = i.value;
 
-       if(isNaN(v[v.length-1])){
-          i.value = v.substring(0, v.length-1);
-          return;
-       }
+           if(isNaN(v[v.length-1])){
+              i.value = v.substring(0, v.length-1);
+              return;
+           }
 
-           i.setAttribute("maxlength", "14");
-           if (v.length == 3 || v.length == 7) i.value += ".";
-           if (v.length == 11) i.value += "-";
+               i.setAttribute("maxlength", "14");
+               if (v.length == 3 || v.length == 7) i.value += ".";
+               if (v.length == 11) i.value += "-";
 
-    }
-</script>
+        }
+    </script>
 </body>
 
 </html>
