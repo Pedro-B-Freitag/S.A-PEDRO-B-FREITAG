@@ -31,8 +31,6 @@ public class Curso {
     private String presencial;
     @Column(name = "curso_visualizacao")
     private Integer visualizacao;
-    @Column(name = "curso_gostei")
-    private Integer gostei;
     @Column(name = "curso_qtd_hrs")
     private String qtdHoras;
     @Lob
@@ -44,7 +42,7 @@ public class Curso {
     }
 
     public Curso(String descricao, String categoria, String fornecedor, String nome,
-                 String url, String presencial, Integer visualizacao, Integer gostei,
+                 String url, String presencial, Integer visualizacao,
                  String qtdHoras, Blob imagem) {
 
         this.descricao = descricao;
@@ -54,7 +52,6 @@ public class Curso {
         this.url = url;
         this.presencial = presencial;
         this.visualizacao = visualizacao;
-        this.gostei = gostei;
         this.qtdHoras = qtdHoras;
         this.imagem = imagem;
 
@@ -71,7 +68,6 @@ public class Curso {
                 ", url='" + url + '\'' +
                 ", presencial=" + presencial +
                 ", visualizacao=" + visualizacao +
-                ", gostei=" + gostei +
                 ", qtdHoras='" + qtdHoras + '\'' +
                 ", imagem='" + imagem + '\'' +
                 '}';
